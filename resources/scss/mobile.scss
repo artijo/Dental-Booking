@@ -18,7 +18,16 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.2;
 }
-
+.btn {
+    background-color: $btn-color;
+    color: #fff;
+    border: none;
+    transition: 0.3s ease-in-out;
+}
+.btn:hover {
+    scale: 1.05;
+    background-color: darken($btn-color, 10%);
+}
 .a-container {
     max-width: 100%;
     padding-right: 16px;
@@ -26,18 +35,37 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: auto;
     margin-left: auto;
 }
-
-.head {
-    padding-top: 16px;
-    padding-bottom: 16px;
-    background-color: #fff;
-    font-family: $font-headding;
-    border-bottom: 1px solid #e5e5e5;
-    .title {
-        font-size: 24px;
-        font-weight: 700;
-        color: #000;
-        text-align: center;
+.patient{
+    background-color: $bg-color;
+    width: 100%;
+    min-height: 100dvh;
+    .login {
+        background-color: #fff;
+        margin: auto;
+        max-width: 550px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        form {
+            max-width: 350px;
+            margin: auto;
+        }
+        input {
+            width: 100%;
+            height: 50px;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            overflow: hidden;
+            -moz-appearance: textfield;
+        }
+        .btn-login {
+            margin-top: $space;
+        }
     }
 }
 ._desktop {
