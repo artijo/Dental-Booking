@@ -4,8 +4,11 @@
     <div class="patient">
         <div class="a-container">
             <div class="login">
-                <h1>เข้าสู่ระบบ</h1>
-                <p>หากไม่พบข้อมูลโปรดติดต่อเข้าหน้าที่</p>
+                <div class="detail">
+                    <h1>เข้าสู่ระบบ</h1>
+                    <p>หากไม่พบข้อมูลโปรดติดต่อเข้าหน้าที่</p>
+                </div>
+                
                 <form action="#" method="post">
                     @csrf
                     <label for="idcard">หมายเลขบัตรประชาชน</label><br>

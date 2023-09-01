@@ -23,6 +23,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
     border: none;
     transition: 0.3s ease-in-out;
+    cursor: pointer;
 }
 .btn:hover {
     scale: 1.05;
@@ -46,6 +47,10 @@ h1, h2, h3, h4, h5, h6 {
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        .detail {
+            text-align: center;
+            margin: auto;
+        }
         form {
             max-width: 350px;
             margin: auto;
