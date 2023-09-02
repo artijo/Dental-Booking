@@ -1,13 +1,15 @@
 @import 'var';
 
 .a-container {
-    max-width: 1024px;
+    max-width: 990px;
     margin-right: auto;
     margin-left: auto;
 }
 
 .patient{
+    background-position: center;
     .login {
+        padding: 50px;
         .detail {
             width: 350px;
         }

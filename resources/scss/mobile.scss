@@ -40,6 +40,10 @@ h1, h2, h3, h4, h5, h6 {
     background-color: $bg-color;
     width: 100%;
     min-height: 100dvh;
+    background-image: url("../img/bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
     .login {
         background-color: #fff;
         margin: auto;
@@ -47,6 +51,8 @@ h1, h2, h3, h4, h5, h6 {
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        position: relative;
+        top: 20dvh;
         .detail {
             text-align: center;
             margin: auto;
@@ -70,6 +76,10 @@ h1, h2, h3, h4, h5, h6 {
         }
         .btn-login {
             margin-top: $space;
+        }
+        label {
+            margin-top: .5rem;
+            margin-bottom: 0;
         }
     }
 }
