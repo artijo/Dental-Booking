@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
 
@@ -16,4 +17,5 @@ use App\Http\Controllers\testController;
 
 Route::get('/', function () {
     return view('patient.login');
-});
+})->name("login");
+Route::get('/booking',[PatientController::class,'index']);
