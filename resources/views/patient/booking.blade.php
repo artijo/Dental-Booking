@@ -4,7 +4,7 @@
 <div class='patient'>
         <div class='detail'>
             <ul>
-                <li><a href="<?php echo route('login')?>">เว็บนัดผู้ป่วยทันตกรรม</a></li>
+                <li><a href="<?php echo route('login')?>">นัดผู้ป่วยทันตกรรม</a></li>
             </ul>
         </div>
                 <p>ประวัติ-ตารางเวลานัดหมาย</p>
