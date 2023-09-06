@@ -8,7 +8,6 @@ class PatientController extends Controller
 {
     //
     function index(){
-        $info = DB::select("SELECT * FROM customers"); //เลือกข้อมูลจากตาราง
-        return view('patient.booking',["info"=>$info]);
+        return view('patient.booking');
     }
 }
