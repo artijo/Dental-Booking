@@ -3,6 +3,7 @@
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
+use App\Http\Controllers\SupportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,16 @@ use App\Http\Controllers\testController;
 
 Route::get('/', function () {
     return view('patient.login');
-})->name("login");
+})->name("patient.login");
+
+Route::get('/admin/support/login', function () {
+    return view('supports.login');
+})->name("supports.login");
+
+Route::post('/admin/support/login', [SupportController::class,'checklogin']);
+Route::get('/admin', function(){
+    $data = session('supportid');
+    return view('SupportAndDoctor.index',['dt'=>$data]);
+})->name('admin');
+
 Route::get('/booking',[PatientController::class,'index']);
