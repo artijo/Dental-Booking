@@ -27,5 +27,7 @@ Route::get('/admin/support/login', function () {
 
 Route::post('/admin/support/login', [SupportController::class,'checklogin']);
 Route::get('/admin', [AdminController::class,'index'])->name('admin');
+Route::get('/admin/addpatient', [AdminController::class,'addpatient'])->name('admin.addpatient');
+Route::post('/admin/addpatient', [AdminController::class,'storepatient'])->name('admin.storepatient');
 
 Route::get('/booking',[PatientController::class,'index']);
