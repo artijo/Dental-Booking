@@ -8,6 +8,6 @@
 </head>
 <body>
     Hello
-    {{ $dt}}
+    {{ $admin->name }}}
 </body>
 </html>
