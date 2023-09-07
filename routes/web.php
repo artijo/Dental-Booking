@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\AdminController;
 Route::get('/', function () {
     return view('patient.login');
 })->name("patient.login");
+Route::get('/table',[BookingController::class,'index']);
 
 Route::get('/admin/support/login', function () {
     return view('supports.login');
@@ -39,4 +41,4 @@ Route::middleware(['admin.check'])->group(function () {
 });
 
 
-Route::get('/booking',[PatientController::class,'index']);
+Route::post('/booking',[PatientController::class,'checklogin']);

@@ -9,7 +9,7 @@
                     <p>หากไม่พบข้อมูลโปรดติดต่อเจ้าหน้าที่</p>
                 </div>
                 
-                <form action="#" method="post">
+                <form action="/booking" method="post">
                     @csrf
                     <label for="idcard">หมายเลขบัตรประชาชน</label><br>
                     <input type="number" name="idcard" placeholder="หมายเลขบัตรประชาชน 14 หลัก"><br>

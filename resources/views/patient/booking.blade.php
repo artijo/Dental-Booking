@@ -7,18 +7,33 @@
                 <li><a href="<?php echo route('patient.login')?>">นัดผู้ป่วยทันตกรรม</a></li>
             </ul>
         </div>
+                @foreach($name as $lname)
+                @if($lname->gender === "male")
+                <p>นาย {{$lname->name_th}} {{$lname->lastname_th}}</p>
+                @else
+                <p>นาง {{$lname->name_th}} {{$lname->lastname_th}}</p>
+                @endif
+                @endforeach
                 <p>ประวัติ-ตารางเวลานัดหมาย</p>
-                <table class='fixed'>
-                    <th>รายการ</th>
-                    <th>วันที่นัดหมาย</th>
-                    <th>รายละเอียด</th>
-                    <th>สถานะการนัด</th>
-                    @foreach($info as $list)
+                    <table class='fixed'>
+                        <th>รายการ</th>
+                        <th>วันที่นัดหมาย</th>
+                        <th>รายละเอียด</th>
+                        <th>สถานะการนัด</th>
+                        @if(!empty($booking) && count($booking) > 0)
+                                @foreach($booking as $list)
+                                    <tr>
+                                        <td>{{$list->case_title}}</td>
+                                        <td>{{$list->doctor_id}}</td>
+                                        <td>{{$list->case_detail}}</td>
+                                        <td>{{$list->case_status}}</td>
+                                    </tr>
+                                @endforeach
+                @else
                     <tr>
-                        <td>{{$list->name}}</td> <!--เข้าถึง Attribute name และ email ของตาราง Customers-->
-                        <td>{{$list->email}}</td>
+                        <td colspan="4"><center>ไม่มีการลงเวลานัด</center></td>
                     </tr>
-                    @endforeach
+                @endif
                 </table>
 
     </div>
