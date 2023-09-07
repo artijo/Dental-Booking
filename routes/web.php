@@ -25,8 +25,12 @@ Route::get('/admin/support/login', function () {
     return view('supports.login');
 })->name("supports.login");
 
+Route::get('/admin/login', function () {
+    return view('SupportAndDoctor.login');
+})->name("supports.login");
+
 Route::post('/admin/support/login', [SupportController::class,'checklogin']);
-Route::get('/admin', [AdminController::class,'index'])->name('admin');
+Route::get('/admin', [AdminController::class,'index'])->name('admin')->middleware('admin.check');
 Route::get('/admin/addpatient', [AdminController::class,'addpatient'])->name('admin.addpatient');
 Route::post('/admin/addpatient', [AdminController::class,'storepatient'])->name('admin.storepatient');
 
