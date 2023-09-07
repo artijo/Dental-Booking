@@ -34,6 +34,8 @@ Route::middleware(['admin.check'])->group(function () {
     Route::get('/admin', [AdminController::class,'index'])->name('admin');
     Route::get('/admin/addpatient', [PatientController::class,'addpatient'])->name('patient.addpatient');
     Route::post('/admin/addpatient', [AdminController::class,'storepatient'])->name('admin.storepatient');
+    Route::get('/admin/addcase',[PatientController::class,'addcase'])->name('patient.addcase');
+    Route::post('/admin/addcase',[AdminController::class,'storecase'])->name('admin.storecase');
 });
 
 

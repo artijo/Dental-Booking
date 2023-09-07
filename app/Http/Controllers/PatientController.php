@@ -13,4 +13,7 @@ class PatientController extends Controller
     function addpatient(){
         return view('SupportAndDoctor.addpatient');
     }
+    function addcase(){
+        return view('SupportAndDoctor.addcase');
+    }
 }

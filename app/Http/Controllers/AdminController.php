@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CaseMD;
 use Illuminate\Http\Request;
 use App\Models\Support;
 use App\Models\Doctor;
@@ -41,6 +42,26 @@ class AdminController extends Controller
         $patient->intolerance = $intolerance;
         $patient->birthday = $birthday;
         $patient->save();
+        return redirect('/admin');
+    }
+    function storecase(Request $request){
+        $caseid = $request->caseid;
+        $doctor_id = $request->doctor_id;
+        $idcard = $request->idcard;
+        $case_title = $request->case_title;
+        $case_detail = $request->case_detail;
+        $case_status = (int) $request->input('case_status');
+        $casetype_id = $request->casetype_id;
+        
+        $case = new CaseMD;
+        $case->caseid = $caseid;
+        $case->doctor_id = $doctor_id;
+        $case->idcard = $idcard;
+        $case->case_title = $case_title;
+        $case->case_detail = $case_detail;
+        $case->case_status = $case_status;
+        $case->casetype_id = $casetype_id;
+        $case->save();
         return redirect('/admin');
     }
 }

@@ -11,5 +11,6 @@
     {{$name}}
     
     <a href="{{ route('patient.addpatient') }}"><button>Add Patient</button></a>
+    <a href="{{ route('patient.addcase') }}"><button>Add Case</button></a>
 </body>
 </html>
