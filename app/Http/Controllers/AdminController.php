@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Support;
 use App\Models\Doctor;
 use App\Models\Patient;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
     //
     function index(){
         $ss = session('supportid');
-        $admin = Support::find("$ss");
-        return view('SupportAndDoctor.index',['admin'=>$admin]);
+        $admin = Support::where('support_id',$ss)->first();
+        return view('SupportAndDoctor.index')->with('admin',$admin)->with('ss',$ss);
     }
     function addpatient(){
         return view('SupportAndDoctor.addpatient');
