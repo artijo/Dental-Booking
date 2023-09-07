@@ -10,4 +10,7 @@ class PatientController extends Controller
     function index(){
         return view('patient.booking');
     }
+    function addpatient(){
+        return view('SupportAndDoctor.addpatient');
+    }
 }

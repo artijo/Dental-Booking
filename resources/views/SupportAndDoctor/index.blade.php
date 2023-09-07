@@ -8,7 +8,8 @@
 </head>
 <body>
     Hello
-    {{ $admin->name }}
-    <a href="{{ route('admin.addpatient') }}"><button>Add Patient</button></a>
+    {{$name}}
+    
+    <a href="{{ route('patient.addpatient') }}"><button>Add Patient</button></a>
 </body>
 </html>

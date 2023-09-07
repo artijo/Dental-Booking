@@ -14,10 +14,8 @@ class AdminController extends Controller
     function index(){
         $ss = session('supportid');
         $admin = Support::where('support_id',$ss)->first();
-        return view('SupportAndDoctor.index')->with('admin',$admin)->with('ss',$ss);
-    }
-    function addpatient(){
-        return view('SupportAndDoctor.addpatient');
+        $name = explode(' ',$admin->name);
+        return view('SupportAndDoctor.index')->with('admin',$admin)->with('ss',$ss)->with('name',$name[0]);
     }
     function storepatient(Request $request){
         $idcard = $request->idcard;
@@ -44,6 +42,5 @@ class AdminController extends Controller
         $patient->birthday = $birthday;
         $patient->save();
         return redirect('/admin');
-
     }
 }
