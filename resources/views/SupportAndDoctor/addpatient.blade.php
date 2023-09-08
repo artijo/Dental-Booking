@@ -7,9 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="{{route('admin.storepatient')}}" method="post">
     @csrf
-        <label for="idcard">บัตรประจำตัวประชสชน</label> <br>
+        <label for="idcard">บัตรประจำตัวประชkชน</label> <br>
         <input type="number" name="idcard" ><br>
         <label for="name_th">ชื่อ (ภาษาไทย)</label><br>
         <input type="text" name="name_th" ><br>

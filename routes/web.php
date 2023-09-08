@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
@@ -38,7 +39,13 @@ Route::middleware(['admin.check'])->group(function () {
     Route::post('/admin/addpatient', [AdminController::class,'storepatient'])->name('admin.storepatient');
     Route::get('/admin/addcase',[PatientController::class,'addcase'])->name('patient.addcase');
     Route::post('/admin/addcase',[AdminController::class,'storecase'])->name('admin.storecase');
+    Route::get('/admin/adddoctor',[DoctorController::class,'adddoctor'])->name('doctor.adddoctor');
+    Route::post('/admin/adddoctor',[AdminController::class,'storedoctor'])->name('doctor.storedoctor');
+
 });
 
 
 Route::post('/booking',[PatientController::class,'checklogin']);
+
+
+
