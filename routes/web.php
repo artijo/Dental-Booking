@@ -47,5 +47,5 @@ Route::middleware(['admin.check'])->group(function () {
 
 Route::post('/booking',[PatientController::class,'checklogin']);
 
-
-
+Route::get('/admin/addbooking',[BookingController::class,'addbooking'])->name('booking.addbooking');
+Route::post('/admin/addbooking',[AdminController::class,'storebooking'])->name('admin.storebooking');

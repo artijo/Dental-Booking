@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\CaseMD;
 use Illuminate\Http\Request;
 use App\Models\Support;
@@ -64,28 +65,21 @@ class AdminController extends Controller
         $case->save();
         return redirect('/admin');
     }
-    function storedoctor(Request $request){
-        $doctor_id = $request->doctor_id;
-        $name_en = $request->name_en;
-        $lastname_en = $request->lastname_en;
-        $name_th = $request->name_th;
-        $lastname_th = $request->lastname_th;
-        $email = $request->email;
-        $password = $request->password;
-        $tel = $request->tel;
-        $spacialist_id = $request -> input('spacialist_id');
 
-        $adddoctor = new Doctor;
-        $adddoctor->doctor_id = $doctor_id;
-        $adddoctor->name_en = $name_en;
-        $adddoctor->lastname_en = $lastname_en;
-        $adddoctor->name_th = $name_th;
-        $adddoctor->lastname_th = $lastname_th;
-        $adddoctor->email = $email;
-        $adddoctor->password = $password;
-        $adddoctor->tel = $tel;
-        $adddoctor->spacialist_id = $spacialist_id;
-        $adddoctor->save();
+    function storebooking(Request $request){
+        $booking_id = $request->booking_id;
+        $booking_title = $request->booking_title;
+        $booking_detail = $request->booking_detail;
+        $booking_date = $request->booking_date;
+        $caseid = $request->caseid;
+
+        $booking = new Booking;
+        $booking->booking_id = $booking_id;
+        $booking->booking_title = $booking_title;
+        $booking->booking_detail = $booking_detail;
+        $booking->booking_date = $booking_date;
+        $booking->caseid = $caseid;
+        $booking->save();
         return redirect('/admin');
     }
 }

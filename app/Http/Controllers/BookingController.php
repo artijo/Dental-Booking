@@ -15,5 +15,9 @@ class BookingController extends Controller
         $name = Patient::where('idcard',$session)->get();
         return view('patient.booking')->with('booking',$booking)->with('name',$name);
     }
+
+    function addbooking(){
+        return view('SupportAndDoctor.addbooking');
+    }
     
 }

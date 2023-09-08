@@ -12,7 +12,7 @@
                 <form action="/booking" method="post">
                     @csrf
                     <label for="idcard">หมายเลขบัตรประชาชน</label><br>
-                    <input type="number" name="idcard" placeholder="หมายเลขบัตรประชาชน 14 หลัก"><br>
+                    <input type="number" name="idcard" placeholder="หมายเลขบัตรประชาชน 13 หลัก" max="13"><br>
                     <label for="phone">เบอร์โทรศัพท์</label><br>
                     <input type="tel" name="phone" placeholder="หมายเลขโทรศัพท์">
                     <input class="btn btn-login" type="submit" value="เข้าสู่ระบบ">
