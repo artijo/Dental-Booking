@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Spacialist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class DoctorController extends Controller
 {
@@ -24,7 +25,7 @@ class DoctorController extends Controller
         ]);
         $doctor = Doctor::where('email',$request->email)->first();
         if($doctor){
-            if($doctor->password == $request->password){
+            if(Hash::check($request->password, $doctor->password)){
                 $request->session()->put('doctor_id',$doctor->doctor_id);
                 return redirect()->route('Doctor');
             }else{
