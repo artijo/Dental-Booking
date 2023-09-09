@@ -4,7 +4,6 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\testController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\AdminController;
 
@@ -35,6 +34,7 @@ Route::get('/admin/login', function () {
 Route::post('/admin/support/login', [SupportController::class,'checklogin']);
 Route::middleware(['admin.check'])->group(function () {
     Route::get('/admin', [AdminController::class,'index'])->name('admin');
+    Route::get('/admin/logout', [adminController::class,'logout'])->name('admin.logout');
     Route::get('/admin/addpatient', [PatientController::class,'addpatient'])->name('patient.addpatient');
     Route::post('/admin/addpatient', [AdminController::class,'storepatient'])->name('admin.storepatient');
     Route::get('/admin/addcase',[PatientController::class,'addcase'])->name('patient.addcase');

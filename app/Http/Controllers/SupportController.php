@@ -27,6 +27,6 @@ class SupportController extends Controller
             }else{
                 return back()->with('error','Wrong Login Details');
             }
+        }
     }
-}
 }

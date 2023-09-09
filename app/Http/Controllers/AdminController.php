@@ -19,6 +19,12 @@ class AdminController extends Controller
         $name = explode(' ',$admin->name);
         return view('SupportAndDoctor.index')->with('admin',$admin)->with('ss',$ss)->with('name',$name[0]);
     }
+    function logout(){
+        if(session()->has('supportid')){
+            session()->pull('supportid');
+            return redirect('/admin/support/login');
+        }
+    }
     function storepatient(Request $request){
         $idcard = $request->idcard;
         $name_en = $request->name_en;
