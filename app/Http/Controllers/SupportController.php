@@ -24,10 +24,12 @@ class SupportController extends Controller
         if($support){
             if(Hash::check($request->password, $support->password)){
                 $request->session()->put('supportid',$support->support_id);
-                return redirect('/admin');
+                return redirect('admin');//->route('admin.index');
             }else{
                 return back()->with('error','Wrong Login Details');
             }
+        }else{
+            return back()->with('error','You don\'t have Authorize');
         }
     }
 }

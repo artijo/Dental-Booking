@@ -15,9 +15,9 @@ class AdminController extends Controller
     //
     function index(){
         $ss = session('supportid');
-        $admin = Support::where('support_id',$ss)->first();
-        $name = explode(' ',$admin->name);
-        return view('SupportAndDoctor.index')->with('admin',$admin)->with('ss',$ss)->with('name',$name[0]);
+        $support = Support::where('support_id',$ss)->first();
+        $name = explode(' ',$support->name);
+        return view('SupportAndDoctor.index')->with('admin',$support)->with('ss',$ss)->with('name',$name[0]);
     }
     function logout(){
         if(session()->has('supportid')){

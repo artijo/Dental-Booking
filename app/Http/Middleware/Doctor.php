@@ -2,12 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Doctor;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Support
+class Doctor
 {
     /**
      * Handle an incoming request.
@@ -16,10 +15,8 @@ class Support
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->session()->has('supportid')){
+        if(!$request->session()->has('doctor_id')){
             return redirect('/admin/login');
-        }elseif($request->session()->has('idcard')){
-            return redirect('/user');
         }
         return $next($request);
     }
