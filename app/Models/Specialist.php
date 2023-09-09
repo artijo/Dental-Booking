@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Doctor;
 
-class Spacialist extends Model
+class Specialist extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
     public function doctors() {
         return $this->belongsToMany(Doctor::class);
     }
