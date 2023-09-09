@@ -20,10 +20,15 @@ return new class extends Migration
             $table->string('email',255);
             $table->string('password',255);
             $table->string('tel',10);
-            $table->char('spacialist_id',6)->foreign('spacialist_id')->references('spacialist_id')->on('spacialists');
+            $table->char('specialist_id',6);
             $table->timestamps();
             $table->softDeletes();
         });
+        if (Schema::hasTable('specialists')) {
+            Schema::table('doctors', function (Blueprint $table) {
+                $table->foreign('specialist_id')->references('specialist_id')->on('specialists');
+            });
+        }
     }
 
     /**

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('case_m_d_s', function (Blueprint $table) {
             $table->char('caseid',8)->primary();
-            $table->char('doctor_id',6)->foreign('doctor_id')->references('doctor_id')->on('doctors');
-            $table->char('idcard',13)->foreign('idcard')->references('idcard')->on('patients');
+            $table->char('doctor_id',6);
+            $table->char('idcard',13);
             $table->string('case_title',255);
             $table->longText('case_detail')->nullable();
             $table->integer('case_status');
-            $table->char('casetype_id')->foreign('casetype_id')->references('casetype_id')->on('casetypes');
+            $table->char('casetype_id');
             $table->timestamps();
             $table->softDeletes();
         });
