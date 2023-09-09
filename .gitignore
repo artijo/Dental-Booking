@@ -24,3 +24,4 @@ Homestead.json
 .env.example
 *.example
 *.example
+.env.example
