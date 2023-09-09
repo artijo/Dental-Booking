@@ -24,11 +24,6 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        if (Schema::hasTable('specialists')) {
-            Schema::table('doctors', function (Blueprint $table) {
-                $table->foreign('specialist_id')->references('specialist_id')->on('specialists');
-            });
-        }
     }
 
     /**
