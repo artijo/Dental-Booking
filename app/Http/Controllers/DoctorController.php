@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
-use App\Models\Spacialist;
+use App\Models\Specialist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class DoctorController extends Controller
 {
     function adddoctor(){
-        $spacialist = Spacialist::select('spacialist_id','name_th')->get();
+        $spacialist = Specialist::select('specialist_id','name_th')->get();
         return view('SupportAndDoctor.adddoctor')->with('spacialist',$spacialist);
     }
     function index(){
