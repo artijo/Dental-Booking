@@ -19,7 +19,7 @@ class PatientController extends Controller
         if($booking){
             if($booking->tel == $request->phone){
                 $request->session()->put('idcard',$booking->idcard);
-                return redirect('/table');
+                return redirect('/user/table');
             }else{
                 return back()->with('error','Wrong Login Details');
             }

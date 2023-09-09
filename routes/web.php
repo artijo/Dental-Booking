@@ -18,10 +18,10 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
+
+Route::get('/user', function () {
     return view('patient.login');
 })->name("patient.login");
-Route::get('/table',[BookingController::class,'index']);
 
 Route::get('/admin/support/login', function () {
     return view('supports.login');
@@ -41,11 +41,15 @@ Route::middleware(['admin.check'])->group(function () {
     Route::post('/admin/addcase',[AdminController::class,'storecase'])->name('admin.storecase');
     Route::get('/admin/adddoctor',[DoctorController::class,'adddoctor'])->name('doctor.adddoctor');
     Route::post('/admin/adddoctor',[AdminController::class,'storedoctor'])->name('doctor.storedoctor');
+    Route::get('/admin/addbooking',[BookingController::class,'addbooking'])->name('booking.addbooking');
+    Route::post('/admin/addbooking',[AdminController::class,'storebooking'])->name('admin.storebooking');
+
+});
+
+Route::post('/user',[PatientController::class,'checklogin']);
+Route::middleware(['patient.check'])->group(function(){
+    Route::get('/user/table',[BookingController::class,'index']);
 
 });
 
 
-Route::post('/booking',[PatientController::class,'checklogin']);
-
-Route::get('/admin/addbooking',[BookingController::class,'addbooking'])->name('booking.addbooking');
-Route::post('/admin/addbooking',[AdminController::class,'storebooking'])->name('admin.storebooking');

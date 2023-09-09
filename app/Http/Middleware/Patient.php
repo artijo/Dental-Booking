@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Admin
+class Patient
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,7 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->session()->has('supportid')) {
-            return redirect('/admin/login');
-        }elseif($request->session()->has('idcard')){
+        if(!$request->session()->has('idcard')){
             return redirect('/user');
         }
         return $next($request);
