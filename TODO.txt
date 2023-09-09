@@ -1,5 +1,5 @@
 ***เพิ่มข้อมูลเข้า spacialist
-INSERT INTO spacialists (spacialist_id, name_en, name_th, created_at, updated_at, deleted_at) 
+INSERT INTO specialists (specialist_id, name_en, name_th, created_at, updated_at, deleted_at) 
 VALUES ('AM0001', 'Anatomy', 'กายวิภาคศาสตร์', '2023-09-09 09:08:19', '2023-09-09 09:08:19', NULL), 
 ('BC0001', 'Biochemistry', 'ชีวเคมี', '2023-09-09 09:09:53', '2023-09-09 09:09:53', NULL), 
 ('CD0001', 'Community Dentistry', 'ทันตกรรมชุมชน', '2023-09-09 09:10:56', '2023-09-09 09:10:56', NULL), 
