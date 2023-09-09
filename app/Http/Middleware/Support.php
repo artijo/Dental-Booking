@@ -2,12 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Support;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Admin
+class Support
 {
     /**
      * Handle an incoming request.
@@ -16,9 +15,7 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $support = Support::where('support_id',session('supportid'))->get()->first();
-        $level = $support->level;
-        if (!$request->session()->has('supportid') || $level == 1) {
+        if (!$request->session()->has('supportid')) {
             return redirect('/admin/login');
         }elseif($request->session()->has('idcard')){
             return redirect('/user');

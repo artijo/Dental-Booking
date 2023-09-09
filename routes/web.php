@@ -32,7 +32,7 @@ Route::get('/admin/login', function () {
 })->name("supports.login");
 
 Route::post('/admin/support/login', [SupportController::class,'checklogin']);
-Route::middleware(['admin.check'])->group(function () {
+Route::middleware(['support.check'])->group(function () {
     Route::get('/admin', [AdminController::class,'index'])->name('admin');
     Route::get('/admin/logout', [adminController::class,'logout'])->name('admin.logout');
     Route::get('/admin/addpatient', [PatientController::class,'addpatient'])->name('patient.addpatient');
@@ -43,6 +43,9 @@ Route::middleware(['admin.check'])->group(function () {
     Route::post('/admin/adddoctor',[AdminController::class,'storedoctor'])->name('doctor.storedoctor');
     Route::get('/admin/addbooking',[BookingController::class,'addbooking'])->name('booking.addbooking');
     Route::post('/admin/addbooking',[AdminController::class,'storebooking'])->name('admin.storebooking');
+    Route::middleware(['admin.check'])->group(function (){
+
+    });
 
 });
 
