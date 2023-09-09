@@ -25,8 +25,10 @@
         <label for="tel">เบอร์โทรศัพท์</label>
         <input type="text" name="tel" > <br>
         <label for="specialist_id">ความเชี่ยวชาญ</label>
-        <select name="spacialist_id" id="">
-            <option value="RT0001">รักษารากฟัน</option>
+        <select name="spacialist_id" id="specialist">
+            @foreach($spacialist as $list)
+            <option value="{{ $list->spacialist_id }}">{{ $list->name_th }}</option>
+            @endforeach
         </select> <br>
         <input type="submit" value="บันทึกข้อมูล">
     </form>

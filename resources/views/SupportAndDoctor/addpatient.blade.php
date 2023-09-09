@@ -26,7 +26,7 @@
         <label for="gender">เพศ</label><br>
         <input type="radio" name="gender" value="male">
         <label for="male">ชาย</label>
-        <input type="radio" name="gender" value="famale">
+        <input type="radio" name="gender" value="female">
         <label for="famale">หญิง</label><br>
         <label for="birthday">วันเกิด</label><br>
         <input type="date" name="birthday" ><br>
