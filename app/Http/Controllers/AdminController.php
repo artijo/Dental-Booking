@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Support;
 use App\Models\Doctor;
 use App\Models\Patient;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -79,7 +79,7 @@ class AdminController extends Controller
         $name_th = $request->name_th;
         $lastname_th = $request->lastname_th;
         $email = $request->email;
-        $password = $request->password;
+        $password = Hash::make($request->password);
         $tel = $request->tel;
         $spacialist_id = $request -> input('spacialist_id');
 
@@ -111,6 +111,28 @@ class AdminController extends Controller
         $booking->booking_date = $booking_date;
         $booking->caseid = $caseid;
         $booking->save();
+        return redirect('/admin');
+    }
+
+    function addsupport(){
+        return view('supports.addsupport');
+    }
+    function storesupport(Request $request) {
+        $support_id = $request->supportid;
+        $name = $request->name;
+        $email = $request->email;
+        $password = Hash::make($request->password);
+        $tel = $request->tel;
+        (int)$level = $request->level;
+
+        $support = new Support;
+        $support->support_id = $support_id;
+        $support->name = $name;
+        $support->email = $email;
+        $support->password = $password;
+        $support->tel = $tel;
+        $support->level = $level;
+        $support->save();
         return redirect('/admin');
     }
 }

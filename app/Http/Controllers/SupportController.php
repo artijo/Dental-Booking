@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Support;
+use Illuminate\Support\Facades\Hash;
 
 class SupportController extends Controller
 {
@@ -21,7 +22,7 @@ class SupportController extends Controller
         ]);
         $support = Support::where('email',$request->email)->first();
         if($support){
-            if($support->password == $request->password){
+            if(Hash::check($request->password, $support->password)){
                 $request->session()->put('supportid',$support->support_id);
                 return redirect('/admin');
             }else{
