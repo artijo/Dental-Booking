@@ -8,8 +8,6 @@
 <body>
     <form action="/admin/addcase" method="POST">
         @csrf
-        <label for="caseid">รหัสเคสการรักษา</label><br>
-        <input type="text" name="caseid"><br>
         <label for="idcard">รหัสบัตรประชาชน(ผู้เข้ารับการรักษา)</label><br>
         <input type="number" name="idcard"><br>
         <label for="case_title">หัวเรื่องการรักษา</label><br>

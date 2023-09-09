@@ -9,8 +9,6 @@
 <body>
     <form action="{{ Route('admin.storesupport') }}" method="post">
         @csrf
-        <label for="supportid">SupportID</label><br>
-        <input type="text" name="supportid" placeholder="ชื่อผู้ใช้"><br>
         <label for="name">ชื่อ</label><br>
         <input type="text" name="name" placeholder="ชื่อ"><br>
         <label for="level">สิทธ์การเข้าถึง</label>

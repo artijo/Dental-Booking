@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->char('booking_id',10)->primary();
-            $table->char('caseid',8)->foreign('caseid')->references('caseid')->on('case_m_d_s');
+            $table->char('caseid',8);
             $table->string('booking_title',255);
             $table->longText('booking_detail')->nullable();
             $table->dateTime('booking_date');

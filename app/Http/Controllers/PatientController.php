@@ -6,6 +6,7 @@ use App\Models\Patient;
 use Illuminate\Support\Facades\DB; //นำข้อมูลจาก Database ตั้งค่าเป็น DB ***ตั้งค่า DB_Database เป็น Database ที่เราจะนำเข้า ใน .env ในที่นี้ใช้ของ Customer มาดึงดูก่อน
 use Illuminate\Http\Request;
 use App\Http\Controllers\BookingController;
+use Illuminate\View\View;
 
 class PatientController extends Controller
 {
@@ -32,5 +33,9 @@ class PatientController extends Controller
     }
     function addcase(){
         return view('SupportAndDoctor.addcase');
+    }
+    function showpatient(){
+            $page = Patient::paginate(8);
+            return view('SupportAndDoctor.patienlist',compact('page'));
     }
 }
