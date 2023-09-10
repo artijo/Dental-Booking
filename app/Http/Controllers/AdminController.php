@@ -93,7 +93,7 @@ class AdminController extends Controller
         $case_title = $request->case_title;
         $case_detail = $request->case_detail;
         $case_status = (int) $request->input('case_status');
-        $casetype_id = $request->casetype_id;
+        $casetype_id = $request-> casetype_id;
         
         $case = new CaseMD;
         $case->caseid = $caseid;
