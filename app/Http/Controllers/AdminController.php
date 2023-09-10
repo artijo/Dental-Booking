@@ -149,7 +149,7 @@ class AdminController extends Controller
     function storebooking(Request $request){
         $bookingdata = Booking::select('booking_id')->orderBy('booking_id','desc')->first();
         if ($bookingdata == null) {
-            $booking_id = 'bk0001';
+            $booking_id = 'bk000001';
         }else{
         $booking_id = $bookingdata->booking_id;
         $prefix = 'bk';
