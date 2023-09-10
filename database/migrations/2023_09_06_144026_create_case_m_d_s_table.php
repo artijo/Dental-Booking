@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('case_title',255);
             $table->longText('case_detail')->nullable();
             $table->integer('case_status');
-            $table->char('casetype_id');
+            $table->char('casetype_id',6);
             $table->timestamps();
             $table->softDeletes();
         });
