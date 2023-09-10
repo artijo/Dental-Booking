@@ -5,6 +5,7 @@
         <div class='detail'>
             <ul>
                 <li><a href="<?php echo route('patient.login')?>">นัดผู้ป่วยทันตกรรม</a></li>
+                <li><a href="{{route('patient.logout')}}">ออกจากระบบ</a></li>
             </ul>
         </div>
                 @foreach($name as $lname)

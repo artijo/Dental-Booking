@@ -16,7 +16,7 @@ class Patient
     public function handle(Request $request, Closure $next): Response
     {
         if(!$request->session()->has('idcard')){
-            return redirect('/user');
+            return redirect()->route('patient.login');
         }
         return $next($request);
     }

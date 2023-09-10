@@ -11,6 +11,12 @@ use Illuminate\View\View;
 class PatientController extends Controller
 {
     //
+    function index(){
+        $session = session('idcard'); 
+        $booking = CaseMD::where('idcard',$session)->get(); //ยังไม่มีการลงบันทึกในตารางจึงต้องดึงมาจาก case ตรงๆก่อน
+        $name = Patient::where('idcard',$session)->get();
+        return view('patient.dashboard')->with('booking',$booking)->with('name',$name);
+    }
     function checklogin(Request $request){
         $request->validate([
             'idcard'=>'required',
@@ -20,12 +26,18 @@ class PatientController extends Controller
         if($booking){
             if($booking->tel == $request->phone){
                 $request->session()->put('idcard',$booking->idcard);
-                return redirect('/user/table');
+                return redirect()->route('patient.index');
             }else{
                 return back()->with('error','Wrong Login Details');
             }
         }else{
             return back()->with('error','ไม่มีข้อมูลคนไข้');
+        }
+    }
+    function logout(){
+        if(session()->has('idcard')){
+            session()->pull('idcard');
+            return redirect()->route('patient.login');
         }
     }
     function addpatient(){

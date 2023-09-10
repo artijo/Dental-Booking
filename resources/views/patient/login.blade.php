@@ -9,10 +9,10 @@
                     <p>หากไม่พบข้อมูลโปรดติดต่อเจ้าหน้าที่</p>
                 </div>
                 
-                <form action="/booking" method="post">
+                <form action="{{Route('patient.checklogin')}}" method="post">
                     @csrf
                     <label for="idcard">หมายเลขบัตรประชาชน</label><br>
-                    <input type="number" name="idcard" placeholder="หมายเลขบัตรประชาชน 13 หลัก" max="13"><br>
+                    <input type="number" name="idcard" placeholder="หมายเลขบัตรประชาชน 13 หลัก"><br>
                     <label for="phone">เบอร์โทรศัพท์</label><br>
                     <input type="tel" name="phone" placeholder="หมายเลขโทรศัพท์">
                     <input class="btn btn-login" type="submit" value="เข้าสู่ระบบ">

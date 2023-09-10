@@ -19,9 +19,13 @@ use App\Http\Controllers\AdminController;
 */
 
 
-Route::get('/', function () {
-    return view('patient.login');
-})->name("patient.login");
+Route::get('/', function () { 
+    if (!session()->has('idcard')) {
+        return redirect()->route('patient.login');
+    }else{
+        return redirect()->route('patient.index');
+    }
+ })->name("patient.login");
 
 Route::get('/admin/support/login', function () {
     return view('supports.login');
@@ -81,8 +85,12 @@ Route::middleware(['adminanddoctor'])->group(function(){
     Route::put('/admin/booking/update/{id}',[AdminController::class,'updatebooking'])->name('admin.updatebooking');
 });
 
-Route::post('/user',[PatientController::class,'checklogin']);
+Route::get('/user/login', function () {
+    return view('patient.login');
+})->name("patient.login");
+Route::post('/user/login',[PatientController::class,'checklogin'])->name('patient.checklogin');
 Route::middleware(['patient.check'])->group(function(){
-    Route::get('/user/table',[BookingController::class,'index']);
+    Route::get('/user',[PatientController::class,'index'])->name('patient.index');
+    Route::get('/user/logout',[PatientController::class,'logout'])->name('patient.logout');
 });
 
