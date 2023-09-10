@@ -56,6 +56,7 @@ Route::middleware(['support.check'])->group(function () {
 });
 Route::middleware(['doctor.check'])->group(function (){
     Route::get('/admin/doctor',[DoctorController::class,'index'])->name('Doctor');
+    Route::get('/admin/doctor/showcase',[BookingController::class,'showhistory'])->name('showcase.showhistory');
 
 });
 
@@ -76,7 +77,7 @@ Route::middleware(['adminanddoctor'])->group(function(){
 Route::post('/user',[PatientController::class,'checklogin']);
 Route::middleware(['patient.check'])->group(function(){
     Route::get('/user/table',[BookingController::class,'index']);
-
 });
+
 
 

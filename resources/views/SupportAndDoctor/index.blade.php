@@ -22,6 +22,8 @@
     <a href="{{route('doctor.adddoctor')}}"><button>Add Doctor</button></a>
     <a href="{{route('booking.addbooking')}}"><button>Add Booking</button></a>
     <a href="{{route('patientlist.showpatient')}}"><button>Paient List</button></a>
+    <a href="{{route('showcase.showhistory')}}"><button>Booking History</button></a>
+    
    
 
 

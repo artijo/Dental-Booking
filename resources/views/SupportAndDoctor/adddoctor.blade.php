@@ -18,7 +18,7 @@
         <input type="text" name="lastname_th"> <br>
         <label for="email">อีเมล</label>
         <input type="text" name="email"> <br>
-        <label for="password">รหัส</label>
+        <label for="password">รหัสผ่าน</label>
         <input type="password" name="password"> <br>
         <label for="tel">เบอร์โทรศัพท์</label>
         <input type="text" name="tel" > <br>

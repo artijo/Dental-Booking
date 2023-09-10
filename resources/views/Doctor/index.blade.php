@@ -14,5 +14,6 @@
     <a href="{{ route('patient.addcase') }}"><button>Add Case</button></a>
     <a href="{{route('doctor.adddoctor')}}"><button>Add Doctor</button></a>
     <a href="{{route('booking.addbooking')}}"><button>Add Booking</button></a>
+    <a href="{{route('booking.showhistory')}}"><button>ประวัติการนัดหมาย</button></a>
 </body>
 </html>
