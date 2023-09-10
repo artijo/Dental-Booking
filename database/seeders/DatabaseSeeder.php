@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             
             SupportSeeder::class,
             SpecialistSeeder::class,
+            Case_typeSeeder::class,
         ]);
     }
 }
