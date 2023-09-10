@@ -256,4 +256,26 @@ class AdminController extends Controller
         $support->save();
         return redirect('/admin');
     }
+    function editsupport($id){
+        $support = Support::where('support_id',$id)->first();
+        return view('supports.editsupport')->with('support',$support);
+    }
+    function updatesupport(Request $request, $id){
+        $data = Support::where('support_id',$id)->first();
+        if ($request->password == null) {
+            $request->password = $data->password;
+
+        }else{
+            $request->password = Hash::make($request->password);
+        }
+        Support::Where('support_id',$id)
+        ->update([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => $request->password,
+        'tel' => $request->tel,
+        'level' => $request->level
+        ]);
+        return redirect('/admin');
+    }
 }
