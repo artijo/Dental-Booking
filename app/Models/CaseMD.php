@@ -14,16 +14,17 @@ class CaseMD extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $primaryKey = 'caseid';
     public function doctor() {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(Doctor::class, 'doctor_id');
     }
     public function bookings() {
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(Booking::class, 'booking_id');
     }
     public function patient() {
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(Patient::class, 'idcard');
     }
     public function casetype() {
-        return $this->belongsTo(Casetype::class);
+        return $this->belongsTo(Casetype::class, 'casetype_id');
     }
 }

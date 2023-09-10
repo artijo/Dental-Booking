@@ -12,7 +12,9 @@ class Casetype extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $primaryKey = 'casetype_id';
+
     public function cases() {
-        return $this->hasMany(CaseMD::class);
+        return $this->hasMany(CaseMD::class, 'caseid');
     }
 }

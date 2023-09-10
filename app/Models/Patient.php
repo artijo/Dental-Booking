@@ -12,7 +12,9 @@ class Patient extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $primaryKey = 'idcard';
+
     public function cases() {
-        return $this->hasMany(CaseMD::class);
+        return $this->hasMany(CaseMD::class, 'caseid');
     }
 }

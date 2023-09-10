@@ -11,7 +11,9 @@ class Specialist extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $primaryKey = 'specialist_id';
     public function doctors() {
-        return $this->belongsToMany(Doctor::class);
+        return $this->belongsToMany(Doctor::class, 'doctor_id');
     }
 }

@@ -13,10 +13,12 @@ class Doctor extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $primaryKey = 'doctor_id';
+
     public function cases() {
-        return $this->hasMany(CaseMD::class);
+        return $this->hasMany(CaseMD::class, 'caseid');
     }
     public function specialists() {
-        return $this->belongsToMany(Specialist::class);
+        return $this->belongsToMany(Specialist::class, 'specialist_id');
     }
 }

@@ -10,4 +10,6 @@ class Support extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $primaryKey = 'support_id';
 }

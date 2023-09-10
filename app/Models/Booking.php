@@ -12,7 +12,9 @@ class Booking extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $primaryKey = 'booking_id';
+
     public function case() {
-        return $this->belongsTo(CaseMD::class);
+        return $this->belongsTo(CaseMD::class, 'caseid');
     }
 }
