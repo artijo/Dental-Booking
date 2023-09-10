@@ -63,8 +63,6 @@ Route::middleware(['doctor.check'])->group(function (){
     Route::get('/admin/doctor/showcase',[BookingController::class,'showhistory'])->name('showcase.showhistory');
     Route::get('/admin/doctor/case',[DoctorController::class,'doctorviewcase'])->name('doctor.doctorviewcase');
     Route::get('/admin/doctor/casedetail',[DoctorController::class,'doctorcasedetail'])->name('doctor.doctorcasedetail');
-    Route::get('/admin/addsupport',[AdminController::class,'addsupport'])->name('admin.addsupport');
-    Route::post('/admin/addsupport',[AdminController::class,'storesupport'])->name('admin.storesupport');
 });
 
 Route::middleware(['adminanddoctor'])->group(function(){
