@@ -59,6 +59,7 @@ Route::middleware(['support.check'])->group(function () {
 
         Route::get('/admin/support/edit/{id}',[AdminController::class,'editsupport'])->name('admin.editsupport');
         Route::put('/admin/support/update/{id}',[AdminController::class,'updatesupport'])->name('admin.updatesupport');
+        Route::get('/admin/support/delete/{id}',[AdminController::class,'deletesupport'])->name('admin.deletesupport');
     });
 });
 Route::middleware(['doctor.check'])->group(function (){
@@ -72,13 +73,13 @@ Route::middleware(['doctor.check'])->group(function (){
 Route::middleware(['adminanddoctor'])->group(function(){
     Route::get('/admin/patient/edit/{idcard}',[AdminController::class,'editpatient'])->name('admin.editpatient');
     Route::put('/admin/patient/update/{idcard}',[AdminController::class,'updatepatient'])->name('admin.updatepatient');
-    
+    Route::get('/admin/patient/delete/{idcard}',[AdminController::class,'deletepatient'])->name('admin.deletepatient');
     Route::get('/admin/doctor/edit/{id}',[AdminController::class,'editdoctor'])->name('admin.editdoctor');
     Route::put('/admin/doctor/update/{id}',[AdminController::class,'updatedoctor'])->name('admin.updatedoctor');
-
+    Route::get('/admin/doctor/delete/{id}',[AdminController::class,'deletedoctor'])->name('admin.deletedoctor');
     Route::get('/admin/case/edit/{id}',[AdminController::class,'editcase'])->name('admin.editcase');
     Route::put('/admin/case/update/{id}',[AdminController::class,'updatecase'])->name('admin.updatecase');
-
+    Route::get('/admin/case/delete/{id}',[AdminController::class,'deletecase'])->name('admin.deletecase');
     Route::get('/admin/booking/edit/{id}',[AdminController::class,'editbooking'])->name('admin.editbooking');
     Route::put('/admin/booking/update/{id}',[AdminController::class,'updatebooking'])->name('admin.updatebooking');
 });

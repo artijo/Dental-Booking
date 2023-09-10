@@ -74,6 +74,10 @@ class AdminController extends Controller
 
         return redirect('/admin');
     }
+    function deletepatient($idcard){
+        Patient::where('idcard',$idcard)->delete();
+        return redirect('/admin');
+    }
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     function storecase(Request $request){
         $casedata = CaseMD::select('caseid')->orderBy('caseid','desc')->first();
@@ -118,6 +122,10 @@ class AdminController extends Controller
         'case_status' => $request->case_status,
         'casetype_id' => $request->casetype_id
         ]);
+        return redirect('/admin');
+    }
+    function deletecase($id){
+        CaseMD::where('caseid',$id)->delete();
         return redirect('/admin');
     }
 
@@ -181,7 +189,10 @@ class AdminController extends Controller
         ]);
         return redirect('/admin');
     }
-
+    function deletedoctor($id){
+        Doctor::where('doctor_id',$id)->delete();
+        return redirect('/admin');
+    }
     function storebooking(Request $request){
         $bookingdata = Booking::select('booking_id')->orderBy('booking_id','desc')->first();
         if ($bookingdata == null) {
@@ -278,6 +289,10 @@ class AdminController extends Controller
         'tel' => $request->tel,
         'level' => $request->level
         ]);
+        return redirect('/admin');
+    }
+    function deletesupport($id){
+        Support::where('support_id',$id)->delete();
         return redirect('/admin');
     }
 }
