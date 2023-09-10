@@ -40,7 +40,7 @@ Route::get('/admin/login', function () {
 })->name("supports.login");
 
 Route::post('/admin/login', [SupportController::class,'checklogin']);
-Route::post('/admin/doctor/login',[DoctorController::class,'doctorlogin']);
+Route::post('/admin/doctor/login',[DoctorController::class,'doctorchecklogin'])->name('doctor.checklogin');
 Route::middleware(['support.check'])->group(function () {
     Route::get('/admin', [AdminController::class,'index'])->name('admin.index');
     Route::get('/admin/logout', [AdminController::class,'logout'])->name('admin.logout');

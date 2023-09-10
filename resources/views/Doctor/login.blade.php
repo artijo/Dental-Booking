@@ -9,7 +9,7 @@
                     <p>หากไม่พบข้อมูลโปรดติดต่อเจ้าหน้าที่</p>
                 </div>
                 
-                <form action="/admin/doctor/login" method="post">
+                <form action="{{route('doctor.checklogin')}}" method="post">
                     @csrf
                     <label for="Email">อีเมล</label><br>
                     <input type="email" name="email" placeholder="อีเมล"><br>
