@@ -13,6 +13,7 @@ class Patient extends Model
     use SoftDeletes;
 
     protected $primaryKey = 'idcard';
+    protected $keyType = 'string';
 
     public function cases() {
         return $this->hasMany(CaseMD::class, 'caseid');

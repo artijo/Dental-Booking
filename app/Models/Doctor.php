@@ -14,6 +14,7 @@ class Doctor extends Model
     use SoftDeletes;
 
     protected $primaryKey = 'doctor_id';
+    protected $keyType = 'string';
 
     public function cases() {
         return $this->hasMany(CaseMD::class, 'caseid');

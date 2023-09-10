@@ -13,6 +13,7 @@ class Specialist extends Model
     use SoftDeletes;
 
     protected $primaryKey = 'specialist_id';
+    protected $keyType = 'string';
     public function doctors() {
         return $this->belongsToMany(Doctor::class, 'doctor_id');
     }

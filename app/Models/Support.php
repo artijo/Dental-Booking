@@ -12,4 +12,5 @@ class Support extends Model
     use SoftDeletes;
 
     protected $primaryKey = 'support_id';
+    protected $keyType = 'string';
 }

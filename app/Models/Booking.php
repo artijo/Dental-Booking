@@ -13,6 +13,7 @@ class Booking extends Model
     use SoftDeletes;
 
     protected $primaryKey = 'booking_id';
+    protected $keyType = 'string';
 
     public function case() {
         return $this->belongsTo(CaseMD::class, 'caseid');

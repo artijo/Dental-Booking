@@ -15,6 +15,7 @@ class CaseMD extends Model
     use SoftDeletes;
 
     protected $primaryKey = 'caseid';
+    protected $keyType = 'string';
     public function doctor() {
         return $this->belongsTo(Doctor::class, 'doctor_id');
     }
