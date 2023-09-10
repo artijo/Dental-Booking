@@ -24,7 +24,7 @@ class SupportController extends Controller
         if($support){
             if(Hash::check($request->password, $support->password)){
                 $request->session()->put('supportid',$support->support_id);
-                return redirect('admin');//->route('admin.index');
+                return redirect()->route('admin.index');
             }else{
                 return back()->with('error','Wrong Login Details');
             }

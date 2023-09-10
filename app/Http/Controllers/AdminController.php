@@ -23,7 +23,7 @@ class AdminController extends Controller
     function logout(){
         if(session()->has('supportid')){
             session()->pull('supportid');
-            return redirect('/admin/support/login');
+            return redirect()->route('supports.login');
         }
     }
     //ส่วนของผู้เข้ารักษา////////////////////////////////////////////////////////////////////////////////////////
