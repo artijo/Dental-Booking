@@ -19,7 +19,7 @@ use App\Http\Controllers\AdminController;
 */
 
 
-Route::get('/user', function () {
+Route::get('/', function () {
     return view('patient.login');
 })->name("patient.login");
 
@@ -57,6 +57,11 @@ Route::middleware(['support.check'])->group(function () {
 Route::middleware(['doctor.check'])->group(function (){
     Route::get('/admin/doctor',[DoctorController::class,'index'])->name('Doctor');
 
+});
+
+Route::middleware(['adminanddoctor'])->group(function(){
+    Route::get('/admin/patient/edit/{idcard}',[AdminController::class,'editpatient'])->name('admin.updatepatient');
+    Route::put('/admin/patient/update/{idcard}',[AdminController::class,'updatepatient'])->name('admin.updatepatient');
 });
 
 Route::post('/user',[PatientController::class,'checklogin']);

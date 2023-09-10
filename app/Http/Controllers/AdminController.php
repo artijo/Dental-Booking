@@ -51,6 +51,27 @@ class AdminController extends Controller
         $patient->save();
         return redirect('/admin');
     }
+
+    function editpatient ($idcard) {
+        $patient = Patient::where('idcard',$idcard)->first();
+        return view('SupportAndDoctor.editpatient')->with('patient',$patient);
+    }
+    function updatepatient (Request $request, $idcard) {
+        Patient::Where('idcard',$idcard)
+        ->update([
+        'name_en' => $request->name_en,
+        'lastname_en' => $request->lastname_en,
+        'name_th' => $request->name_th,
+        'lastname_th' => $request->lastname_th,
+        'tel' => $request->tel,
+        'email' => $request->email,
+        'gender' => $request->gender,
+        'intolerance' => $request->intolerance,
+        'birthday' => $request->birthday
+        ]);
+
+        return redirect('/admin');
+    }
     function storecase(Request $request){
         $casedata = CaseMD::select('caseid')->orderBy('caseid','desc')->first();
         if ($casedata == null) {

@@ -17,10 +17,17 @@ class AdminAndDoctor
     public function handle(Request $request, Closure $next): Response
     {
         $support = Support::where('support_id',session('supportid'))->get()->first();
-        $level = $support->level;
-        if (!$request->session()->has('doctor_id') || $level == 1) {
-            return redirect('/admin/login');
+        if ($support == null) {
+            $level = 1;
+        }else{
+            $level = $support->level;
         }
-        return $next($request);
+
+        if ($request->session()->has('doctor_id')) {
+            return $next($request);
+        }elseif ($request->session()->has('supportid') && $level == 0) {
+            return $next($request);
+        }
+        return redirect('/admin/login');
     }
 }
