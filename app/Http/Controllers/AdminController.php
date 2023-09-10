@@ -26,6 +26,7 @@ class AdminController extends Controller
             return redirect('/admin/support/login');
         }
     }
+    //ส่วนของผู้เข้ารักษา////////////////////////////////////////////////////////////////////////////////////////
     function storepatient(Request $request){
         $idcard = $request->idcard;
         $name_en = $request->name_en;
@@ -73,6 +74,7 @@ class AdminController extends Controller
 
         return redirect('/admin');
     }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
     function storecase(Request $request){
         $casedata = CaseMD::select('caseid')->orderBy('caseid','desc')->first();
         if ($casedata == null) {

@@ -14,7 +14,7 @@
 </head>
 <body>
     Hello
-   
+    {{$name}}
     <a href="{{ route('admin.logout') }}">ออกจากระบบ</a>
     <a href="{{ route('admin.addsupport') }}"><button>Add Support</button></a>
     <a href="{{ route('patient.addpatient') }}"><button>Add Patient</button></a>

@@ -16,8 +16,15 @@ class DoctorController extends Controller
     }
     function index(){
         $dt = session('doctor_id');
-        $doctor = Doctor::where('doctor_id',$dt);
+        $doctor = Doctor::where('doctor_id',$dt)->first();
         return view('Doctor.index')->with('doctor',$doctor);
+    }
+
+    function logout(){
+        if(session()->has('doctor_id')){
+            session()->pull('doctor_id');
+            return redirect('/admin/doctor/login');
+        }
     }
     function doctorlogin(Request $request){
         $request->validate([

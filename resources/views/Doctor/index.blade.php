@@ -8,7 +8,8 @@
 </head>
 <body>
     Hello
-    <a href="{{ route('admin.logout') }}">ออกจากระบบ</a>
+    {{$doctor->name_th}}
+    <a href="{{ route('doctor.logout') }}">ออกจากระบบ</a>
     <a href="{{ route('admin.addsupport') }}"><button>Add Support</button></a>
     <a href="{{ route('patient.addpatient') }}"><button>Add Patient</button></a>
     <a href="{{ route('patient.addcase') }}"><button>Add Case</button></a>
