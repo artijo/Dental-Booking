@@ -82,7 +82,7 @@ class AdminController extends Controller
         $prefix = 'cs';
         $lastNumber = (int)substr($caseid, 2);
         $nextNumber = $lastNumber + 1;
-        $caseid = $prefix . sprintf("%08d", $nextNumber);
+        $caseid = $prefix . sprintf("%06d", $nextNumber);
         }
 
         // $caseid = $request->caseid;
@@ -102,6 +102,20 @@ class AdminController extends Controller
         $case->case_status = $case_status;
         $case->casetype_id = $casetype_id;
         $case->save();
+        return redirect('/admin');
+    }
+    function editcase($id){
+        $case = CaseMD::where('caseid',$id)->first();
+        return view('SupportAndDoctor.editcase')->with('case',$case);
+    }
+    function updatecase(Request $request, $id){
+        CaseMD::Where('caseid',$id)
+        ->update([
+        'case_title' => $request->case_title,
+        'case_detail' => $request->case_detail,
+        'case_status' => $request->case_status,
+        'casetype_id' => $request->casetype_id
+        ]);
         return redirect('/admin');
     }
 
@@ -145,6 +159,26 @@ class AdminController extends Controller
         $doctor = Doctor::where('doctor_id',$id)->first();
         return view('SupportAndDoctor.editdoctor')->with('spacialist',$spacialist)->with('doctor',$doctor);
     }
+    function updatedoctor(Request $request, $id){
+        $data = Doctor::where('doctor_id',$id)->first();
+        if ($request->password == null) {
+            $request->password = $data->password;
+        }else{
+            $request->password = Hash::make($request->password);
+        }
+        Doctor::Where('doctor_id',$id)
+        ->update([
+        'name_en' => $request->name_en,
+        'lastname_en' => $request->lastname_en,
+        'name_th' => $request->name_th,
+        'lastname_th' => $request->lastname_th,
+        'email' => $request->email,
+        'password' => $request->password,
+        'tel' => $request->tel,
+        'specialist_id' => $request->specialist_id
+        ]);
+        return redirect('/admin');
+    }
 
     function storebooking(Request $request){
         $bookingdata = Booking::select('booking_id')->orderBy('booking_id','desc')->first();
@@ -155,7 +189,7 @@ class AdminController extends Controller
         $prefix = 'bk';
         $lastNumber = (int)substr($booking_id, 2);
         $nextNumber = $lastNumber + 1;
-        $booking_id = $prefix . sprintf("%08d", $nextNumber);
+        $booking_id = $prefix . sprintf("%06d", $nextNumber);
         }
 
 
@@ -172,6 +206,19 @@ class AdminController extends Controller
         $booking->booking_date = $booking_date;
         $booking->caseid = $caseid;
         $booking->save();
+        return redirect('/admin');
+    }
+    function editbooking($id){
+        $booking = Booking::where('booking_id',$id)->first();
+        return view('SupportAndDoctor.editbooking')->with('booking',$booking);
+    }
+    function updatebooking(Request $request, $id){
+        Booking::Where('booking_id',$id)
+        ->update([
+        'booking_title' => $request->booking_title,
+        'booking_detail' => $request->booking_detail,
+        'booking_date' => $request->booking_date
+        ]);
         return redirect('/admin');
     }
 
