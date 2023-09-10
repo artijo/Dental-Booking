@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Support;
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Specialist;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -75,13 +76,13 @@ class AdminController extends Controller
     function storecase(Request $request){
         $casedata = CaseMD::select('caseid')->orderBy('caseid','desc')->first();
         if ($casedata == null) {
-            $caseid = 'cs0001';
+            $caseid = 'cs000001';
         }else{
         $caseid = $casedata->caseid;
         $prefix = 'cs';
         $lastNumber = (int)substr($caseid, 2);
         $nextNumber = $lastNumber + 1;
-        $caseid = $prefix . sprintf("%04d", $nextNumber);
+        $caseid = $prefix . sprintf("%08d", $nextNumber);
         }
 
         // $caseid = $request->caseid;
@@ -138,6 +139,11 @@ class AdminController extends Controller
         $adddoctor->specialist_id = $spacialist_id;
         $adddoctor->save();
         return redirect('/admin');
+    }
+    function editdoctor($id){
+        $spacialist = Specialist::select('specialist_id','name_th')->get();
+        $doctor = Doctor::where('doctor_id',$id)->first();
+        return view('SupportAndDoctor.editdoctor')->with('spacialist',$spacialist)->with('doctor',$doctor);
     }
 
     function storebooking(Request $request){
