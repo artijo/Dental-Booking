@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Models\Specialist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\CaseMD;
 
 class DoctorController extends Controller
 {
@@ -35,5 +36,17 @@ class DoctorController extends Controller
             return back()->with('error','You don\'t have Authorize');
         }
         
+    }
+
+    function doctorviewcase(){
+        $casedoctor = doctor::where('doctor_id',session('doctor_id'))->first();
+        $viewpatient = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(6);
+        return view("Doctor.doctorcase",compact('casedoctor','viewpatient'));
+    }
+
+    function doctorcasedetail(){
+        $casedoctor = doctor::where('doctor_id',session('doctor_id'))->first();
+        $viewpatient = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(6);
+        return view("Doctor.doctorcasedetail",compact('casedoctor','viewpatient'));
     }
 }

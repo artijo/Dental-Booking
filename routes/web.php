@@ -57,7 +57,8 @@ Route::middleware(['support.check'])->group(function () {
 Route::middleware(['doctor.check'])->group(function (){
     Route::get('/admin/doctor',[DoctorController::class,'index'])->name('Doctor');
     Route::get('/admin/doctor/showcase',[BookingController::class,'showhistory'])->name('showcase.showhistory');
-
+    Route::get('/admin/doctor/case',[DoctorController::class,'doctorviewcase'])->name('doctor.doctorviewcase');
+    Route::get('/admin/doctor/casedetail',[DoctorController::class,'doctorcasedetail'])->name('doctor.doctorcasedetail');
 });
 
 Route::middleware(['adminanddoctor'])->group(function(){
@@ -78,6 +79,4 @@ Route::post('/user',[PatientController::class,'checklogin']);
 Route::middleware(['patient.check'])->group(function(){
     Route::get('/user/table',[BookingController::class,'index']);
 });
-
-
 

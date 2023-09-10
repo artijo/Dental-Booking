@@ -14,11 +14,6 @@
 <body>
     <button><a href="{{ route('patient.addcase')}}">เพิ่มข้อมูลการรักษา</a></button>
     <small>ประวัติการนัดหมาย</small>
-
-  
-       
-
-
     <table>
         <tr>
         <th>รายการ</th>
