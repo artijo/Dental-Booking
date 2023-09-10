@@ -26,7 +26,7 @@ class DoctorController extends Controller
             return redirect()->route('doctor.login');
         }
     }
-    function doctorlogin(Request $request){
+    function doctorchecklogin(Request $request){
         $request->validate([
             'email'=>'required',
             'password'=>'required'
