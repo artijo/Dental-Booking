@@ -15,7 +15,7 @@
         <label for="caseid">รหัสเคส</label>
         <select class="selectcase" name="caseid">
             @foreach($cases as $list)
-            <option value="{{$list->caseid}}">{{ $list->case_title }}</option>
+            <option value="{{$list->caseid}}">{{ $list->caseid }}</option>
             @endforeach
           </select><br>
 
