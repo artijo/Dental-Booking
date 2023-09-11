@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\CaseMD;
 use App\Models\Casetype;
 use App\Models\Patient;
+use App\Models\Doctor;
 use Illuminate\Support\Facades\DB; //นำข้อมูลจาก Database ตั้งค่าเป็น DB ***ตั้งค่า DB_Database เป็น Database ที่เราจะนำเข้า ใน .env ในที่นี้ใช้ของ Customer มาดึงดูก่อน
 use Illuminate\Http\Request;
 use App\Http\Controllers\BookingController;
@@ -52,7 +53,9 @@ class PatientController extends Controller
     }
     function addcase(){
         $case_type = Casetype::all();
-        return view('SupportAndDoctor.addcase')->with('case_type',$case_type);
+        $patient = Patient::all();
+        $doctor = Doctor::all();
+        return view('SupportAndDoctor.addcase')->with('case_type',$case_type)->with('patient',$patient)->with('doctor',$doctor);
     }
     function showpatient(){
             $page = Patient::paginate(8);

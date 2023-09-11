@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Case</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 </head>
 <body>
     <form action="/admin/addcase" method="POST">
         @csrf
-        <label for="idcard">รหัสบัตรประชาชน(ผู้เข้ารับการรักษา)</label><br>
-        <input type="number" name="idcard"><br>
+        <label for="idcard">ผู้เข้ารับการรักษา</label><br>
+        <select class="selectidcard" name="idcard">
+            @foreach($patient as $list)
+            <option value="{{$list->idcard}}">{{ $list->name_th }} {{$list->lastname_th}}</option>
+            @endforeach
+          </select><br>
         <label for="case_title">หัวเรื่องการรักษา</label><br>
         <input type="text" name="case_title"><br>
         <label for="casetype_id">รูปแบบการรักษา</label><br>
@@ -24,14 +31,21 @@
         @endif
         <label for='case_detail'>รายละเอียดการรักษา</label><br>
         <input type="text" name="case_detail"><br>
-        <label for="doctor_id">รหัสนายแพทย์</label><br>
-        <input type="text" name="doctor_id"><br>
+        <label for="doctor_id">รับผืดชอบโดยแพทย์</label><br>
+        <select class="selectdoctor" name="doctor_id">
+            @foreach($doctor as $list)
+            <option value="{{$list->doctor_id}}">{{ $list->name_th }} {{$list->lastname_th}}</option>
+            @endforeach
+          </select><br>
         <label for="case_status">สถานะการรักษา</label><br>
         <select single name="case_status">
-            <option value="1" selected>เสร็จสิ้น</option>
-            <option value="2">ไม่พบตามนัด</option>
+            <option value="1" selected>กำลังรักษา</option>
+            <option value="2">ไม่เสร็จ (ผู้ป่วยไม่มาตามนัด)</option>
+            <option value="3">ปิดเคส (เสร็จสิ้น)</option>
         </select><br>
         <input type="submit" value="บันทึกเคสการรักษา">
     </form>
+    
+    <script src="{{asset('js/select2.js')}}"></script>
 </body>
 </html>

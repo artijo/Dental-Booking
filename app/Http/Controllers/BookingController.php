@@ -15,7 +15,7 @@ class BookingController extends Controller
     }
      
     function showhistory(){
-        $booking = Booking::paginate(8);
+        $booking = Booking::with('case')->paginate(8);
         return view('SupportAndDoctor.showcase',compact('booking'));
     }
 }

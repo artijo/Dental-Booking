@@ -16,6 +16,6 @@ class Booking extends Model
     protected $keyType = 'string';
 
     public function case() {
-        return $this->belongsTo(CaseMD::class, 'booking_id');
+        return $this->belongsTo(CaseMD::class, 'caseid');
     }
 }
