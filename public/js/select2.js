@@ -4,3 +4,6 @@ $('.selectidcard').select2({
   $('.selectdoctor').select2({
     placeholder: 'Select an option'
   });
+  $('.selectcase').select2({
+    placeholder: 'Select an option'
+  });

@@ -11,7 +11,8 @@ class BookingController extends Controller
 {
     //
     function addbooking(){
-        return view('SupportAndDoctor.addbooking');
+        $cases = CaseMD::where('case_status',1)->get();
+        return view('SupportAndDoctor.addbooking')->with('cases',$cases);
     }
      
     function showhistory(){
