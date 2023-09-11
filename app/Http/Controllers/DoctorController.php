@@ -24,7 +24,7 @@ class DoctorController extends Controller
     function logout(){
         if(session()->has('doctor_id')){
             session()->pull('doctor_id');
-            return redirect()->route('doctor.login');
+            return redirect()->route('supports.login');
         }
     }
     function doctorchecklogin(Request $request){
