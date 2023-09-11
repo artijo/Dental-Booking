@@ -90,6 +90,7 @@ Route::get('/user/login', function () {
 Route::post('/user/login',[PatientController::class,'checklogin'])->name('patient.checklogin');
 Route::middleware(['patient.check'])->group(function(){
     Route::get('/user',[PatientController::class,'index'])->name('patient.index');
+    Route::get('/user/case/{caseid}',[PatientController::class,'showcasedetail'])->name('patient.showcasedetail');
     Route::get('/user/logout',[PatientController::class,'logout'])->name('patient.logout');
 });
 

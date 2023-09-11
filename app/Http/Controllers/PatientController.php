@@ -18,6 +18,12 @@ class PatientController extends Controller
         $user = Patient::where('idcard',$session)->first();
         return view('patient.dashboard')->with('cases',$cases)->with('user',$user);
     }
+
+    function showcasedetail($caseid){
+        $user = Patient::where('idcard',session('idcard'))->first();
+        $case = CaseMD::where('caseid',$caseid)->with('bookings')->first();
+        return view('patient.casedetail')->with('case',$case)->with('user',$user);
+    }
     function checklogin(Request $request){
         $request->validate([
             'idcard'=>'required',
