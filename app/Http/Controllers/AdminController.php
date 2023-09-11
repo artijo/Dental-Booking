@@ -9,6 +9,7 @@ use App\Models\Support;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Specialist;
+use App\Models\Casetype;
 use Illuminate\Support\Facades\Hash;
 use Phattarachai\ThaiIdCardValidation\ThaiIdCardRule;
 
@@ -113,7 +114,8 @@ class AdminController extends Controller
     }
     function editcase($id){
         $case = CaseMD::where('caseid',$id)->first();
-        return view('SupportAndDoctor.editcase')->with('case',$case);
+        $case_type = Casetype::all();
+        return view('SupportAndDoctor.editcase')->with('case',$case)->with('case_type',$case_type);
     }
     function updatecase(Request $request, $id){
         CaseMD::Where('caseid',$id)
