@@ -45,7 +45,7 @@ Route::middleware(['support.check'])->group(function () {
     Route::get('/admin', [AdminController::class,'index'])->name('admin.index');
     Route::get('/admin/logout', [AdminController::class,'logout'])->name('admin.logout');
     Route::get('/admin/patientlist',[PatientController::class,'showpatient'])->name('patientlist.showpatient');
-    Route::post('/admin/addbooking',[AdminController::class,'storebooking'])->name('admin.storebooking');
+    
     Route::middleware(['admin.check'])->group(function (){
         Route::get('/admin/addsupport',[AdminController::class,'addsupport'])->name('admin.addsupport');
         Route::post('/admin/addsupport',[AdminController::class,'storesupport'])->name('admin.storesupport');
@@ -63,6 +63,7 @@ Route::middleware(['supportanddoctor'])->group(function (){
     Route::get('/admin/adddoctor',[DoctorController::class,'adddoctor'])->name('doctor.adddoctor');
     Route::post('/admin/adddoctor',[AdminController::class,'storedoctor'])->name('doctor.storedoctor');
     Route::get('/admin/addbooking',[BookingController::class,'addbooking'])->name('booking.addbooking');
+    Route::post('/admin/addbooking',[AdminController::class,'storebooking'])->name('admin.storebooking');
 });
 Route::middleware(['doctor.check'])->group(function (){
     Route::get('/admin/doctor',[DoctorController::class,'index'])->name('Doctor');
