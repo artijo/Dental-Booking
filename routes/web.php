@@ -45,6 +45,7 @@ Route::middleware(['support.check'])->group(function () {
     Route::get('/admin', [AdminController::class,'index'])->name('admin.index');
     Route::get('/admin/logout', [AdminController::class,'logout'])->name('admin.logout');
     Route::get('/admin/patientlist',[PatientController::class,'showpatient'])->name('patientlist.showpatient');
+    Route::get('/admin/showcase',[BookingController::class,'showhistory'])->name('showcase.showhistory');
     
     Route::middleware(['admin.check'])->group(function (){
         Route::get('/admin/addsupport',[AdminController::class,'addsupport'])->name('admin.addsupport');
@@ -68,7 +69,6 @@ Route::middleware(['supportanddoctor'])->group(function (){
 Route::middleware(['doctor.check'])->group(function (){
     Route::get('/admin/doctor',[DoctorController::class,'index'])->name('Doctor');
     Route::get('/admin/doctor/logout', [DoctorController::class,'logout'])->name('doctor.logout');
-    Route::get('/admin/doctor/showcase',[BookingController::class,'showhistory'])->name('showcase.showhistory');
     Route::get('/admin/doctor/case',[DoctorController::class,'doctorviewcase'])->name('doctor.doctorviewcase');
     Route::get('/admin/doctor/casedetail',[DoctorController::class,'doctorcasedetail'])->name('doctor.doctorcasedetail');
 });
