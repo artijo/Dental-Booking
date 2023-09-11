@@ -13,10 +13,10 @@ class PatientController extends Controller
 {
     //
     function index(){
-        $session = session('idcard'); 
-        $booking = CaseMD::where('idcard',$session)->get(); //ยังไม่มีการลงบันทึกในตารางจึงต้องดึงมาจาก case ตรงๆก่อน
-        $name = Patient::where('idcard',$session)->get();
-        return view('patient.dashboard')->with('booking',$booking)->with('name',$name);
+        $session = session('idcard');
+        $cases = CaseMD::where('idcard',$session)->with('bookings')->get(); //ยังไม่มีการลงบันทึกในตารางจึงต้องดึงมาจาก case ตรงๆก่อน
+        $user = Patient::where('idcard',$session)->first();
+        return view('patient.dashboard')->with('cases',$cases)->with('user',$user);
     }
     function checklogin(Request $request){
         $request->validate([

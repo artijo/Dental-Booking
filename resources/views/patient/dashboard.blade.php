@@ -4,31 +4,27 @@
 <div class='patient'>
         <div class='detail'>
             <ul>
-                <li><a href="<?php echo route('patient.login')?>">นัดผู้ป่วยทันตกรรม</a></li>
                 <li><a href="{{route('patient.logout')}}">ออกจากระบบ</a></li>
             </ul>
         </div>
-                @foreach($name as $lname)
-                @if($lname->gender === "male")
-                <p>นาย {{$lname->name_th}} {{$lname->lastname_th}}</p>
-                @else
-                <p>นาง {{$lname->name_th}} {{$lname->lastname_th}}</p>
-                @endif
-                @endforeach
+                <p>สวัสดีคุณ {{$user->name_th}} {{$user->lastname_th}}</p>
                 <p>ประวัติ-ตารางเวลานัดหมาย</p>
                     <table class='fixed'>
                         <th>รายการ</th>
                         <th>วันที่นัดหมาย</th>
                         <th>รายละเอียด</th>
                         <th>สถานะการนัด</th>
-                        @if(!empty($booking) && count($booking) > 0)
-                                @foreach($booking as $list)
+                        @if(!empty($cases) && count($cases) > 0)
+                                @foreach($cases as $case)
+                                @foreach($case->bookings as $booking)
                                     <tr>
-                                        <td>{{$list->case_title}}</td>
-                                        <td>{{$list->doctor_id}}</td>
-                                        <td>{{$list->case_detail}}</td>
-                                        <td>{{$list->case_status}}</td>
+                                        <td>{{$case->case_title}}</td>
+                                        <td>{{$booking->booking_date}}</td>
+                                        <td>{{$case->case_detail}}</td>
+                                        <td>{{$case->case_status}}</td>
+                                        <td><a href="{{url('/user/case/'.$case->caseid)}}">รายละเอียด</a></td>
                                     </tr>
+                                    @endforeach
                                 @endforeach
                 @else
                     <tr>

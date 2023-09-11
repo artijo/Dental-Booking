@@ -20,7 +20,7 @@ class CaseMD extends Model
         return $this->belongsTo(Doctor::class, 'doctor_id');
     }
     public function bookings() {
-        return $this->hasMany(Booking::class, 'booking_id');
+        return $this->hasMany(Booking::class, 'caseid');
     }
     public function patient() {
         return $this->belongsTo(Patient::class, 'idcard');
