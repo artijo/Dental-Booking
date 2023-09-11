@@ -10,6 +10,7 @@ use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Specialist;
 use Illuminate\Support\Facades\Hash;
+use Phattarachai\ThaiIdCardValidation\ThaiIdCardRule;
 
 class AdminController extends Controller
 {

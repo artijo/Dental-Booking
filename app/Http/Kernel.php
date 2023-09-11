@@ -57,6 +57,7 @@ class Kernel extends HttpKernel
         'support.check' => \App\Http\Middleware\Support::class,
         'patient.check' => \App\Http\Middleware\Patient::class,
         'admin.check' => \App\Http\Middleware\Admin::class,
+        'supportanddoctor' => \App\Http\Middleware\SupportAndDoctor::class,
         'adminanddoctor' => \App\Http\Middleware\AdminAndDoctor::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

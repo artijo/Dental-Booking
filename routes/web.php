@@ -44,13 +44,6 @@ Route::post('/admin/doctor/login',[DoctorController::class,'doctorchecklogin'])-
 Route::middleware(['support.check'])->group(function () {
     Route::get('/admin', [AdminController::class,'index'])->name('admin.index');
     Route::get('/admin/logout', [AdminController::class,'logout'])->name('admin.logout');
-    Route::get('/admin/addpatient', [PatientController::class,'addpatient'])->name('patient.addpatient');
-    Route::post('/admin/addpatient', [AdminController::class,'storepatient'])->name('admin.storepatient');
-    Route::get('/admin/addcase',[PatientController::class,'addcase'])->name('patient.addcase');
-    Route::post('/admin/addcase',[AdminController::class,'storecase'])->name('admin.storecase');
-    Route::get('/admin/adddoctor',[DoctorController::class,'adddoctor'])->name('doctor.adddoctor');
-    Route::post('/admin/adddoctor',[AdminController::class,'storedoctor'])->name('doctor.storedoctor');
-    Route::get('/admin/addbooking',[BookingController::class,'addbooking'])->name('booking.addbooking');
     Route::get('/admin/patientlist',[PatientController::class,'showpatient'])->name('patientlist.showpatient');
     Route::post('/admin/addbooking',[AdminController::class,'storebooking'])->name('admin.storebooking');
     Route::middleware(['admin.check'])->group(function (){
@@ -61,6 +54,15 @@ Route::middleware(['support.check'])->group(function () {
         Route::put('/admin/support/update/{id}',[AdminController::class,'updatesupport'])->name('admin.updatesupport');
         Route::get('/admin/support/delete/{id}',[AdminController::class,'deletesupport'])->name('admin.deletesupport');
     });
+});
+Route::middleware(['supportanddoctor'])->group(function (){
+    Route::get('/admin/addpatient', [PatientController::class,'addpatient'])->name('patient.addpatient');
+    Route::post('/admin/addpatient', [AdminController::class,'storepatient'])->name('admin.storepatient');
+    Route::get('/admin/addcase',[PatientController::class,'addcase'])->name('patient.addcase');
+    Route::post('/admin/addcase',[AdminController::class,'storecase'])->name('admin.storecase');
+    Route::get('/admin/adddoctor',[DoctorController::class,'adddoctor'])->name('doctor.adddoctor');
+    Route::post('/admin/adddoctor',[AdminController::class,'storedoctor'])->name('doctor.storedoctor');
+    Route::get('/admin/addbooking',[BookingController::class,'addbooking'])->name('booking.addbooking');
 });
 Route::middleware(['doctor.check'])->group(function (){
     Route::get('/admin/doctor',[DoctorController::class,'index'])->name('Doctor');
