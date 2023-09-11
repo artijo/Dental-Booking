@@ -25,7 +25,7 @@ Route::get('/', function () {
     }else{
         return redirect()->route('patient.index');
     }
- })->name("patient.login");
+ });
 
 Route::get('/admin/support/login', function () {
     return view('supports.login');

@@ -15,9 +15,11 @@ class Doctor
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!$request->session()->has('doctor_id')){
-            return redirect('/admin/login');
+        if($request->session()->has('doctor_id') && !$request->session()->has('idcard')){
+            return $next($request);
+        }elseif($request->session()->has('idcard')){
+            return redirect('/');
         }
-        return $next($request);
+        return redirect('/admin/login');
     }
 }
