@@ -16,11 +16,13 @@ class Support
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->session()->has('supportid')){
+        if ($request->session()->has('supportid') && !$request->session()->has('idcard')){
             return $next($request);
-        }elseif($request->session()->has('doctor_id')){
+        }elseif($request->session()->has('doctor_id') && !$request->session()->has('idcard')){
             return $next($request);
-        }
-        return redirect('/admin/login');
+        }elseif($request->session()->has('idcard')){
+        return redirect('/');
+    }
+    return redirect('/admin/login');
     }
 }
