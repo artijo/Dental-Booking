@@ -8,14 +8,14 @@
 <body>
     <form action="{{route('doctor.storedoctor')}}" method="POST">
     @csrf
-        <label for="name_en">ขื่อ(ภาษาอังกฤษ)</label>
-        <input type="text" name="name_en"> <br>
-        <label for="lastname_en">นามสกุล(ภาษาอังกฤษ)</label>
-        <input type="text" name="lastname_en"> <br>
         <label for="name_th">ชื่อ(ภาษาไทย ไม่ต้องมีคำนำหน้าชื่อ)</label>
         <input type="text" name="name_th"> <br>
         <label for="lastname_th">นามสกุล(ภาษาไทย)</label>
         <input type="text" name="lastname_th"> <br>
+        <label for="name_en">ขื่อ(ภาษาอังกฤษ)</label>
+        <input type="text" name="name_en"> <br>
+        <label for="lastname_en">นามสกุล(ภาษาอังกฤษ)</label>
+        <input type="text" name="lastname_en"> <br>
         <label for="email">อีเมล</label>
         <input type="text" name="email"> <br>
         <label for="password">รหัสผ่าน</label>
