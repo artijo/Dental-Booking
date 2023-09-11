@@ -6,8 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    @foreach($viewpatient as $item)
-    รหัสผู้ป่วย : {{$item->patient->idcard}}
-    @endforeach
+    รหัสผู้ป่วย : {{$case->patient->idcard}}
+
 </body>
 </html>

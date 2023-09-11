@@ -17,7 +17,8 @@ class DoctorController extends Controller
     function index(){
         $dt = session('doctor_id');
         $doctor = Doctor::where('doctor_id',$dt)->first();
-        return view('Doctor.index')->with('doctor',$doctor);
+        $patient = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(6);
+        return view('Doctor.index')->with('doctor',$doctor)->with('patient',$patient);
     }
 
     function logout(){
@@ -45,15 +46,8 @@ class DoctorController extends Controller
         
     }
 
-    function doctorviewcase(){
-        $casedoctor = doctor::where('doctor_id',session('doctor_id'))->first();
-        $viewpatient = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(6);
-        return view("Doctor.doctorcase",compact('casedoctor','viewpatient'));
-    }
-
-    function doctorcasedetail(){
-        $casedoctor = doctor::where('doctor_id',session('doctor_id'))->first();
-        $viewpatient = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(6);
-        return view("Doctor.doctorcasedetail",compact('casedoctor','viewpatient'));
+    function doctorcasedetail($caseid){
+        $case = CaseMD::where('caseid', $caseid)->first();
+        return view("Doctor.doctorcasedetail",compact('case'));
     }
 }
