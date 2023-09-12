@@ -147,6 +147,10 @@ class AdminController extends Controller
         $nextNumber = $lastNumber + 1;
         $doctor_id = $prefix . sprintf("%04d", $nextNumber);
         }
+        //checkmathpassword
+        if ($request->password != $request->password_cf) {
+            return back()->with('error','รหัสผ่านไม่ตรงกัน');
+        }
 
         // $doctor_id = $request->doctor_id;
         $name_en = $request->name_en;

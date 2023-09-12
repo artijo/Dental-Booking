@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 </head>
 <body>
-    <form action="/admin/addcase" method="POST">
+    <form action="{{route('admin.storecase')}}" method="POST">
         @csrf
         <label for="idcard">ผู้เข้ารับการรักษา</label><br>
         <select class="selectidcard" name="idcard">
@@ -18,7 +18,7 @@
             @endforeach
           </select><br>
         <label for="case_title">หัวเรื่องการรักษา</label><br>
-        <input type="text" name="case_title"><br>
+        <input type="text" name="case_title" max="255" required><br>
         <label for="casetype_id">รูปแบบการรักษา</label><br>
         @if(!empty($case_type) && count($case_type) > 0)
             <select name="casetype_id" id="casetype">
@@ -31,12 +31,17 @@
         @endif
         <label for='case_detail'>รายละเอียดการรักษา</label><br>
         <input type="text" name="case_detail"><br>
-        <label for="doctor_id">รับผืดชอบโดยแพทย์</label><br>
+        <label for="doctor_id">รับผิดชอบโดยแพทย์</label><br>
+        @if(!empty($doctor) && count($doctor) > 0)
         <select class="selectdoctor" name="doctor_id">
             @foreach($doctor as $list)
             <option value="{{$list->doctor_id}}">{{ $list->name_th }} {{$list->lastname_th}}</option>
             @endforeach
-          </select><br>
+          </select>
+          <br>
+         @else
+            ไม่มีข้อมูลแพทย์ในขณะนี้<br>
+        @endif
         <label for="case_status">สถานะการรักษา</label><br>
         <select single name="case_status">
             <option value="1" selected>กำลังรักษา</option>

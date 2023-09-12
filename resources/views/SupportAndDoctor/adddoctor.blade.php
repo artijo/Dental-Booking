@@ -9,19 +9,24 @@
     <form action="{{route('doctor.storedoctor')}}" method="POST">
     @csrf
         <label for="name_th">ชื่อ(ภาษาไทย ไม่ต้องมีคำนำหน้าชื่อ)</label>
-        <input type="text" name="name_th"> <br>
+        <input type="text" name="name_th" max="255" pattern="[\u0E00-\u0E7F]+" required> <br>
         <label for="lastname_th">นามสกุล(ภาษาไทย)</label>
-        <input type="text" name="lastname_th"> <br>
+        <input type="text" name="lastname_th" max="255" pattern="[\u0E00-\u0E7F]+" required> <br>
         <label for="name_en">ขื่อ(ภาษาอังกฤษ)</label>
-        <input type="text" name="name_en"> <br>
+        <input type="text" name="name_en" max="255" pattern="[a-zA-Z]+"> <br>
         <label for="lastname_en">นามสกุล(ภาษาอังกฤษ)</label>
-        <input type="text" name="lastname_en"> <br>
+        <input type="text" name="lastname_en" max="255" pattern="[a-zA-Z]+"> <br>
         <label for="email">อีเมล</label>
-        <input type="text" name="email"> <br>
+        <input type="text" name="email" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required> <br>
+        @if(session()->has('error'))
+            {{ session()->get('error') }}
+        @endif
         <label for="password">รหัสผ่าน</label>
-        <input type="password" name="password"> <br>
+        <input type="password" name="password" required> <br>
+        <label for="password">ยืนยันรหัสผ่าน</label>
+        <input type="password" name="password_cf" required> <br>
         <label for="tel">เบอร์โทรศัพท์</label>
-        <input type="text" name="tel" > <br>
+        <input type="text" name="tel" pattern="[0-9]{10}"> <br>
         <label for="specialist_id">ความเชี่ยวชาญ</label>
         @if(!empty($spacialist) && count($spacialist) > 0)
             <select name="specialist_id" id="specialist">
