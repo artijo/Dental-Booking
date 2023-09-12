@@ -25,9 +25,9 @@
             {{ session()->get('error') }}
         @endif
         <label for="password">รหัสผ่าน</label><br>
-        <input type="password" name="password" placeholder="รหัสผ่าน" required><br>
+        <input type="password" name="password" placeholder="รหัสผ่าน"><br>
         <label for="password_confirmation">ยืนยันรหัสผ่าน</label><br>
-        <input type="password" name="password_cf" placeholder="ยืนยันรหัสผ่าน" required><br>
+        <input type="password" name="password_cf" placeholder="ยืนยันรหัสผ่าน"><br>
         <input type="submit" value="แก้ไขข้อมูล">
     </form>
 </body>

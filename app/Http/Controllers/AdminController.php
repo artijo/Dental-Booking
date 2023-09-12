@@ -187,6 +187,10 @@ class AdminController extends Controller
         }else{
             $request->password = Hash::make($request->password);
         }
+        //caheckmathpassword
+        if ($request->password != $request->password_cf) {
+            return back()->with('error','รหัสผ่านไม่ตรงกัน');
+        }
         Doctor::Where('doctor_id',$id)
         ->update([
         'name_en' => $request->name_en,
