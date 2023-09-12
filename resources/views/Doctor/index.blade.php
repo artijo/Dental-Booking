@@ -8,6 +8,7 @@
 </head>
 <body>
 <a href="{{ route('doctor.logout') }}">ออกจากระบบ</a>
+<a href="{{route('doctor.showcase')}}">เคสการรักษา</a>
     <h1>สวัสดี นายแพทย์{{$doctor->name_th}} {{$doctor->lastname_th}}</h1>
     <h2>นี่คือข้อมูลผู้ป่วยของท่าน</h2>
     <table border=1>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CaseMD;
 use App\Models\Patient;
+use App\Models\Booking;
 use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
@@ -58,8 +59,13 @@ class DoctorController extends Controller
         return view('Doctor.patientdetail')->with('patient',$patient)->with('cases',$cases);
     }
 
+    function showcase(){
+        $cases = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(20);
+        return view('Doctor.showcase')->with('cases',$cases);
+    }
     function doctorcasedetail($caseid){
         $case = CaseMD::where('caseid', $caseid)->first();
+        $booking = Booking::where('caseid', $caseid)->get();
         return view("Doctor.doctorcasedetail",compact('case'));
     }
 }

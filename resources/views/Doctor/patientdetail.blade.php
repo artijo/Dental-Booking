@@ -15,6 +15,7 @@
     {{$item->case_title}} <br>
     {{$item->case_detail}} <br>
     {{$item->case_status}} <br>
+    <a href="{{url('/admin/doctor/case/'.$item->caseid)}}">รายละเอียดเพิ่มเติม</a>
 
     @endforeach
 </body>
