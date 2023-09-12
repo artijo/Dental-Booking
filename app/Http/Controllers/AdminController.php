@@ -65,6 +65,7 @@ class AdminController extends Controller
         return view('SupportAndDoctor.editpatient')->with('patient',$patient);
     }
     function updatepatient (Request $request, $idcard) {
+        $caseid = CaseMD::Where('idcard',$idcard)->first();
         Patient::Where('idcard',$idcard)
         ->update([
         'name_en' => $request->name_en,
@@ -77,8 +78,7 @@ class AdminController extends Controller
         'intolerance' => $request->intolerance,
         'birthday' => $request->birthday
         ]);
-
-        return redirect('/admin');
+        return redirect('/admin/doctor/case/'.$caseid->caseid);
     }
     function deletepatient($idcard){
         Patient::where('idcard',$idcard)->delete();

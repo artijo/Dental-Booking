@@ -24,11 +24,18 @@
             <input type="number" name="tel" value="{{$patient->tel}}"><br>
             <label for="email">อีเมล</label><br>
             <input type="email" name="email" value="{{$patient->email}}"><br>
+            @if($patient->gender === 'male')
             <label for="gender">เพศ</label><br>
-            <input type="radio" name="gender" value="male">
+            <input type="radio" name="gender" value="male" checked>
             <label for="male">ชาย</label>
             <input type="radio" name="gender" value="female">
             <label for="famale">หญิง</label><br>
+            @elseif($patient->gender === 'female')
+            <input type="radio" name="gender" value="male">
+            <label for="male">ชาย</label>
+            <input type="radio" name="gender" value="female" checked>
+            <label for="famale">หญิง</label><br>
+            @endif
             <label for="birthday">วันเกิด</label><br>
             <input type="date" name="birthday" value="{{$patient->birthday}}"><br>
             <label for="intolerance">โรคประจำตัว</label><br>
