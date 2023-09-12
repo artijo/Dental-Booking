@@ -262,6 +262,10 @@ class AdminController extends Controller
         // สร้าง support_id ใหม่
         $support_id = $prefix . sprintf("%04d", $nextNumber);
         }
+        //checkmathpassword
+        if(request('password') != request('password_cf')){
+            return back()->with('error','รหัสผ่านไม่ตรงกัน');
+        }
 
         // $support_id = $request->supportid;
         $name = $request->name;
