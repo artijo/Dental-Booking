@@ -32,6 +32,6 @@
     @endforeach
     </table>
     <a href="{{url('/admin/patient/edit/'.$case->patient->idcard)}}"><button>แก้ไข</button></a>
-    <a href="{{}}"><button>ลบ</button></a>
+    <a href="{{url('/admin/case/delete/'.$case->caseid)}}"><button>ลบ</button></a>
 </body>
 </html>

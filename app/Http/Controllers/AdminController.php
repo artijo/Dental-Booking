@@ -133,7 +133,7 @@ class AdminController extends Controller
     }
     function deletecase($id){
         CaseMD::where('caseid',$id)->delete();
-        return redirect('/admin');
+        return redirect('/admin/doctor');
     }
 
     function storedoctor(Request $request){
