@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CaseMD;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 use App\Models\Support;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class SupportController extends Controller
 {
@@ -31,5 +34,11 @@ class SupportController extends Controller
         }else{
             return back()->with('error','You don\'t have Authorize');
         }
+    }
+
+    function showdoctor(){
+        $casecount = CaseMD::select(DB::raw('COUNT(caseid) as casetotal,CONCAT(doctors.name_th," ",doctors.lastname_th) as fullname,doctors.tel as tel,doctors.doctor_id as doctorid'))
+        ->join('doctors', 'case_m_d_s.doctor_id','=','doctors.doctor_id')->groupBy('doctors.doctor_id','doctors.tel','doctors.name_th','doctors.lastname_th')->paginate(6);
+        return view('SupportAndDoctor.showdoctor')->with('count',$casecount);
     }
 }
