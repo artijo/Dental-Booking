@@ -19,13 +19,13 @@
                 <td>จำนวนการรักษา(ครั้ง)</td>
             </tr>
         </thead>
-            @foreach($patient as $item)
+            @foreach($cases as $item)
             <tr>
-                <td>{{$patient->firstItem()+$loop->index}}</td>
-                <td>{{$item->patient->name_th}} {{$item->patient->lastname_th}}</td>
-                <td>{{$item->patient->tel}}</td>
-                <td></td>
-                <td><a href="{{url('/admin/doctor/case/'.$item->caseid)}}">รายละเอียดเพิ่มเติม</a></td>
+                <td>{{$cases->firstItem()+$loop->index}}</td>
+                <td>{{$item->fullname}}</td>
+                <td>{{$item->tel}}</td>
+                <td>{{$item->casetotal}}</td>
+                <td><a href="{{url('/admin/doctor/case/')}}">รายละเอียดเพิ่มเติม</a></td>
             </tr>
             @endforeach
     </table>
@@ -34,6 +34,6 @@
     <a href="{{ route('patient.addcase') }}"><button>Add Case</button></a>
     <a href="{{route('doctor.adddoctor')}}"><button>Add Doctor</button></a>
     <a href="{{route('booking.addbooking')}}"><button>Add Booking</button></a>
-    <a href="{{route('showcase.showhistory')}}"><button>Booking History</button></a> --> -->
+    <a href="{{route('showcase.showhistory')}}"><button>Booking History</button></a> -->
 </body>
 </html>

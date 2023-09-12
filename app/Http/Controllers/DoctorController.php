@@ -7,6 +7,7 @@ use App\Models\Specialist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CaseMD;
+use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
 {
@@ -16,9 +17,13 @@ class DoctorController extends Controller
     }
     function index(){
         $dt = session('doctor_id');
+        $cases = CaseMD::select(DB::raw('count(caseid) as casetotal, CONCAT(patients.name_th, " ", patients.lastname_th) as fullname, patients.tel as tel'))
+    ->join('patients', 'case_m_d_s.idcard', '=', 'patients.idcard')
+    ->groupBy('patients.name_th','patients.lastname_th','patients.tel')
+    ->paginate(6);
         $doctor = Doctor::where('doctor_id',$dt)->first();
-        $patient = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(6);
-        return view('Doctor.index')->with('doctor',$doctor)->with('patient',$patient);
+        // $patient = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(6);
+        return view('Doctor.index')->with('doctor',$doctor)->with('cases',$cases);
     }
 
     function logout(){
