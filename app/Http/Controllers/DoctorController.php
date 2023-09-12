@@ -64,7 +64,6 @@ class DoctorController extends Controller
     }
     function doctorcasedetail($caseid){
         $case = CaseMD::where('caseid', $caseid)->first();
-        $booking = Booking::where('caseid', $caseid)->get();
         return view("Doctor.doctorcasedetail",compact('case'));
     }
 }
