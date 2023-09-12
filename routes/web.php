@@ -69,6 +69,7 @@ Route::middleware(['supportanddoctor'])->group(function (){
 Route::middleware(['doctor.check'])->group(function (){
     Route::get('/admin/doctor',[DoctorController::class,'index'])->name('Doctor');
     Route::get('/admin/doctor/logout', [DoctorController::class,'logout'])->name('doctor.logout');
+    Route::get('/admin/doctor/patient/{idcard}',[DoctorController::class,'showpatientdetail'])->name('doctor.showpatientdetail');
     Route::get('/admin/doctor/case/{caseid}',[DoctorController::class,'doctorcasedetail'])->name('doctor.doctorcasedetail');
 });
 

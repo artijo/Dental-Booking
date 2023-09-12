@@ -7,6 +7,7 @@ use App\Models\Specialist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CaseMD;
+use App\Models\Patient;
 use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
@@ -17,9 +18,9 @@ class DoctorController extends Controller
     }
     function index(){
         $dt = session('doctor_id');
-        $cases = CaseMD::select(DB::raw('count(caseid) as casetotal, CONCAT(patients.name_th, " ", patients.lastname_th) as fullname, patients.tel as tel'))
+        $cases = CaseMD::select(DB::raw('count(caseid) as casetotal, CONCAT(patients.name_th, " ", patients.lastname_th) as fullname, patients.tel as tel, patients.idcard as idcard'))
     ->join('patients', 'case_m_d_s.idcard', '=', 'patients.idcard')
-    ->groupBy('patients.name_th','patients.lastname_th','patients.tel')
+    ->groupBy('patients.name_th','patients.lastname_th','patients.tel', 'patients.idcard')
     ->paginate(6);
         $doctor = Doctor::where('doctor_id',$dt)->first();
         // $patient = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(6);
@@ -49,6 +50,12 @@ class DoctorController extends Controller
             return back()->with('error','You don\'t have Authorize');
         }
         
+    }
+
+    function showpatientdetail($idcard){
+        $patient = Patient::where('idcard',$idcard)->first();
+        $cases = CaseMD::where('idcard',$idcard)->get();
+        return view('Doctor.showpatientdetail')->with('patient',$patient)->with('cases',$cases);
     }
 
     function doctorcasedetail($caseid){

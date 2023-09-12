@@ -25,7 +25,7 @@
                 <td>{{$item->fullname}}</td>
                 <td>{{$item->tel}}</td>
                 <td>{{$item->casetotal}}</td>
-                <td><a href="{{url('/admin/doctor/case/')}}">รายละเอียดเพิ่มเติม</a></td>
+                <td><a href="{{url('/admin/doctor/patient/'.$item->idcard)}}">รายละเอียดเพิ่มเติม</a></td>
             </tr>
             @endforeach
     </table>
