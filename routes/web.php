@@ -72,6 +72,7 @@ Route::middleware(['doctor.check'])->group(function (){
     Route::get('/admin/doctor/patient/{idcard}',[DoctorController::class,'showpatientdetail'])->name('doctor.showpatientdetail');
     Route::get('/admin/doctor/case',[DoctorController::class,'showcase'])->name('doctor.showcase');
     Route::get('/admin/doctor/case/{caseid}',[DoctorController::class,'doctorcasedetail'])->name('doctor.doctorcasedetail');
+    Route::get('/admin/doctor/booking',[DoctorController::class,'showbooking'])->name('doctor.showbooking');
 });
 
 Route::middleware(['adminanddoctor'])->group(function(){

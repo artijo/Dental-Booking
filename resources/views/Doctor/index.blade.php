@@ -9,6 +9,7 @@
 <body>
 <a href="{{ route('doctor.logout') }}">ออกจากระบบ</a>
 <a href="{{route('doctor.showcase')}}">เคสการรักษา</a>
+<a href="{{route('doctor.showbooking')}}">ข้อมูลการนัด</a>
     <h1>สวัสดี นายแพทย์{{$doctor->name_th}} {{$doctor->lastname_th}}</h1>
     <h2>นี่คือข้อมูลผู้ป่วยของท่าน</h2>
     <table border=1>
