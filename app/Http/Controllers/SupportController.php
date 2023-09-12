@@ -41,4 +41,9 @@ class SupportController extends Controller
         ->join('doctors', 'case_m_d_s.doctor_id','=','doctors.doctor_id')->groupBy('doctors.doctor_id','doctors.tel','doctors.name_th','doctors.lastname_th')->paginate(6);
         return view('SupportAndDoctor.showdoctor')->with('count',$casecount);
     }
+
+    function doctordetail($doctor_id){
+        $doctor = Doctor::where('doctor_id',$doctor_id)->first();
+        return view('SupportAndDoctor.doctordetail')->with('doctor',$doctor);
+    }
 }
