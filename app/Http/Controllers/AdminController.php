@@ -30,6 +30,10 @@ class AdminController extends Controller
     }
     //ส่วนของผู้เข้ารักษา////////////////////////////////////////////////////////////////////////////////////////
     function storepatient(Request $request){
+        $request->validate([
+            'idcard' => ['required', 'unique:patients', new ThaiIdCardRule],
+        ]);
+
         $idcard = $request->idcard;
         $name_en = $request->name_en;
         $lastname_en = $request->lastname_en;
