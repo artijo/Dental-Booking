@@ -11,7 +11,7 @@
     เกิดวันที่ {{$patient->birthday}} เพศ {{$patient->gender}}
     โรคประจำตัว {{$patient->intolerance}} <br>
     <h2>ประวัติการรักษา</h2>
-    @foreach ($cases as $item)
+    @foreach ($patient->cases as $item)
     {{$item->case_title}} <br>
     {{$item->case_detail}} <br>
     {{$item->case_status}} <br>

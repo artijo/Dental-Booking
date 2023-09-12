@@ -55,8 +55,7 @@ class DoctorController extends Controller
 
     function showpatientdetail($idcard){
         $patient = Patient::where('idcard',$idcard)->first();
-        $cases = CaseMD::where('idcard',$idcard)->get();
-        return view('Doctor.patientdetail')->with('patient',$patient)->with('cases',$cases);
+        return view('Doctor.patientdetail')->with('patient',$patient);
     }
 
     function showcase(){
