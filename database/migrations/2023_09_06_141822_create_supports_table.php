@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('supports', function (Blueprint $table) {
             $table->char('support_id',6)->primary();
             $table->string('name',255);
-            $table->string('tel',10);
+            $table->string('tel',10)->unique();
             $table->integer('level');
-            $table->string('email',255);
+            $table->string('email',255)->unique();
             $table->string('password',255);
             $table->timestamps();
             $table->softDeletes();

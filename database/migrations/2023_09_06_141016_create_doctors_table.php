@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('lastname_en',255);
             $table->string('name_th',255);
             $table->string('lastname_th',255);
-            $table->string('email',255);
+            $table->string('email',255)->unique();
             $table->string('password',255);
-            $table->string('tel',10);
+            $table->string('tel',10)->unique();
             $table->char('specialist_id',6);
             $table->timestamps();
             $table->softDeletes();
