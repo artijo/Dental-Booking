@@ -16,6 +16,6 @@ class Patient extends Model
     protected $keyType = 'string';
 
     public function cases() {
-        return $this->hasMany(CaseMD::class, 'caseid');
+        return $this->hasMany(CaseMD::class, 'idcard');
     }
 }
