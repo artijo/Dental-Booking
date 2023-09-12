@@ -13,7 +13,7 @@
         <label for="idcard">รหัสบัตรประชาชน(ผู้เข้ารับการรักษา)</label><br>
         <input type="number" name="idcard" value="{{$case->idcard}}" disabled><br>
         <label for="case_title">หัวเรื่องการรักษา</label><br>
-        <input type="text" name="case_title" value="{{$case->case_title}}"><br>
+        <input type="text" name="case_title" value="{{$case->case_title}}" max="255" required><br>
         <label for="casetype_id">รูปแบบการรักษา</label><br>
         @if(!empty($case_type) && count($case_type) > 0)
             <select name="casetype_id" id="casetype">
@@ -29,9 +29,10 @@
         <label for="doctor_id">รหัสนายแพทย์</label><br>
         <input type="text" name="doctor_id" value="{{$case->doctor_id}}" disabled><br>
         <label for="case_status">สถานะการรักษา</label><br>
-        <select single name="case_status">
-            <option value="1" selected>เสร็จสิ้น</option>
-            <option value="2">ไม่พบตามนัด</option>
+        <select single name="case_status" required>
+            <option value="1">กำลังรักษา</option>
+            <option value="2">ยกเลิกเคส</option>
+            <option value="3" selected>เสร็จสิ้น</option>
         </select><br>
         <input type="submit" value="บันทึกเคสการรักษา">
     </form>
