@@ -23,7 +23,6 @@
             <label for="tel">เบอร์โทรศัพท์</label><br>
             <input type="number" name="tel" value="{{$patient->tel}}" pattern="[0-9]{10}" required><br>
             <label for="email">อีเมล</label><br>
-            <input type="email" name="email" value="{{$patient->email}}"><br>
             <input type="email" name="email" value="{{$patient->email}}" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"><br>
             @if($patient->gender === 'male')
             <label for="gender">เพศ</label><br>
