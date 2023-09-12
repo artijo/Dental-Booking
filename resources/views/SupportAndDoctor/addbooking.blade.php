@@ -13,20 +13,23 @@
         @csrf
 
         <label for="caseid">รหัสเคส</label>
+        @if(!empty($cases) && count($cases) > 0)
         <select class="selectcase" name="caseid">
             @foreach($cases as $list)
             <option value="{{$list->caseid}}">{{ $list->caseid }}</option>
             @endforeach
           </select><br>
-
+        @else
+                ไม่มีข้อมูลเคสในขณะนี้<br>
+        @endif
         <label for="booking_title">หัวข้อการนัด</label>
-        <input type="text" name="booking_title"><br>
+        <input type="text" name="booking_title" max="255" required><br>
 
         <label for="booking_detail">รายละเอียดการนัด</label>
         <input type="text" name="booking_detail"><br>
 
         <label for="booking_date">วันและเวลาที่นัด</label>
-        <input type="datetime-local" name="booking_date"><br>
+        <input type="datetime-local" name="booking_date" required><br>
 
         <input type="submit" name="booking_submit" value="บันทึก">
     </form>

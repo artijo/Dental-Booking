@@ -21,10 +21,12 @@
             <th>ชื่อ</th>
             <th>เบอร์โทรศัพท์</th>
             <th>จำนวนการรักษา(ครั้ง)</th>
+            <th>รายละเอียดเพิ่มเติม</th>
         </tr>
         @foreach($count as $case)
         <tr>
             <td>{{$count->firstItem()+$loop->index}}</td><td>{{$case->fullname}}</td><td>{{$case->tel}}</td><td>{{$case->casetotal}}</td>
+            <td><a href="{{url('/admin/showdoctor/'.$case->doctorid)}}">รายละเอียดเพิ่มเติม</a></td>
         </tr>
         @endforeach
     </table>

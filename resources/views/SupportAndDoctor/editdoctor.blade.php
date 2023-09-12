@@ -10,19 +10,24 @@
     @csrf
     @method('PUT')
         <label for="name_en">ขื่อ(ภาษาอังกฤษ)</label>
-        <input type="text" name="name_en" value="{{$doctor->name_en}}"> <br>
+        <input type="text" name="name_en" value="{{$doctor->name_en}}" max="255" pattern="[a-zA-Z]+"> <br>
         <label for="lastname_en">นามสกุล(ภาษาอังกฤษ)</label>
-        <input type="text" name="lastname_en" value="{{$doctor->name_en}}"> <br>
+        <input type="text" name="lastname_en" value="{{$doctor->name_en}}" max="255" pattern="[a-zA-Z]+"> <br>
         <label for="name_th">ชื่อ(ภาษาไทย ไม่ต้องมีคำนำหน้าชื่อ)</label>
-        <input type="text" name="name_th" value="{{$doctor->name_th}}"> <br>
+        <input type="text" name="name_th" value="{{$doctor->name_th}}" max="255" pattern="[\u0E00-\u0E7F]+" required> <br>
         <label for="lastname_th">นามสกุล(ภาษาไทย)</label>
-        <input type="text" name="lastname_th" value="{{$doctor->lastname_th}}"> <br>
+        <input type="text" name="lastname_th" value="{{$doctor->lastname_th}}" max="255" pattern="[\u0E00-\u0E7F]+" required> <br>
         <label for="email">อีเมล</label>
-        <input type="text" name="email" value="{{$doctor->email}}"> <br>
-        <label for="password">รหัส</label>
+        <input type="email" name="email" value="{{$doctor->email}}" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required> <br>
+        @if(session()->has('error'))
+            {{ session()->get('error') }}
+        @endif
+        <label for="password">รหัสผ่าน</label>
         <input type="password" name="password" > <br>
+        <label for="password">ยืนยันรหัสผ่าน</label>
+        <input type="password" name="password_cf" > <br>
         <label for="tel">เบอร์โทรศัพท์</label>
-        <input type="text" name="tel" value="{{$doctor->tel}}"> <br>
+        <input type="text" name="tel" value="{{$doctor->tel}}" pattern="[0-9]{10}" required> <br>
         <label for="specialist_id">ความเชี่ยวชาญ</label>
         @if(!empty($spacialist) && count($spacialist) > 0)
             <select name="specialist_id" id="specialist">
