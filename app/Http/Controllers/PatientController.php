@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB; //นำข้อมูลจาก Database 
 use Illuminate\Http\Request;
 use App\Http\Controllers\BookingController;
 use Illuminate\View\View;
+use Phattarachai\ThaiIdCardValidation\ThaiIdCardRule;
 
 class PatientController extends Controller
 {
@@ -27,7 +28,7 @@ class PatientController extends Controller
     }
     function checklogin(Request $request){
         $request->validate([
-            'idcard'=>'required',
+            'idcard' => ['required', new ThaiIdCardRule],
             'phone'=>'required'
         ]);
         $booking = Patient::where('idcard',$request->idcard)->first();

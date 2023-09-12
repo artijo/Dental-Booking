@@ -8,13 +8,15 @@
                     <h1>เข้าสู่ระบบ</h1>
                     <p>หากไม่พบข้อมูลโปรดติดต่อเจ้าหน้าที่</p>
                 </div>
-                
+                @error('idcard')
+                    {{ $message }}
+                @enderror
                 <form action="{{Route('patient.checklogin')}}" method="post">
                     @csrf
                     <label for="idcard">หมายเลขบัตรประชาชน</label><br>
-                    <input type="number" name="idcard" placeholder="หมายเลขบัตรประชาชน 13 หลัก"><br>
+                    <input type="number" name="idcard" placeholder="หมายเลขบัตรประชาชน 13 หลัก" pattern="[0-9]{13}"><br>
                     <label for="phone">เบอร์โทรศัพท์</label><br>
-                    <input type="tel" name="phone" placeholder="หมายเลขโทรศัพท์">
+                    <input type="tel" name="phone" placeholder="หมายเลขโทรศัพท์" pattern="[0-9]{10}">
                     <input class="btn btn-login" type="submit" value="เข้าสู่ระบบ">
                 </form>
             </div>
