@@ -8,14 +8,14 @@ body {
     line-height: 1.5;
     color: #000;
     text-align: left;
-    background-color: #fff;
+    background-color: #faf6ef;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: $font-headding;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.2;
 }
 .btn {
@@ -24,6 +24,11 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
     transition: 0.3s ease-in-out;
     cursor: pointer;
+}
+.btn-logout{
+    padding: 10px;
+    background-color: $bg-pn;
+    color: #000;
 }
 .btn:hover {
     scale: 1.05;
@@ -83,6 +88,65 @@ h1, h2, h3, h4, h5, h6 {
         }
     }
 }
+.dashboard-nav {
+    width: 200px;
+    float: left;
+    font-family: $font-headding;
+    ul {
+        background-color: $bg-pn;
+        list-style: none;
+        padding: 0;
+        li {
+            text-align: left;
+            padding: 3px;
+            .current{
+                background-color: #fff;
+                color: #004999;
+            }
+            a {
+                color: #000;
+                text-decoration: none;
+                display: block;
+                padding: 16px;
+                &:hover {
+                    color: #000;
+                }
+            }
+        }
+    }
+}
+.head-title {
+    text-align: center;
+    font-size: 1rem;
+}
+.content-dashboard {
+    width: calc(100% - 200px);
+    float: left;
+    padding: 20px;
+    .content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    }
+    .sayhello {
+        text-align: center;
+        h3{
+            font-weight: 300;
+        }
+    }
+    .profile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a {
+            text-decoration: none;
+        }
+    }
+}
 ._desktop {
     display: none;
+}
+.space {
+    padding: 16px 0;
 }

@@ -1,28 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        table,th,td{
-            border:1px solid;
-            border-collapse: collapse;
-        }
-    </style>
-</head>
-<body>
-    Hello
-    {{$name}}
-    <a href="{{ route('admin.logout') }}">ออกจากระบบ</a>
-    <a href="{{ route('admin.addsupport') }}"><button>Add Support</button></a>
-    <a href="{{ route('patient.addpatient') }}"><button>Add Patient</button></a>
-    <a href="{{ route('patient.addcase') }}"><button>Add Case</button></a>
-    <a href="{{route('doctor.adddoctor')}}"><button>Add Doctor</button></a>
-    <a href="{{route('booking.addbooking')}}"><button>Add Booking</button></a>
-    <a href="{{route('patientlist.showpatient')}}"><button>Patient List</button></a>
-    <a href="{{route('doctor.showdoctor')}}"><button>Doctor List</button></a>
-    <a href="{{route('showcase.showbooking')}}"><button>Booking History</button></a>
-</body>
-</html>
+@extends('layouts.global')
+@section('title') DashBoard For Support And Admin @endsection
+@section('content')
+<div class="a-container">
+    <div class="space"></div>
+    <div class="head-title"><h1>Dashboard</h1></div>
+    <div class="space"></div>
+<nav class="dashboard-nav">
+    <ul>
+        <li><a href="{{route('admin.index')}}" class="current">หน้าหลัก</a></li>
+        <li><a href="{{route('patientlist.showpatient')}}">รายชื่อผู้รักษา</a></li>
+        <li><a href="{{route('doctor.showdoctor')}}">รายชื่อแพทย์</a></li>
+        <li><a href="{{route('showcase.showcase')}}">ข้อมูลเคสการรักษา</a></li>
+        <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
+    </ul>
+</nav>
+<div class="content-dashboard">
+    <div class="sayhello">
+        <h3>ยินดีต้อนรับสู่ระบบจัดการโรงพยาบาลอาร์ตติโจ</h3>
+    </div>
+    <div class="profile">
+        <div class="name">
+            สวัสดีคุณ {{$name}}
+        </div>
+        <a class="btn-logout" href="{{route('admin.logout')}}">ออกจากระบบ</a>
+    </div>
+    
+</div>
+</div>
+@endsection
