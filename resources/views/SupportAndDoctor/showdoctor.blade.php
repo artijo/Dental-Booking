@@ -24,10 +24,17 @@
             <th>รายละเอียดเพิ่มเติม</th>
         </tr>
         @foreach($count as $case)
+        @if($case->casetotal != null)
         <tr>
             <td>{{$count->firstItem()+$loop->index}}</td><td>{{$case->fullname}}</td><td>{{$case->tel}}</td><td>{{$case->casetotal}}</td>
             <td><a href="{{url('/admin/showdoctor/'.$case->doctorid)}}">รายละเอียดเพิ่มเติม</a></td>
         </tr>
+        @else
+        <tr>
+            <td>{{$count->firstItem()+$loop->index}}</td><td>{{$case->fullname}}</td><td>{{$case->tel}}</td><td>0</td>
+            <td><a href="{{url('/admin/showdoctor/'.$case->doctorid)}}">รายละเอียดเพิ่มเติม</a></td>
+        </tr>
+        @endif
         @endforeach
     </table>
 </body>

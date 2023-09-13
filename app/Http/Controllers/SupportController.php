@@ -47,8 +47,8 @@ class SupportController extends Controller
     }
 
     function showdoctor(){
-        $casecount = CaseMD::select(DB::raw('COUNT(caseid) as casetotal,CONCAT(doctors.name_th," ",doctors.lastname_th) as fullname,doctors.tel as tel,doctors.doctor_id as doctorid'))
-        ->join('doctors', 'case_m_d_s.doctor_id','=','doctors.doctor_id')->groupBy('doctors.doctor_id','doctors.tel','doctors.name_th','doctors.lastname_th')->paginate(6);
+        $casecount = Doctor::select(DB::raw('COUNT(case_m_d_s.caseid) as casetotal,CONCAT(doctors.name_th," ",doctors.lastname_th) as fullname,doctors.tel as tel,doctors.doctor_id as doctorid'))
+        ->leftjoin('case_m_d_s', 'doctors.doctor_id','=','case_m_d_s.doctor_id')->groupBy('doctors.doctor_id','doctors.tel','doctors.name_th','doctors.lastname_th')->paginate(6);
         return view('SupportAndDoctor.showdoctor')->with('count',$casecount);
     }
 

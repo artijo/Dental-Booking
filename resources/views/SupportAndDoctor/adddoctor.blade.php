@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
     <form action="{{route('doctor.storedoctor')}}" method="POST">
@@ -29,7 +30,7 @@
         <input type="text" name="tel" pattern="[0-9]{10}"> <br>
         <label for="specialist_id">ความเชี่ยวชาญ</label>
         @if(!empty($spacialist) && count($spacialist) > 0)
-            <select name="specialist_id" id="specialist">
+            <select name="specialist_id[]" id="specialist" multiple="multiple">
                 @foreach($spacialist as $list)
                 <option value="{{ $list->specialist_id }}">{{ $list->name_th }}</option>
                 @endforeach
