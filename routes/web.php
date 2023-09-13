@@ -46,6 +46,7 @@ Route::middleware(['support.check'])->group(function () {
     Route::get('/admin/logout', [AdminController::class,'logout'])->name('admin.logout');
     Route::get('/admin/patientlist',[PatientController::class,'showpatient'])->name('patientlist.showpatient');
     Route::get('/admin/showcase',[SupportController::class,'showcase'])->name('showcase.showcase');
+    Route::get('/admin/case/{caseid}',[SupportController::class,'showcasedetail'])->name('showcase.showcasedetail');
     Route::get('/admin/showbooking',[BookingController::class,'showhistory'])->name('showcase.showbooking');
     Route::get('/admin/showdoctor',[SupportController::class,'showdoctor'])->name('doctor.showdoctor');
     Route::get('/admin/showdoctor/{doctor_id}',[SupportController::class,'doctordetail'])->name('doctor.detail');

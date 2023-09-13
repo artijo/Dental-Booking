@@ -41,6 +41,11 @@ class SupportController extends Controller
         return view('Supports.showcase')->with('cases',$cases);
     }
 
+    function showcasedetail($caseid){
+        $case = CaseMD::where('caseid', $caseid)->first();
+        return view("Supports.casedetail",compact('case'));
+    }
+
     function showdoctor(){
         $casecount = CaseMD::select(DB::raw('COUNT(caseid) as casetotal,CONCAT(doctors.name_th," ",doctors.lastname_th) as fullname,doctors.tel as tel,doctors.doctor_id as doctorid'))
         ->join('doctors', 'case_m_d_s.doctor_id','=','doctors.doctor_id')->groupBy('doctors.doctor_id','doctors.tel','doctors.name_th','doctors.lastname_th')->paginate(6);
