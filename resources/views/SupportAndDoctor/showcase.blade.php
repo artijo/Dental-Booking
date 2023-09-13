@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>showcase</title>
-    <style>
-        table,th,td{
-            border:1px solid;
-            border-collapse: collapse;
-        }
-    </style>
-</head>
-<body>
-    <button><a href="{{ route('patient.addcase')}}">เพิ่มข้อมูลการรักษา</a></button>
-    <small>ประวัติการนัดหมาย</small>
-    <table>
+@extends('layouts.global')
+@section('title') DashBoard For Support And Admin @endsection
+@section('content')
+<div class="a-container">
+    <div class="space"></div>
+    <div class="head-title"><h1>รายชื่อผู้รักษา</h1></div>
+    <div class="space"></div>
+<nav class="dashboard-nav">
+    <ul>
+        <li><a href="{{route('admin.index')}}">หน้าหลัก</a></li>
+        <li><a href="{{route('patientlist.showpatient')}}" class="current">รายชื่อผู้รักษา</a></li>
+        <li><a href="{{route('doctor.showdoctor')}}">รายชื่อแพทย์</a></li>
+        <li><a href="{{route('showcase.showcase')}}">ข้อมูลเคสการรักษา</a></li>
+        <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
+    </ul>
+</nav>
+<div class="content-dashboard">
+    <table class="table-show">
         <tr>
         <th>รายการ</th>
         <th>วันที่นัดหมาย</th>
@@ -37,5 +38,6 @@
         </tr> 
        @endforeach
     </table>
-</body>
-</html>
+</div>
+</div>
+@endsection

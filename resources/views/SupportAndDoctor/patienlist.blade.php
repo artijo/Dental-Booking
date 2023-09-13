@@ -1,5 +1,5 @@
 @extends('layouts.global')
-@section('title') DashBoard For Support And Admin @endsection
+@section('title') รายชื่อผู้รักษา @endsection
 @section('content')
 <div class="a-container">
     <div class="space"></div>

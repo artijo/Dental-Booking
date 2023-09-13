@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show Doctor</title>
-</head>
-<body>
-    <a href="{{ route('admin.logout') }}">ออกจากระบบ</a>
-    <a href="{{ route('admin.addsupport') }}"><button>Add Support</button></a>
-    <a href="{{ route('patient.addpatient') }}"><button>Add Patient</button></a>
-    <a href="{{ route('patient.addcase') }}"><button>Add Case</button></a>
-    <a href="{{route('doctor.adddoctor')}}"><button>Add Doctor</button></a>
-    <a href="{{route('booking.addbooking')}}"><button>Add Booking</button></a>
-    <a href="{{route('patientlist.showpatient')}}"><button>Patient List</button></a>
-    <a href="{{route('doctor.showdoctor')}}"><button disabled>Doctor List</button></a>
-    <a href="{{route('Doctor')}}"><button>Booking History</button></a>
-    <table>
+@extends('layouts.global')
+@section('title') รายชื่อแพทย์ @endsection
+@section('content')
+<div class="a-container">
+    <div class="space"></div>
+    <div class="head-title"><h1>รายชื่อแพทย์</h1></div>
+    <div class="space"></div>
+<nav class="dashboard-nav">
+    <ul>
+        <li><a href="{{route('admin.index')}}">หน้าหลัก</a></li>
+        <li><a href="{{route('patientlist.showpatient')}}">รายชื่อผู้รักษา</a></li>
+        <li><a href="{{route('doctor.showdoctor')}}" class="current">รายชื่อแพทย์</a></li>
+        <li><a href="{{route('showcase.showcase')}}">ข้อมูลเคสการรักษา</a></li>
+        <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
+    </ul>
+</nav>
+<div class="content-dashboard">
+    <table class="table-show">
         <tr>
             <th>ลำดับ</th>
             <th>ชื่อ</th>
@@ -37,5 +37,6 @@
         @endif
         @endforeach
     </table>
-</body>
-</html>
+</div>
+</div>
+@endsection
