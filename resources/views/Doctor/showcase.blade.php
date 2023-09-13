@@ -19,7 +19,7 @@
                 <td>{{$cases->firstItem()+$loop->index}}</td>
                 <td>{{$item->case_title}}</td>
                 <td>{{$item->tel}}</td>
-                <td>{{$item->case_status}}</td>
+                <td>@if($item->case_status === 1)รอเข้าพบ @elseif($item->case_status === 2)ไม่มาพบตามนัด @elseif($item->case_status === 3)เสร็จสิ้น@endif</td>
                 <td><a href="{{url('/admin/doctor/case/'.$item->caseid)}}">รายละเอียดเพิ่มเติม</a></td>
             </tr>
     @endforeach

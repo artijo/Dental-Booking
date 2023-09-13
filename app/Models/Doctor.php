@@ -15,6 +15,7 @@ class Doctor extends Model
 
     protected $primaryKey = 'doctor_id';
     protected $keyType = 'string';
+    protected $touchs = ['specialists'];
 
     public function cases() {
         return $this->hasMany(CaseMD::class, 'caseid');

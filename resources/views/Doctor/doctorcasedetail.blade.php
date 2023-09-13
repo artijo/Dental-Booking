@@ -12,7 +12,7 @@
 
     หัวข้อการรักษา : {{$case->case_title}} <br>
     รายละเอียดการรักษา : {{$case->case_detail}} <br>
-    สถานะการรักษา : {{$case->case_status}} <br>
+    สถานะการรักษา : @if($case->case_status === 1)รอเข้าพบ @elseif($case->case_status === 2)ไม่มาพบตามนัด @elseif($case->case_status === 3)เสร็จสิ้น@endif <br>
     การนัด
     <table>
         <tr>
