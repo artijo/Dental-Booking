@@ -21,6 +21,7 @@ class Admin
         if (!$request->session()->has('supportid') || $level == 1) {
             return redirect('/admin/login');
         }elseif($request->session()->has('idcard')){
+            session()->pull('support_id');
             return redirect('/user');
         }
         return $next($request);

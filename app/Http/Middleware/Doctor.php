@@ -18,6 +18,7 @@ class Doctor
         if($request->session()->has('doctor_id') && !$request->session()->has('idcard')){
             return $next($request);
         }elseif($request->session()->has('idcard')){
+            session()->pull('doctor_id');
             return redirect('/');
         }
         return redirect('/admin/login');
