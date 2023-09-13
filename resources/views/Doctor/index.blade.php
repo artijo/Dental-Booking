@@ -12,6 +12,7 @@
 <a href="{{route('doctor.showbooking')}}">ข้อมูลการนัด</a>
     <h1>สวัสดี นายแพทย์{{$doctor->name_th}} {{$doctor->lastname_th}}</h1>
     <h2>นี่คือข้อมูลผู้ป่วยของท่าน</h2>
+    @if(!empty($cases) && COUNT($cases) > 0)
     <table border=1>
         <thead>
             <tr>
@@ -31,6 +32,9 @@
             </tr>
             @endforeach
     </table>
+    @else
+    <h1>ยังไม่มีเคสรักษาของคุณในคณะนี้</h1>
+    @endif
     <!-- <a href="{{ route('admin.addsupport') }}"><button>Add Support</button></a>
     <a href="{{ route('patient.addpatient') }}"><button>Add Patient</button></a>
     <a href="{{ route('patient.addcase') }}"><button>Add Case</button></a>

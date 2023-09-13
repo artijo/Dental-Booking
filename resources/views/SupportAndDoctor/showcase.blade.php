@@ -28,11 +28,10 @@
             <td>{{date('d M Y',strtotime($book->booking_date))}}
             </td>
             <td>{{$book->booking_detail}}</td>
-            <td> @if($book->case->case_status===1)
-                    เสร็จสิ้น
-                 @elseif($book->case->case_status===2)
-                    ไม่เข้าพบตามนัด
-                 @endif
+            <td> @if($book->case->case_status === 1)รอเข้าพบ 
+                @elseif($book->case->case_status === 2)ไม่มาพบตามนัด 
+                @elseif($book->case->case_status === 3)เสร็จสิ้น
+                @endif
                 </td>
             <td><a href='#'>รายละเอียดเพิ่มเติม</a></td>
         </tr> 
