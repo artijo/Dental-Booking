@@ -14,7 +14,7 @@
     <a href="{{route('booking.addbooking')}}"><button>Add Booking</button></a>
     <a href="{{route('patientlist.showpatient')}}"><button>Patient List</button></a>
     <a href="{{route('doctor.showdoctor')}}"><button disabled>Doctor List</button></a>
-    <a href="{{route('showcase.showhistory')}}"><button>Booking History</button></a>
+    <a href="{{route('Doctor')}}"><button>Booking History</button></a>
     <table>
         <tr>
             <th>ลำดับ</th>
@@ -24,10 +24,17 @@
             <th>รายละเอียดเพิ่มเติม</th>
         </tr>
         @foreach($count as $case)
+        @if($case->casetotal != null)
         <tr>
             <td>{{$count->firstItem()+$loop->index}}</td><td>{{$case->fullname}}</td><td>{{$case->tel}}</td><td>{{$case->casetotal}}</td>
             <td><a href="{{url('/admin/showdoctor/'.$case->doctorid)}}">รายละเอียดเพิ่มเติม</a></td>
         </tr>
+        @else
+        <tr>
+            <td>{{$count->firstItem()+$loop->index}}</td><td>{{$case->fullname}}</td><td>{{$case->tel}}</td><td>0</td>
+            <td><a href="{{url('/admin/showdoctor/'.$case->doctorid)}}">รายละเอียดเพิ่มเติม</a></td>
+        </tr>
+        @endif
         @endforeach
     </table>
 </body>

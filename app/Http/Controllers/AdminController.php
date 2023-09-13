@@ -160,7 +160,9 @@ class AdminController extends Controller
         $email = $request->email;
         $password = Hash::make($request->password);
         $tel = $request->tel;
-        $spacialist_id = $request -> specialist_id;
+        foreach($request->specialist_id as $special){
+        $spacialist_id [] = $special;
+        }
 
         $adddoctor = new Doctor;
         $adddoctor->doctor_id = $doctor_id;
@@ -171,8 +173,13 @@ class AdminController extends Controller
         $adddoctor->email = $email;
         $adddoctor->password = $password;
         $adddoctor->tel = $tel;
-        $adddoctor->specialist_id = $spacialist_id;
+        foreach($spacialist_id as $addspecial){
+        $adddoctor->specialist_id = $addspecial;
+        }
         $adddoctor->save();
+        $doctor = Doctor::where('doctor_id',$doctor_id)->first();
+        $specialist = $spacialist_id;
+            $doctor->specialists()->attach($specialist);
         return redirect('/admin');
     }
     function editdoctor($id){
