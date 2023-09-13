@@ -59,7 +59,7 @@ class PatientController extends Controller
         return view('SupportAndDoctor.addcase')->with('case_type',$case_type)->with('patient',$patient)->with('doctor',$doctor);
     }
     function showpatient(){
-            $page = Patient::paginate(8);
+            $page = Patient::paginate(2);
             return view('SupportAndDoctor.patienlist',compact('page'));
     }
 }

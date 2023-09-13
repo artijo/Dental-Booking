@@ -1,47 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        table,th,td{
-            border:1px solid;
-            border-collapse: collapse;
-        }
-        svg{
-            width:20px;
-        }
-    </style>
-</head>
-<body>
-
-    Hello
-   
-    <a href="{{ route('admin.logout') }}">ออกจากระบบ</a>
-    <a href="{{ route('admin.addsupport') }}"><button>Add Support</button></a>
-    <a href="{{ route('patient.addpatient') }}"><button>Add Patient</button></a>
-    <a href="{{ route('patient.addcase') }}"><button>Add Case</button></a>
-    <a href="{{route('doctor.adddoctor')}}"><button>Add Doctor</button></a>
-    <a href="{{route('booking.addbooking')}}"><button>Add Booking</button></a>
-
-    <table>
+@extends('layouts.global')
+@section('title') DashBoard For Support And Admin @endsection
+@section('content')
+<div class="a-container">
+    <div class="space"></div>
+    <div class="head-title"><h1>รายชื่อผู้รักษา</h1></div>
+    <div class="space"></div>
+<nav class="dashboard-nav">
+    <ul>
+        <li><a href="{{route('admin.index')}}">หน้าหลัก</a></li>
+        <li><a href="{{route('patientlist.showpatient')}}" class="current">รายชื่อผู้รักษา</a></li>
+        <li><a href="{{route('doctor.showdoctor')}}">รายชื่อแพทย์</a></li>
+        <li><a href="{{route('showcase.showcase')}}">ข้อมูลเคสการรักษา</a></li>
+        <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
+    </ul>
+</nav>
+<div class="content-dashboard">
+    <table class="table-show">
     <tr>
         <th>ลำดับ</th>
         <th>ชื่อ</th>
         <th>นามสกุล</th>
-        <th>เบอร์โทรศัพท์</th>
+        <th colspan="2">เบอร์โทรศัพท์</th>
     </tr>
           @foreach ( $page as $pt) 
                 <tr>
                 <td>{{$page->firstItem()+$loop->index}}</td>
                 <td>{{$pt->name_th}}</td>
                 <td>{{$pt->lastname_th}}</td>
+                <td>{{$pt->tel}}</td>
                 <td><a href='#'>รายละเอียดเพิ่มเติม</a></td>
                 </tr>
         @endforeach
     </table>
  {{$page}}
-</body>
-</html>
+ 
+</div>
+</div> 
+@endsection

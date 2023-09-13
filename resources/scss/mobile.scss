@@ -101,7 +101,7 @@ h1, h2, h3, h4, h5, h6 {
             padding: 3px;
             .current{
                 background-color: #fff;
-                color: #004999;
+                color: $link-color;
             }
             a {
                 color: #000;
@@ -143,6 +143,28 @@ h1, h2, h3, h4, h5, h6 {
             text-decoration: none;
         }
     }
+    .table-show{
+        width: 100%;
+        background-color: #fff;
+        border-bottom: 3px solid $bg-pn;
+    }
+    .table-show tr:nth-child(even) {
+        background-color: #faf6ef;
+    }
+    .table-show a {
+        color: $link-color;
+        text-decoration: none;
+    }
+}
+table, th, td {
+    border: 1px solid $bg-color;
+    border-collapse: collapse;
+    padding: 10px;
+}
+th {
+    background-color: $bg-pn;
+    font-family: $font-headding;
+    color: #000;
 }
 ._desktop {
     display: none;
