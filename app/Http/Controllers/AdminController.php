@@ -173,6 +173,9 @@ class AdminController extends Controller
         $adddoctor->tel = $tel;
         $adddoctor->specialist_id = $spacialist_id;
         $adddoctor->save();
+        $doctor = Doctor::where('doctor_id',$doctor_id)->first();
+        $specialist = $spacialist_id;
+            $doctor->specialists()->attach($specialist);
         return redirect('/admin');
     }
     function editdoctor($id){
