@@ -20,7 +20,7 @@ class DoctorController extends Controller
     function index(){
         $dt = session('doctor_id');
         $cases = CaseMD::select(DB::raw('count(caseid) as casetotal, CONCAT(patients.name_th, " ", patients.lastname_th) as fullname, patients.tel as tel, patients.idcard as idcard'))
-    ->join('patients', 'case_m_d_s.idcard', '=', 'patients.idcard')
+    ->join('patients', 'case_m_d_s.idcard', '=', 'patients.idcard')->where('doctor_id',$dt)
     ->groupBy('patients.name_th','patients.lastname_th','patients.tel', 'patients.idcard')
     ->paginate(6);
         $doctor = Doctor::where('doctor_id',$dt)->first();
