@@ -14,7 +14,7 @@
     <a href="{{route('booking.addbooking')}}"><button>Add Booking</button></a>
     <a href="{{route('patientlist.showpatient')}}"><button>Patient List</button></a>
     <a href="{{route('doctor.showdoctor')}}"><button disabled>Doctor List</button></a>
-    <a href="{{route('showcase.showhistory')}}"><button>Booking History</button></a>
+    <a href="{{route('Doctor')}}"><button>Booking History</button></a>
     <table>
         <tr>
             <th>ลำดับ</th>

@@ -54,6 +54,6 @@ class SupportController extends Controller
 
     function doctordetail($doctor_id){
         $doctor = Doctor::where('doctor_id',$doctor_id)->first();
-        return view('SupportAndDoctor.doctordetail')->with('doctor',$doctor);
+        return view('SupportAndDoctor.doctordetail',compact('doctor'));
     }
 }
