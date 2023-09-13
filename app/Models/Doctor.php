@@ -20,6 +20,6 @@ class Doctor extends Model
         return $this->hasMany(CaseMD::class, 'caseid');
     }
     public function specialists() {
-        return $this->belongsToMany(Specialist::class,'doctor_specialist','doctor_id','specialist_id');
+        return $this->belongsToMany(Specialist::class,'doctor_specialist','doctor_id','specialist_id')->withTimestamps();
     }
 }
