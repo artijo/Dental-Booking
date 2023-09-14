@@ -1,14 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{ url('/admin/doctor/update/'.$doctor->doctor_id) }}" method="POST">
+@extends('layouts.global')
+@section('title') แก้ไขข้อมูลแพทย์ @endsection
+@section('content')
+<div class="a-container">
+    <div class="space"></div>
+    <div class="head-title"><h1>แก้ไขข้อมูลแพทย์</h1></div>
+    <div class="space"></div>
+<nav class="dashboard-nav">
+    <ul>
+        <li><a href="{{route('admin.index')}}">หน้าหลัก</a></li>
+        <li><a href="{{route('patientlist.showpatient')}}">รายชื่อผู้รักษา</a></li>
+        <li><a href="{{route('doctor.showdoctor')}}" class="current">รายชื่อแพทย์</a></li>
+        <li><a href="{{route('showcase.showcase')}}">ข้อมูลเคสการรักษา</a></li>
+        <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
+    </ul>
+</nav>
+<div class="content-dashboard">
+    <form action="{{ url('/admin/doctor/update/'.$doctor->doctor_id) }}" method="POST" class="add-data">
     @csrf
     @method('PUT')
+    <div class="add-data-item"
         <label for="name_en">ขื่อ(ภาษาอังกฤษ)</label>
         <input type="text" name="name_en" value="{{$doctor->name_en}}" max="255" pattern="[a-zA-Z]+"> <br>
         <label for="lastname_en">นามสกุล(ภาษาอังกฤษ)</label>
@@ -19,6 +29,8 @@
         <input type="text" name="lastname_th" value="{{$doctor->lastname_th}}" max="255" pattern="[\u0E00-\u0E7F]+" required> <br>
         <label for="email">อีเมล</label>
         <input type="email" name="email" value="{{$doctor->email}}" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required> <br>
+    </div>
+    <div class="add-data-item">
         @if(session()->has('error'))
             {{ session()->get('error') }}
         @endif
@@ -38,7 +50,9 @@
         @else
         ไม่มีข้อมูลเฉพาะทางในขณะนี้<br>
         @endif
-        <input type="submit" value="บันทึกข้อมูล">
+        <input type="submit" value="บันทึกข้อมูล" class="btn btn-plus mt-5">
+    </div>
     </form>
-</body>
-</html>
+</div>
+</div>
+    @endsection

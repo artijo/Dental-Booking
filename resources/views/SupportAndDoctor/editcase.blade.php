@@ -1,15 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{url('/admin/case/update/'.$case->caseid)}}" method="POST">
+@extends('layouts.global')
+@section('title') แก้ไขเคสการรักษา @endsection
+@section('content')
+<div class="a-container">
+    <div class="space"></div>
+    <div class="head-title"><h1>แก้ไขเคสการรักษา</h1></div>
+    <div class="space"></div>
+<nav class="dashboard-nav">
+    @if(session('supportid'))
+    <ul>
+        <li><a href="{{route('admin.index')}}">หน้าหลัก</a></li>
+        <li><a href="{{route('patientlist.showpatient')}}">รายชื่อผู้รักษา</a></li>
+        <li><a href="{{route('doctor.showdoctor')}}">รายชื่อแพทย์</a></li>
+        <li><a href="{{route('showcase.showcase')}}" class="current">ข้อมูลเคสการรักษา</a></li>
+        <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
+    </ul>
+    @elseif(session('doctor_id'))
+    <ul>
+    <li><a href="{{route('Doctor')}}">หน้าหลัก</a></li>
+    <li><a href="{{route('Doctor.shpwpatient')}}">รายชื่อผู้รักษาของคุณ</a></li>
+    <li><a href="{{route('doctor.showcase')}}" class="current">ประวัติเคสการรักษาของคุณ</a></li>
+    <li><a href="{{route('doctor.showbooking')}}">บันทึกการนัดของคุณ</a></li>
+</ul>
+    @endif
+</nav>
+<div class="content-dashboard">
+    <form action="{{url('/admin/case/update/'.$case->caseid)}}" method="POST" class="add-data">
         @csrf
         @method('PUT')
+        <div class="add-data-item">
         <label for="idcard">รหัสบัตรประชาชน(ผู้เข้ารับการรักษา)</label><br>
         <input type="number" name="idcard" value="{{$case->idcard}}" disabled><br>
         <label for="case_title">หัวเรื่องการรักษา</label><br>
@@ -34,7 +52,9 @@
             <option value="2">ยกเลิกเคส</option>
             <option value="3" selected>เสร็จสิ้น</option>
         </select><br>
-        <input type="submit" value="บันทึกเคสการรักษา">
+        <input type="submit" value="บันทึกเคสการรักษา" class="btn btn-plus mt-5">
+    </div>
     </form>
-</body>
-</html>
+</div>
+</div>
+@endsection

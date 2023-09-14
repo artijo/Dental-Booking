@@ -45,7 +45,7 @@
                 @elseif($book->case->case_status === 3)เสร็จสิ้น
                 @endif
                 </td>
-            <td><a href='#'>รายละเอียดเพิ่มเติม</a></td>
+            <td><a href='{{url('/admin/booking/'.$book->booking_id)}}'>รายละเอียดเพิ่มเติม</a></td>
         </tr> 
        @endforeach
          @endif

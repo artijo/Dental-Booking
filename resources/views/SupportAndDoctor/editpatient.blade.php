@@ -1,15 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{url('admin/patient/update/'.$patient->idcard)}}" method="post">
+@extends('layouts.global')
+@section('title') แก้ไข้ข้อมูลผู้รักษา @endsection
+@section('content')
+<div class="a-container">
+    <div class="space"></div>
+    <div class="head-title"><h1>แก้ไข้ข้อมูลผู้รักษา</h1></div>
+    <div class="space"></div>
+<nav class="dashboard-nav">
+    @if(session('supportid'))
+    <ul>
+        <li><a href="{{route('admin.index')}}">หน้าหลัก</a></li>
+        <li><a href="{{route('patientlist.showpatient')}}" class="current">รายชื่อผู้รักษา</a></li>
+        <li><a href="{{route('doctor.showdoctor')}}">รายชื่อแพทย์</a></li>
+        <li><a href="{{route('showcase.showcase')}}">ข้อมูลเคสการรักษา</a></li>
+        <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
+    </ul>
+    @elseif(session('doctor_id'))
+    <ul>
+        <li><a href="{{route('Doctor')}}">หน้าหลัก</a></li>
+        <li><a href="{{route('Doctor.shpwpatient')}}" class="current">รายชื่อผู้รักษาของคุณ</a></li>
+        <li><a href="{{route('doctor.showcase')}}">ประวัติเคสการรักษาของคุณ</a></li>
+        <li><a href="{{route('doctor.showbooking')}}">บันทึกการนัดของคุณ</a></li>
+    </ul>
+    @endif
+</nav>
+<div class="content-dashboard">
+    <form action="{{url('admin/patient/update/'.$patient->idcard)}}" method="post" class="add-data">
         @csrf
         @method('PUT')
+        <div class="add-data-item">
             <label for="idcard">บัตรประจำตัวประชาชน</label> <br>
             <input type="number" name="idcard" value="{{$patient->idcard}}" disabled><br>
             <label for="name_th">ชื่อ (ภาษาไทย)</label><br>
@@ -22,6 +40,8 @@
             <input type="text" name="lastname_en" value="{{$patient->lastname_en}}" max="255" pattern="[a-zA-Z]+"><br>
             <label for="tel">เบอร์โทรศัพท์</label><br>
             <input type="number" name="tel" value="{{$patient->tel}}" pattern="[0-9]{10}" required><br>
+        </div>
+        <div class="add-data-item">
             <label for="email">อีเมล</label><br>
             <input type="email" name="email" value="{{$patient->email}}" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"><br>
             @if($patient->gender === 'male')
@@ -40,7 +60,9 @@
             <input type="date" name="birthday" value="{{$patient->birthday}}" required><br>
             <label for="intolerance">โรคประจำตัว</label><br>
             <input type="text" name="intolerance" value="{{$patient->intolerance}}"><br>
-            <input type="submit" value="บันทึกข้อมูล">
+            <input type="submit" value="บันทึกข้อมูล" class="btn btn-plus mt-5">
+        </div>
         </form>
-</body>
-</html>
+</div>
+</div>
+@endsection
