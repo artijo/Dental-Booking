@@ -64,8 +64,13 @@ class PatientController extends Controller
         
         return view('SupportAndDoctor.addcase')->with('case_type',$case_type)->with('patient',$patient)->with('doctor',$doctor);
     }
-    function showpatient(){
-            $page = Patient::paginate(2);
-            return view('SupportAndDoctor.patienlist',compact('page'));
+    function showpatient(Request $request){
+            $s = $request->query('search');
+            if($s != null){
+                $page = Patient::where('name_th','like','%'.$s.'%')->orWhere('lastname_th','like','%'.$s.'%')->orWhere('idcard','like','%'.$s.'%')->paginate(2);
+            }else{
+                $page = Patient::paginate(2);
+            }
+            return view('SupportAndDoctor.patienlist',compact('page','s'));
     }
 }

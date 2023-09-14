@@ -17,7 +17,7 @@
 <div class="content-dashboard">
     <div class="mb-3 flex justify-between items-center">
         <form action="" method="GET" class="search">
-            <input type="text" name="search" placeholder="ค้นหาเคสการรักษา">
+            <input type="text" name="search" placeholder="ค้นหาเคสการรักษา" value="{{$s}}">
             <input type="submit" value="ค้นหา">
         </form>
         <a href="{{route('patient.addcase')}}"><button class="btn btn-plus">เพิ่มข้อมูลการรักษา</button></a>

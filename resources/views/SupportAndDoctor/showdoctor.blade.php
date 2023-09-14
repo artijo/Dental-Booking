@@ -17,7 +17,7 @@
 <div class="content-dashboard">
     <div class="mb-3 flex justify-between items-center">
         <form action="" method="GET" class="search">
-            <input type="text" name="search" placeholder="ค้นหาแพทย์">
+            <input type="text" name="search" placeholder="ค้นหาแพทย์" value="{{$s}}">
             <input type="submit" value="ค้นหา">
         </form>
         <a href="{{route('doctor.adddoctor')}}"><button class="btn btn-plus">เพิ่มข้อมูลแพทย์</button></a>
@@ -36,17 +36,13 @@
         </tr>
         @else
         @foreach($count as $case)
-        @if($case->casetotal != null)
         <tr>
-            <td>{{$count->firstItem()+$loop->index}}</td><td>{{$case->fullname}}</td><td>{{$case->tel}}</td><td>{{$case->casetotal}}</td>
-            <td><a href="{{url('/admin/showdoctor/'.$case->doctorid)}}">รายละเอียดเพิ่มเติม</a></td>
+            <td>{{$count->firstItem()+$loop->index}}</td>
+            <td>{{$case->name_th}} {{$case->lastname_th}}</td>
+            <td>{{$case->tel}}</td>
+            <td>{{count($case->cases)}}</td>
+            <td><a href="{{url('/admin/showdoctor/'.$case->doctor_id)}}">รายละเอียดเพิ่มเติม</a></td>
         </tr>
-        @else
-        <tr>
-            <td>{{$count->firstItem()+$loop->index}}</td><td>{{$case->fullname}}</td><td>{{$case->tel}}</td><td>0</td>
-            <td><a href="{{url('/admin/showdoctor/'.$case->doctorid)}}">รายละเอียดเพิ่มเติม</a></td>
-        </tr>
-        @endif
         @endforeach
         @endif
     </table>

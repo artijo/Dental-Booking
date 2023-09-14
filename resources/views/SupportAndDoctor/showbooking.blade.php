@@ -17,7 +17,7 @@
 <div class="content-dashboard">
     <div class="mb-3 flex justify-between items-center">
         <form action="" method="GET" class="search">
-            <input type="text" name="search" placeholder="ค้นหารายการนัด">
+            <input type="text" name="search" placeholder="ค้นหารายการนัด" value="{{$s}}">
             <input type="submit" value="ค้นหา">
         </form>
         <a href="{{route('booking.addbooking')}}"><button class="btn btn-plus">เพิ่มข้อมูลการนัด</button></a>

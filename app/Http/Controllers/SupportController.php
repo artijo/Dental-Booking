@@ -37,9 +37,14 @@ class SupportController extends Controller
         }
     }
 
-    function showcase(){
+    function showcase(Request $request){
+        $s = $request->query('search');
+        if($s){
+            $cases = CaseMD::where('caseid','LIKE',"%{$s}%")->orWhere('case_title','LIKE',"%{$s}%")->orWhere('case_detail','LIKE',"%{$s}%")->paginate(10);
+        }else{
         $cases = CaseMD::paginate(10);
-        return view('Supports.showcase')->with('cases',$cases);
+        }
+        return view('Supports.showcase')->with('cases',$cases)->with('s',$s);
     }
 
     function showcasedetail($caseid){
@@ -48,10 +53,17 @@ class SupportController extends Controller
         return view("Supports.casedetail",compact('case','support'));
     }
 
-    function showdoctor(){
-        $casecount = Doctor::select(DB::raw('COUNT(case_m_d_s.caseid) as casetotal,CONCAT(doctors.name_th," ",doctors.lastname_th) as fullname,doctors.tel as tel,doctors.doctor_id as doctorid'))
-        ->leftjoin('case_m_d_s', 'doctors.doctor_id','=','case_m_d_s.doctor_id')->groupBy('doctors.doctor_id','doctors.tel','doctors.name_th','doctors.lastname_th')->paginate(6);
-        return view('SupportAndDoctor.showdoctor')->with('count',$casecount);
+    function showdoctor(Request $request){
+        $s = $request->query('search');
+        if($s){
+            $casecount = Doctor::Where('doctor_id','LIKE',"%{$s}%")->orWhere('name_th','LIKE',"%{$s}%")->orWhere('lastname_th','LIKE',"%{$s}%")->paginate(10);
+        }else{
+        $casecount = Doctor::paginate(10);
+        }
+
+        // $casecount = Doctor::select(DB::raw('COUNT(case_m_d_s.caseid) as casetotal,CONCAT(doctors.name_th," ",doctors.lastname_th) as fullname,doctors.tel as tel,doctors.doctor_id as doctorid'))
+        // ->leftjoin('case_m_d_s', 'doctors.doctor_id','=','case_m_d_s.doctor_id')->groupBy('doctors.doctor_id','doctors.tel','doctors.name_th','doctors.lastname_th')->paginate(6);
+        return view('SupportAndDoctor.showdoctor')->with('count',$casecount)->with('s',$s);
     }
 
     function doctordetail($doctor_id){

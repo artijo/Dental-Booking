@@ -18,7 +18,7 @@ class Doctor extends Model
     protected $touchs = ['specialists'];
 
     public function cases() {
-        return $this->hasMany(CaseMD::class, 'caseid');
+        return $this->hasMany(CaseMD::class, 'doctor_id');
     }
     public function specialists() {
         return $this->belongsToMany(Specialist::class,'doctor_specialist','doctor_id','specialist_id')->withTimestamps();
