@@ -1,28 +1,45 @@
 @extends('layouts.global')
-@section('title') เข้าสู่ระบบสำหรับผู้ดูแล @endsection
+@section('title') เพิ่มข้อมูลแพทย์ @endsection
 @section('content')
-    <form action="{{route('doctor.storedoctor')}}" method="POST">
+<div class="a-container">
+    <div class="space"></div>
+    <div class="head-title"><h1>เพิ่มข้อมูลแพทย์</h1></div>
+    <div class="space"></div>
+<nav class="dashboard-nav">
+    <ul>
+        <li><a href="{{route('admin.index')}}">หน้าหลัก</a></li>
+        <li><a href="{{route('patientlist.showpatient')}}">รายชื่อผู้รักษา</a></li>
+        <li><a href="{{route('doctor.showdoctor')}}" class="current">รายชื่อแพทย์</a></li>
+        <li><a href="{{route('showcase.showcase')}}">ข้อมูลเคสการรักษา</a></li>
+        <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
+    </ul>
+</nav>
+<div class="content-dashboard">
+    <form action="{{route('doctor.storedoctor')}}" method="POST" class="add-data">
     @csrf
+    <div class="add-data-item">
         <label for="name_th">ชื่อ(ภาษาไทย ไม่ต้องมีคำนำหน้าชื่อ)</label>
         <input type="text" name="name_th" max="255" pattern="[\u0E00-\u0E7F]+" required> <br>
         <label for="lastname_th">นามสกุล(ภาษาไทย)</label>
         <input type="text" name="lastname_th" max="255" pattern="[\u0E00-\u0E7F]+" required> <br>
-        <label for="name_en">ขื่อ(ภาษาอังกฤษ)</label>
+        <label for="name_en">ขื่อ(ภาษาอังกฤษ)</label><br>
         <input type="text" name="name_en" max="255" pattern="[a-zA-Z]+"> <br>
         <label for="lastname_en">นามสกุล(ภาษาอังกฤษ)</label>
         <input type="text" name="lastname_en" max="255" pattern="[a-zA-Z]+"> <br>
-        <label for="email">อีเมล</label>
+        <label for="email">อีเมล</label><br>
         <input type="text" name="email" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required> <br>
+    </div>
+    <div class="add-data-item">
         @if(session()->has('error'))
             {{ session()->get('error') }}
         @endif
-        <label for="password">รหัสผ่าน</label>
+        <label for="password">รหัสผ่าน</label><br>
         <input type="password" name="password" required> <br>
-        <label for="password">ยืนยันรหัสผ่าน</label>
+        <label for="password">ยืนยันรหัสผ่าน</label><br>
         <input type="password" name="password_cf" required> <br>
-        <label for="tel">เบอร์โทรศัพท์</label>
+        <label for="tel">เบอร์โทรศัพท์</label><br>
         <input type="text" name="tel" pattern="[0-9]{10}"> <br>
-        <label for="specialist_id">ความเชี่ยวชาญ</label>
+        <label for="specialist_id">ความเชี่ยวชาญ</label><br>
         @if(!empty($spacialist) && count($spacialist) > 0)
             <select class="specailist" name="specialist_id[]" id="specialist" multiple="multiple" >
                 @foreach($spacialist as $list)
@@ -32,6 +49,9 @@
         @else
         ไม่มีข้อมูลเฉพาะทางในขณะนี้<br>
         @endif
-        <input type="submit" value="บันทึกข้อมูล">
+        <input type="submit" value="บันทึกข้อมูล" class="btn btn-plus mt-5">
+    </div>
     </form>
+</div>
+</div>
     @endsection

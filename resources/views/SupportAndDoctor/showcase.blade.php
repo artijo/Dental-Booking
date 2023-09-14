@@ -3,7 +3,7 @@
 @section('content')
 <div class="a-container">
     <div class="space"></div>
-    <div class="head-title"><h1>รายชื่อผู้รักษา</h1></div>
+    <div class="head-title"><h1>ข้อมูลการนัด</h1></div>
     <div class="space"></div>
 <nav class="dashboard-nav">
     <ul>
@@ -15,6 +15,13 @@
     </ul>
 </nav>
 <div class="content-dashboard">
+    <div class="mb-3 flex justify-between items-center">
+        <form action="" method="GET" class="search">
+            <input type="text" name="search" placeholder="ค้นหารายการนัด">
+            <input type="submit" value="ค้นหา">
+        </form>
+        <a href=""><button class="btn btn-plus">เพิ่มข้อมูลการนัด</button></a>
+    </div>
     <table class="table-show">
         <tr>
         <th>รายการ</th>
@@ -23,6 +30,11 @@
         <th>สถานะการนัด</th>
         <th>หมายเหตุ</th>
         </tr>
+        @if(count($booking) <= 0)
+        <tr>
+            <td colspan="5" class="text-center">ไม่มีข้อมูลการนัด</td>
+        </tr>
+        @else
         @foreach($booking as $book) 
         <tr>
             <td>{{$book->booking_title}}</td>
@@ -37,6 +49,7 @@
             <td><a href='#'>รายละเอียดเพิ่มเติม</a></td>
         </tr> 
        @endforeach
+         @endif
     </table>
 </div>
 </div>

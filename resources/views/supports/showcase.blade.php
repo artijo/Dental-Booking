@@ -15,13 +15,24 @@
     </ul>
 </nav>
 <div class="content-dashboard">
+    <div class="mb-3 flex justify-between items-center">
+        <form action="" method="GET" class="search">
+            <input type="text" name="search" placeholder="ค้นหาเคสการรักษา">
+            <input type="submit" value="ค้นหา">
+        </form>
+        <a href=""><button class="btn btn-plus">เพิ่มข้อมูลการรักษา</button></a>
+    </div>
     <table class="table-show">
         <tr>
             <th>ลำดับ</th>
             <th>รายการ</th>
             <th colspan="2">สถานะ</th>
         </tr>
-    
+    @if(count($cases) <= 0)
+        <tr>
+            <td colspan="4" class="text-center">ไม่มีข้อมูลเคสการรักษา</td>
+        </tr>
+    @else
     @foreach ($cases as $item)
         <tr>
             <td>{{$cases->firstItem()+$loop->index}}</td>
@@ -35,6 +46,7 @@
         
     @endforeach
     {{$cases}}
+    @endif
 </table>
 </div>
 </div>

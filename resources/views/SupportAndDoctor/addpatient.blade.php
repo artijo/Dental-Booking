@@ -1,17 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.global')
+@section('title') เพิ่มข้มูลผู้รักษา @endsection
+@section('content')
+<div class="a-container">
+    <div class="space"></div>
+    <div class="head-title"><h1>เพิ่มข้อมูลผู้รักษา</h1></div>
+    <div class="space"></div>
+<nav class="dashboard-nav">
+    <ul>
+        <li><a href="{{route('admin.index')}}">หน้าหลัก</a></li>
+        <li><a href="{{route('patientlist.showpatient')}}" class="current">รายชื่อผู้รักษา</a></li>
+        <li><a href="{{route('doctor.showdoctor')}}">รายชื่อแพทย์</a></li>
+        <li><a href="{{route('showcase.showcase')}}">ข้อมูลเคสการรักษา</a></li>
+        <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
+    </ul>
+</nav>
+<div class="content-dashboard">
     @error('idcard')
     {{ $message }}
     @enderror
-    <form action="{{route('admin.storepatient')}}" method="post">
+    <form action="{{route('admin.storepatient')}}" method="post" class="add-data">
     @csrf
+    <div class="add-data-item">
         <label for="idcard">บัตรประจำตัวประชาชน</label> <br>
         <input type="number" name="idcard" pattern="[0-9]{13}" required><br>
         <label for="name_th">ชื่อ (ภาษาไทย)</label><br>
@@ -24,6 +33,8 @@
         <input type="text" name="lastname_en" max="255" pattern="[a-zA-Z]+"><br>
         <label for="tel">เบอร์โทรศัพท์</label><br>
         <input type="tel" name="tel" pattern="[0-9]{10}" required><br>
+    </div>
+    <div class="add-data-item">
         <label for="email">อีเมล</label><br>
         <input type="email" name="email" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"><br>
         <label for="gender">เพศ</label><br>
@@ -35,8 +46,9 @@
         <input type="date" name="birthday" required><br>
         <label for="intolerance">โรคประจำตัว</label><br>
         <input type="text" name="intolerance" ><br>
-        <input type="submit" value="บันทึกข้อมูล">
-
+        <input type="submit" value="บันทึกข้อมูล" class="btn btn-plus mt-5">
+    </div>
     </form>
-</body>
-</html>
+</div>
+</div>
+@endsection

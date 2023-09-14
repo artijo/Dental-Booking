@@ -15,6 +15,13 @@
     </ul>
 </nav>
 <div class="content-dashboard">
+    <div class="mb-3 flex justify-between items-center">
+        <form action="" method="GET" class="search">
+            <input type="text" name="search" placeholder="ค้นหาผู้รักษา">
+            <input type="submit" value="ค้นหา">
+        </form>
+        <a href="{{route('patient.addpatient')}}"><button class="btn btn-plus">เพิ่มข้อมูลผู้รักษา</button></a>
+    </div>
     <table class="table-show">
     <tr>
         <th>ลำดับ</th>
@@ -22,6 +29,11 @@
         <th>นามสกุล</th>
         <th colspan="2">เบอร์โทรศัพท์</th>
     </tr>
+    @if(count($page) <= 0)
+        <tr>
+            <td colspan="5" class="text-center">ไม่มีข้อมูลผู้รักษา</td>
+        </tr>
+    @else
           @foreach ( $page as $pt) 
                 <tr>
                 <td>{{$page->firstItem()+$loop->index}}</td>
@@ -33,6 +45,7 @@
         @endforeach
     </table>
  {{$page}}
+    @endif
  
 </div>
 </div> 
