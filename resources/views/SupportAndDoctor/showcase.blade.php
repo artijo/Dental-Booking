@@ -1,5 +1,5 @@
 @extends('layouts.global')
-@section('title') DashBoard For Support And Admin @endsection
+@section('title') ข้อมูลการนัด @endsection
 @section('content')
 <div class="a-container">
     <div class="space"></div>
@@ -20,15 +20,14 @@
             <input type="text" name="search" placeholder="ค้นหารายการนัด">
             <input type="submit" value="ค้นหา">
         </form>
-        <a href=""><button class="btn btn-plus">เพิ่มข้อมูลการนัด</button></a>
+        <a href="{{route('booking.addbooking')}}"><button class="btn btn-plus">เพิ่มข้อมูลการนัด</button></a>
     </div>
     <table class="table-show">
         <tr>
         <th>รายการ</th>
         <th>วันที่นัดหมาย</th>
         <th>รายละเอียด</th>
-        <th>สถานะการนัด</th>
-        <th>หมายเหตุ</th>
+        <th colspan="2">สถานะการนัด</th>
         </tr>
         @if(count($booking) <= 0)
         <tr>

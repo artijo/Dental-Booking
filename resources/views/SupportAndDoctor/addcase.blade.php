@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Case</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-</head>
-<body>
-    <form action="{{route('admin.storecase')}}" method="POST">
+@extends('layouts.global')
+@section('title') เพิ่มเคสการรักษา @endsection
+@section('content')
+<div class="a-container">
+    <div class="space"></div>
+    <div class="head-title"><h1>เพิ่มเคสการรักษา</h1></div>
+    <div class="space"></div>
+<nav class="dashboard-nav">
+    <ul>
+        <li><a href="{{route('admin.index')}}">หน้าหลัก</a></li>
+        <li><a href="{{route('patientlist.showpatient')}}">รายชื่อผู้รักษา</a></li>
+        <li><a href="{{route('doctor.showdoctor')}}">รายชื่อแพทย์</a></li>
+        <li><a href="{{route('showcase.showcase')}}" class="current">ข้อมูลเคสการรักษา</a></li>
+        <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
+    </ul>
+</nav>
+<div class="content-dashboard">
+    <form action="{{route('admin.storecase')}}" method="POST" class="add-data">
         @csrf
+        <div class="add-data-item">
         <label for="idcard">ผู้เข้ารับการรักษา</label><br>
         <select class="selectidcard" name="idcard">
             @foreach($patient as $list)
@@ -48,9 +55,10 @@
             <option value="2">ไม่เสร็จ (ผู้ป่วยไม่มาตามนัด)</option>
             <option value="3">ปิดเคส (เสร็จสิ้น)</option>
         </select><br>
-        <input type="submit" value="บันทึกเคสการรักษา">
+        <input type="submit" value="เพิ่มข้อมูล" class="btn btn-plus mt-5">
+    </div>
     </form>
     
-    <script src="{{asset('js/select2.js')}}"></script>
-</body>
-</html>
+</div>
+</div>
+@endsection

@@ -20,7 +20,7 @@
             <input type="text" name="search" placeholder="ค้นหาเคสการรักษา">
             <input type="submit" value="ค้นหา">
         </form>
-        <a href=""><button class="btn btn-plus">เพิ่มข้อมูลการรักษา</button></a>
+        <a href="{{route('patient.addcase')}}"><button class="btn btn-plus">เพิ่มข้อมูลการรักษา</button></a>
     </div>
     <table class="table-show">
         <tr>
