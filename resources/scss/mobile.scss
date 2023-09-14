@@ -36,6 +36,16 @@ h1, h2, h3, h4, h5, h6 {
 .btn-plus {
     padding: 10px;
 }
+.btn-edit {
+    padding: 10px;
+    background-color: #22dbe8;
+    color: #000;
+}
+.btn-delete {
+    padding: 10px;
+    background-color: #d83030;
+    color: #fff;
+}
 .a-container {
     max-width: 100%;
     padding-right: 16px;
@@ -138,9 +148,18 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px;
     .content {
         background-color: #fff;
-        padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        .head {
+            background-color: $btn-color;
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+            padding: 10px;
+            color: #fff;
+        }
+        .body {
+            padding: 20px;
+        }
     }
     .sayhello {
         text-align: center;
