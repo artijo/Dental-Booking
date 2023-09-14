@@ -2,6 +2,8 @@
 @section('title') ตารางนัด @endsection
 @section('content')
 <div class='patient'>
+<div class="a-container">
+
         <div class='detail'>
             <ul>
                 <li><a href="{{route('patient.logout')}}">ออกจากระบบ</a></li>
@@ -9,11 +11,11 @@
         </div>
                 <p>สวัสดีคุณ {{$user->name_th}} {{$user->lastname_th}}</p>
                 <p>ประวัติ-ตารางเวลานัดหมาย</p>
-                    <table class='fixed'>
+                    <table class='table-show'>
                         <th>รายการ</th>
                         <th>วันที่นัดหมาย</th>
                         <th>รายละเอียด</th>
-                        <th>สถานะการนัด</th>
+                        <th colspan="2">สถานะการนัด</th>
                         @if(!empty($cases) && count($cases) > 0)
                                 @foreach($cases as $case)
                                 @foreach($case->bookings as $booking)
@@ -33,5 +35,6 @@
                 @endif
                 </table>
 
+    </div>
     </div>
 @endsection

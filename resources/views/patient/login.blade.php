@@ -5,7 +5,7 @@
         <div class="a-container">
             <div class="login">
                 <div class="detail">
-                    <h1>เข้าสู่ระบบ</h1>
+                    <h1 class="title-login">เข้าสู่ระบบ</h1>
                     <p>หากไม่พบข้อมูลโปรดติดต่อเจ้าหน้าที่</p>
                 </div>
                 @error('idcard')

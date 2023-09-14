@@ -8,10 +8,10 @@
 <nav class="dashboard-nav">
     <ul>
         <li><a href="{{route('admin.index')}}">หน้าหลัก</a></li>
-        <li><a href="{{route('patientlist.showpatient')}}" class="current">รายชื่อผู้รักษา</a></li>
+        <li><a href="{{route('patientlist.showpatient')}}">รายชื่อผู้รักษา</a></li>
         <li><a href="{{route('doctor.showdoctor')}}">รายชื่อแพทย์</a></li>
         <li><a href="{{route('showcase.showcase')}}">ข้อมูลเคสการรักษา</a></li>
-        <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
+        <li><a href="{{route('showcase.showbooking')}}"  class="current">ข้อมูลการนัด</a></li>
     </ul>
 </nav>
 <div class="content-dashboard">
