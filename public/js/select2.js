@@ -7,3 +7,6 @@ $('.selectidcard').select2({
   $('.selectcase').select2({
     placeholder: 'Select an option'
   });
+  $('.specailist').select2({
+    placeholder: 'Select an option'
+  });

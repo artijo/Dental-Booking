@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Detail</title>
-</head>
-<body>
+@extends('layouts.global')
+@section('title') เข้าสู่ระบบสำหรับผู้ดูแล @endsection
+@section('content')
+<div class="supports">
+    <div class="a-container">
     <h3>รหัสทันตแพทย์(ID):{{$doctor->doctor_id}}</h3><br>
     ชื่อ-นามสกุล: ทพ.{{$doctor->name_th}} {{$doctor->lastname_th}}<br>
     Fullname: DR.{{$doctor->name_en}} {{$doctor->lastname_en}}<br>
@@ -18,6 +15,6 @@
         <li>{{$special->name_th}}</li>
         @endforeach
     </ul>
-    
-</body>
-</html>
+    </div>
+    </div>
+@endsection

@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-</head>
-<body>
+@extends('layouts.global')
+@section('title') เข้าสู่ระบบสำหรับผู้ดูแล @endsection
+@section('content')
     <form action="{{route('doctor.storedoctor')}}" method="POST">
     @csrf
         <label for="name_th">ชื่อ(ภาษาไทย ไม่ต้องมีคำนำหน้าชื่อ)</label>
@@ -30,7 +24,7 @@
         <input type="text" name="tel" pattern="[0-9]{10}"> <br>
         <label for="specialist_id">ความเชี่ยวชาญ</label>
         @if(!empty($spacialist) && count($spacialist) > 0)
-            <select name="specialist_id[]" id="specialist" multiple="multiple">
+            <select class="specailist" name="specialist_id[]" id="specialist" multiple="multiple" >
                 @foreach($spacialist as $list)
                 <option value="{{ $list->specialist_id }}">{{ $list->name_th }}</option>
                 @endforeach
@@ -40,5 +34,4 @@
         @endif
         <input type="submit" value="บันทึกข้อมูล">
     </form>
-</body>
-</html>
+    @endsection
