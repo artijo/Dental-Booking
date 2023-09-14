@@ -56,7 +56,7 @@ class PatientController extends Controller
         $case_type = Casetype::all();
         $patient = Patient::all();
         if(session()->has('doctor_id')){
-            $doctor = Doctor::where('doctor_id',session('doctor_id'))->first();
+            $doctor = Doctor::where('doctor_id',session('doctor_id'))->get();
         }
         else{
             $doctor = Doctor::all();

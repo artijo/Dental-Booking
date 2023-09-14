@@ -6,6 +6,7 @@
     <div class="head-title"><h1>เพิ่มข้อมูลผู้รักษา</h1></div>
     <div class="space"></div>
 <nav class="dashboard-nav">
+    @if(session('supportid'))
     <ul>
         <li><a href="{{route('admin.index')}}">หน้าหลัก</a></li>
         <li><a href="{{route('patientlist.showpatient')}}" class="current">รายชื่อผู้รักษา</a></li>
@@ -13,6 +14,14 @@
         <li><a href="{{route('showcase.showcase')}}">ข้อมูลเคสการรักษา</a></li>
         <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
     </ul>
+    @elseif(session('doctor_id'))
+    <ul>
+        <li><a href="{{route('Doctor')}}">หน้าหลัก</a></li>
+        <li><a href="{{route('Doctor.shpwpatient')}}" class="current">รายชื่อผู้รักษาของคุณ</a></li>
+        <li><a href="{{route('doctor.showcase')}}">ประวัติเคสการรักษาของคุณ</a></li>
+        <li><a href="{{route('doctor.showbooking')}}">บันทึกการนัดของคุณ</a></li>
+    </ul>
+    @endif
 </nav>
 <div class="content-dashboard">
     @error('idcard')
