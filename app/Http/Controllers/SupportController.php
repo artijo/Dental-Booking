@@ -44,7 +44,8 @@ class SupportController extends Controller
 
     function showcasedetail($caseid){
         $case = CaseMD::where('caseid', $caseid)->first();
-        return view("Supports.casedetail",compact('case'));
+        $support = Support::where('support_id',session()->get('supportid'))->first();
+        return view("Supports.casedetail",compact('case','support'));
     }
 
     function showdoctor(){
