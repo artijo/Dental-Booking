@@ -40,7 +40,7 @@
                 <td>{{$pt->name_th}}</td>
                 <td>{{$pt->lastname_th}}</td>
                 <td>{{$pt->tel}}</td>
-                <td><a href='#'>รายละเอียดเพิ่มเติม</a></td>
+                <td><a href="{{url('/admin/patient/'.$pt->idcard)}}">รายละเอียดเพิ่มเติม</a></td>
                 </tr>
         @endforeach
     </table>

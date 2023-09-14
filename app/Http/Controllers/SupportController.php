@@ -6,6 +6,7 @@ use App\Models\CaseMD;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use App\Models\Support;
+use App\Models\Patient;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
@@ -54,6 +55,12 @@ class SupportController extends Controller
 
     function doctordetail($doctor_id){
         $doctor = Doctor::where('doctor_id',$doctor_id)->first();
-        return view('SupportAndDoctor.doctordetail',compact('doctor'));
+        $support = Support::where('support_id',session()->get('supportid'))->first();
+        return view('SupportAndDoctor.doctordetail',compact('doctor','support'));
+    }
+    function patientdetail($idcard){
+        $patient = Patient::where('idcard',$idcard)->first();
+        $support = Support::where('support_id',session()->get('supportid'))->first();
+        return view('Supports.patientdetail',compact('patient','support'));
     }
 }
