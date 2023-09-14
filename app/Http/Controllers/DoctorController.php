@@ -13,11 +13,15 @@ use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
 {
+    function index(){
+        $doctor = Doctor::where('doctor_id', session(('doctor_id')))->first();
+        return view('Doctor.index')->with('doctor',$doctor);
+    }
     function adddoctor(){
         $spacialist = Specialist::select('specialist_id','name_th')->get();
         return view('SupportAndDoctor.adddoctor')->with('spacialist',$spacialist);
     }
-    function index(){
+    function showpatient(){
         $dt = session('doctor_id');
         $cases = CaseMD::select(DB::raw('count(caseid) as casetotal, CONCAT(patients.name_th, " ", patients.lastname_th) as fullname, patients.tel as tel, patients.idcard as idcard'))
     ->join('patients', 'case_m_d_s.idcard', '=', 'patients.idcard')->where('doctor_id',$dt)
@@ -25,7 +29,7 @@ class DoctorController extends Controller
     ->paginate(6);
         $doctor = Doctor::where('doctor_id',$dt)->first();
         // $patient = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(6);
-        return view('Doctor.index')->with('doctor',$doctor)->with('cases',$cases);
+        return view('Doctor.showpatient')->with('doctor',$doctor)->with('cases',$cases);
     }
 
     function logout(){
