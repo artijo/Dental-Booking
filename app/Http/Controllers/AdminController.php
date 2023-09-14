@@ -189,15 +189,21 @@ class AdminController extends Controller
     }
     function updatedoctor(Request $request, $id){
         $data = Doctor::where('doctor_id',$id)->first();
+                //caheckmathpassword
+        if ($request->password != $request->password_cf) {
+            return back()->with('error','รหัสผ่านไม่ตรงกัน');
+        }
         if ($request->password == null) {
             $request->password = $data->password;
         }else{
             $request->password = Hash::make($request->password);
         }
-        //caheckmathpassword
-        if ($request->password != $request->password_cf) {
-            return back()->with('error','รหัสผ่านไม่ตรงกัน');
+
+        foreach($request->specialist_id as $morespecial){
+            $addmoresp[] = $morespecial;
         }
+        
+        foreach($addmoresp as $more){
         Doctor::Where('doctor_id',$id)
         ->update([
         'name_en' => $request->name_en,
@@ -207,8 +213,11 @@ class AdminController extends Controller
         'email' => $request->email,
         'password' => $request->password,
         'tel' => $request->tel,
-        'specialist_id' => $request->specialist_id
+        'specialist_id' => $more
         ]);
+    }
+        $specialist = $addmoresp;
+            $data->specialists()->attach($specialist);
         return redirect('/admin');
     }
     function deletedoctor($id){
