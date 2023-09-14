@@ -55,7 +55,13 @@ class PatientController extends Controller
     function addcase(){
         $case_type = Casetype::all();
         $patient = Patient::all();
-        $doctor = Doctor::all();
+        if(session()->has('doctor_id')){
+            $doctor = Doctor::where('doctor_id',session('doctor_id'))->first();
+        }
+        else{
+            $doctor = Doctor::all();
+        }
+        
         return view('SupportAndDoctor.addcase')->with('case_type',$case_type)->with('patient',$patient)->with('doctor',$doctor);
     }
     function showpatient(){
