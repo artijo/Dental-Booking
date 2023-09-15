@@ -23,13 +23,22 @@ class DoctorController extends Controller
     }
     function showpatient(){
         $dt = session('doctor_id');
+        $s = request()->query('search');
+        if($s){
+            $cases = CaseMD::select(DB::raw('count(caseid) as casetotal, CONCAT(patients.name_th, " ", patients.lastname_th) as fullname, patients.tel as tel, patients.idcard as idcard'))
+    ->join('patients', 'case_m_d_s.idcard', '=', 'patients.idcard')->where('doctor_id',$dt)
+    ->groupBy('patients.name_th','patients.lastname_th','patients.tel', 'patients.idcard')
+    ->where('patients.name_th','LIKE',"%{$s}%")->orWhere('patients.lastname_th','LIKE',"%{$s}%")->orWhere('patients.tel','LIKE',"%{$s}%")->orWhere('patients.idcard','LIKE',"%{$s}%")
+    ->paginate(6);
+        }else{
         $cases = CaseMD::select(DB::raw('count(caseid) as casetotal, CONCAT(patients.name_th, " ", patients.lastname_th) as fullname, patients.tel as tel, patients.idcard as idcard'))
     ->join('patients', 'case_m_d_s.idcard', '=', 'patients.idcard')->where('doctor_id',$dt)
     ->groupBy('patients.name_th','patients.lastname_th','patients.tel', 'patients.idcard')
     ->paginate(6);
+        }
         $doctor = Doctor::where('doctor_id',$dt)->first();
         // $patient = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(6);
-        return view('Doctor.showpatient')->with('doctor',$doctor)->with('cases',$cases);
+        return view('Doctor.showpatient')->with('doctor',$doctor)->with('cases',$cases)->with('s',$s);
     }
 
     function logout(){
@@ -63,15 +72,20 @@ class DoctorController extends Controller
     }
 
     function showcase(){
-        $cases = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(20);
-        return view('Doctor.showcase')->with('cases',$cases);
+        $s = request()->query('search');
+        if($s){
+            $cases = CaseMD::where('doctor_id', session(('doctor_id')))->where('caseid','LIKE',"%{$s}%")->orWhere('case_title','LIKE',"%{$s}%")->orWhere('case_detail','LIKE',"%{$s}%")->paginate(10);
+        }else{
+        $cases = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(10);
+        }
+        return view('Doctor.showcase')->with('cases',$cases)->with('s',$s);
     }
     function doctorcasedetail($caseid){
         $case = CaseMD::where('caseid', $caseid)->first();
         return view("Doctor.doctorcasedetail",compact('case'));
     }
     function showbooking(){
-        $booking = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(20);
+        $booking = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(10);
         return view('Doctor.showbooking',compact('booking'));
     }
 }

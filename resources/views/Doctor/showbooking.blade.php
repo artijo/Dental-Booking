@@ -14,11 +14,7 @@
     </ul>
 </nav>
 <div class="content-dashboard">
-    <div class="mb-3 flex justify-between items-center">
-        <form action="" method="GET" class="search">
-            <input type="text" name="search" placeholder="ค้นหาบันทึกการนัด">
-            <input type="submit" value="ค้นหา">
-        </form>
+    <div class="mb-3 flex justify-end items-center">
         <a href="{{route('booking.addbooking')}}"><button class="btn btn-plus">เพิ่มข้อมูลการนัด</button></a>
     </div>
     <table class="table-show">
