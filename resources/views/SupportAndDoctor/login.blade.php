@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <a href="/admin/support/login">สำหรับผู้ดูแล</a>
-    <a href="/admin/doctor/login">สำหรับแพทย์</a>
-</body>
-</html>
+@extends('layouts.global')
+@section('title') login @endsection
+@section('content')
+<div class="supports">
+    <div class="a-container">
+        <div class="box-login">
+        <a href="/admin/support/login" class="btn btn-login pt" >สำหรับผู้ดูแล</a>
+        <a href="/admin/doctor/login" class="btn btn-login pt">สำหรับแพทย์</a>
+        </div>
+    </div>
+</div>
+   
+@endsection
