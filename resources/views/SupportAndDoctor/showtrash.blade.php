@@ -8,11 +8,12 @@
 @include('components.adminanddoctornav')
 <div class="content-dashboard">
     @if(!empty($patient) && COUNT($patient) > 0)
-    <table class="table-show">
+    <h2 class="text-2xl">ผู้รักษา</h2>
+    <table class="table-show mb-5">
         <tr>
             <th>รหัสบัตรประชาชน</th>
             <th>ชื่อ-นามสกุล</th>
-            <th>อี-เมล</th>
+            <th>อีเมล</th>
             <th>เบอร์โทรศัพท์</th>
             <th colspan="3">วันเกิด</th>
         </tr>
@@ -30,7 +31,8 @@
     @endif
 
     @if(!empty($doctor) && COUNT($doctor) > 0)
-    <table class="table-show">
+    <h2 class="text-2xl">แพทย์</h2>
+    <table class="table-show mb-5">
         <tr>
             <th>รหัสทันตแพทย์</th>
             <th>ชื่อ-นามสกุล</th>
@@ -50,7 +52,8 @@
     @endif
 
     @if(!empty($case) && COUNT($case) > 0)
-    <table class="table-show">
+    <h2 class="text-2xl">เคสการรักษา</h2>
+    <table class="table-show mb-5">
         <tr>
             <th>รหัสเคส</th>
             <th>หัวเรื่อง</th>
@@ -75,7 +78,8 @@
     @endif
 
     @if(!empty($booking) && COUNT($booking) > 0)
-    <table class="table-show">
+    <h2 class="text-2xl">การนัด</h2>
+    <table class="table-show mb-5">
         <tr>
             <th>รหัสตารางนัด</th>
             <th>รหัสเคส</th>
@@ -95,6 +99,7 @@
     @endif
 
     @if(!empty($support) && COUNT($support) > 0)
+    <h2 class="text-2xl">ผู้ดูแล</h2>
     <table class="table-show">
         <tr>
             <th>รหัสผู้ดูแล</th>
