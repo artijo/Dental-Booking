@@ -105,7 +105,8 @@ class AdminController extends Controller
 
     function deletepatient($idcard){
         Patient::where('idcard',$idcard)->delete();
-        return redirect('/admin');
+        CaseMD::where('idcard',$idcard)->delete();
+        return redirect('/admin/patientlist');
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     function storecase(Request $request){
@@ -156,7 +157,8 @@ class AdminController extends Controller
     }
     function deletecase($id){
         CaseMD::where('caseid',$id)->delete();
-        return redirect('/admin/doctor');
+        Booking::where('caseid',$id)->delete();
+        return redirect('/admin/showcase');
     }
 
     function storedoctor(Request $request){
@@ -245,7 +247,8 @@ class AdminController extends Controller
     }
     function deletedoctor($id){
         Doctor::where('doctor_id',$id)->delete();
-        return redirect('/admin');
+        CaseMD::where('doctor_id',$id)->delete();
+        return redirect('/admin/showdoctor');
     }
     function storebooking(Request $request){
         $bookingdata = Booking::select('booking_id')->orderBy('booking_id','desc')->first();

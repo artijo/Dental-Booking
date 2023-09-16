@@ -10,7 +10,7 @@
     @if($support->level === 0)
     <div class="flex justify-end gap-5 mb-5">
         <a href="{{url('/admin/patient/edit/'.$patient->idcard)}}"><button class="btn btn-edit">แก้ไขข้อมูล</button></a>
-        <a href=""><button class="btn btn-delete">ลบข้อมูล</button></a>
+        <a href="{{url('/admin/patient/delete/'.$patient->idcard)}}"><button class="btn btn-delete">ลบข้อมูล</button></a>
     </div>
     @endif
     <div class="content">

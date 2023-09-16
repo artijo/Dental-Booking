@@ -10,7 +10,7 @@
     @if($support->level === 0)
     <div class="flex justify-end gap-5 mb-5">
         <a href="{{url('/admin/case/edit/'.$case->caseid)}}"><button class="btn btn-edit">แก้ไขข้อมูล</button></a>
-        <a href=""><button class="btn btn-delete">ลบข้อมูล</button></a>
+        <a href="{{url('/admin/case/delete/'.$case->caseid)}}"><button class="btn btn-delete">ลบข้อมูล</button></a>
     </div>
     @endif
         <div class="content">
@@ -22,7 +22,7 @@
                 <p>{{$case->case_title}}</p>
             <h3>รายละเอียดการรักษา</h3>
                  <ul><li>{{$case->case_detail}}</li></ul> 
-            <h3>แพทย์ที่รักษา</h3>{{$case->doctor->name_en}} 
+            <h3>แพทย์ที่รักษา</h3>{{$case->doctor->name_th}} 
            <h3>วันที่นัดหมาย</h3> 
                 @foreach($case->bookings as $time)
                         @if($time->booking_date != NULL) 
