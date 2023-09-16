@@ -21,4 +21,13 @@
             
         </div>
     </div>
+    @if(session()->has('error'))
+    <script>
+        Swal.fire({
+        icon: 'error',
+        title: 'เข้าสู่ระบบไม่สำเร็จ',
+        text: 'อีเมลหรือรหัสผ่านไม่ถูกต้อง',
+})
+    </script>
+@endif
 @endsection

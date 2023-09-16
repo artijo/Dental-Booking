@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}?ver={{config('app.version')}}" type='text/css' media='all'>
     <link rel="stylesheet" href="{{ asset('css/mobile.css') }}?ver={{config('app.version')}}" type='text/css' media='all'>
     <link rel="stylesheet" href="{{ asset('css/desktop.css') }}?ver={{config('app.version')}}" type='text/css' media='(min-width: 990px)'>
-
+    <script src="{{asset('js/sweetalert2/sweetalert2.min.js')}}"></script>
 </head>
 <body>
     <header class="header">
@@ -29,7 +29,6 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="{{asset('js/select2/js/select2.min.js')}}"></script>
-    <script src="{{asset('js/sweetalert2/sweetalert2.min.js')}}"></script>
     <script src="{{asset('js/select2.js')}}"></script>
 </body>
 </html>
