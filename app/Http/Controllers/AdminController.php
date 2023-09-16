@@ -65,7 +65,9 @@ class AdminController extends Controller
         $patient = Patient::where('idcard',$idcard)->first();
         return view('SupportAndDoctor.editpatient')->with('patient',$patient);
     }
-    function updatepatient (Request $request, $idcard) {
+
+
+    function updatepatient_doctor (Request $request, $idcard) {
         $caseid = CaseMD::Where('idcard',$idcard)->first();
         Patient::Where('idcard',$idcard)
         ->update([
@@ -79,8 +81,28 @@ class AdminController extends Controller
         'intolerance' => $request->intolerance,
         'birthday' => $request->birthday
         ]);
-        return redirect('/admin/doctor/case/'.$caseid->caseid);
+        return redirect('/admin/doctor/patient/'.$caseid->idcard);
     }
+
+
+    function updatepatient_admin (Request $request, $idcard) {
+        $caseid = CaseMD::Where('idcard',$idcard)->first();
+        Patient::Where('idcard',$idcard)
+        ->update([
+        'name_en' => $request->name_en,
+        'lastname_en' => $request->lastname_en,
+        'name_th' => $request->name_th,
+        'lastname_th' => $request->lastname_th,
+        'tel' => $request->tel,
+        'email' => $request->email,
+        'gender' => $request->gender,
+        'intolerance' => $request->intolerance,
+        'birthday' => $request->birthday
+        ]);
+        return redirect('/admin/patient/'.$caseid->idcard);
+    }
+
+
     function deletepatient($idcard){
         Patient::where('idcard',$idcard)->delete();
         return redirect('/admin');
@@ -345,5 +367,9 @@ class AdminController extends Controller
         $supports = Support::paginate(10);
         }
         return view('supports.showsupport')->with('supports',$supports)->with('s',$s);
+    }
+
+    function showtrash(){
+        return view('SupportAndDoctor.showtrash');
     }
 }
