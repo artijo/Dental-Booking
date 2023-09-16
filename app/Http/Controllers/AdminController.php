@@ -25,6 +25,7 @@ class AdminController extends Controller
     function logout(){
         if(session()->has('supportid')){
             session()->pull('supportid');
+            session()->pull('level');
             return redirect()->route('supports.login');
         }
     }
@@ -334,5 +335,15 @@ class AdminController extends Controller
     function deletesupport($id){
         Support::where('support_id',$id)->delete();
         return redirect('/admin');
+    }
+
+    function showsupport(){
+        $s = request()->query('search');
+        if($s != null){
+            $supports = Support::where('name','like','%'.$s.'%')->orWhere('support_id','like','%'.$s.'%')->paginate(10);
+        }else{
+        $supports = Support::paginate(10);
+        }
+        return view('supports.showsupport')->with('supports',$supports)->with('s',$s);
     }
 }

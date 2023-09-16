@@ -12,6 +12,9 @@
         <li><a href="{{route('doctor.showdoctor')}}">รายชื่อแพทย์</a></li>
         <li><a href="{{route('showcase.showcase')}}" class="current">ข้อมูลเคสการรักษา</a></li>
         <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
+        @if(session('level') === 0)
+        <li><a href="">รายชื่อผู้ดูแลระบบ</a></li>
+        @endif
     </ul>
 </nav>
 <div class="content-dashboard">

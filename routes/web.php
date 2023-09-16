@@ -69,6 +69,7 @@ Route::middleware(['support.check'])->group(function () {
     Route::get('/admin/showdoctor/{doctor_id}',[SupportController::class,'doctordetail'])->name('doctor.detail');
     
     Route::middleware(['admin.check'])->group(function (){
+        Route::get('/admin/supportlist',[AdminController::class,'showsupport'])->name('admin.showsupport');
         Route::get('/admin/addsupport',[AdminController::class,'addsupport'])->name('admin.addsupport');
         Route::post('/admin/addsupport',[AdminController::class,'storesupport'])->name('admin.storesupport');
         Route::get('/admin/support/edit/{id}',[AdminController::class,'editsupport'])->name('admin.editsupport');
