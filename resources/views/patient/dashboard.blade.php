@@ -6,7 +6,7 @@
 
         <div class='detail'>
             <ul>
-                <li><a href="{{route('patient.logout')}}">ออกจากระบบ</a></li>
+                <li><a  href="{{route('patient.logout')}}">ออกจากระบบ</a></li>
             </ul>
         </div>
                 <p>สวัสดีคุณ {{$user->name_th}} {{$user->lastname_th}}</p>

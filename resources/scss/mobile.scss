@@ -262,6 +262,21 @@ th {
         border-radius: 10px;
     }
 }
+.box-casedetail{
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    h4{
+        margin-left: 40px;
+        margin-top: 5px;
+
+    }
+    .text-dt{
+        margin-left: 50px;
+    }
+}
 ._desktop {
     display: none;
 }
