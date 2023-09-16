@@ -17,6 +17,9 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     line-height: 1.2;
 }
+main {
+    overflow-x: hidden;
+}
 .btn {
     background-color: $btn-color;
     color: #fff;
@@ -283,4 +286,35 @@ th {
 }
 .space {
     padding: 16px 0;
+}
+@media screen and (max-width:768px) {
+    main {
+        overflow-x: auto;
+    }
+    .add-data {
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:576px) {
+    main {
+        overflow-x: auto;
+    }
+    .dashboard-nav{
+        overflow: auto;
+        width: 100%;
+        ul {
+            display: flex;
+            white-space: nowrap;
+            overflow-x: scroll;
+            width: max-content;
+            min-width: 100%;
+        }
+    }
+    .content-dashboard {
+        width: 100%;
+        padding: 20px 0;
+    }
+    .add-data {
+        flex-direction: column;
+    }
 }
