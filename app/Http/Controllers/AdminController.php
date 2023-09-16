@@ -408,7 +408,7 @@ class AdminController extends Controller
     }
     function deletesupport($id){
         Support::where('support_id',$id)->delete();
-        return redirect('/admin');
+        return redirect('/admin/supportlist')->with('success','ลบข้อมูลผู้ดูแลระบบสำเร็จ');
     }
 
     function showsupport(){
