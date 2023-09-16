@@ -8,6 +8,7 @@
         <li><a href="{{route('showcase.showbooking')}}"@if(Request::is('admin/*booking*')) class="current" @endif>ข้อมูลการนัด</a></li>
         @if(session('level') === 0)
         <li><a href="{{route('admin.showsupport')}}" @if(Request::is('admin/*support*')) class="current" @endif>รายชื่อผู้ดูแลระบบ</a></li>
+        <li><a href="{{route('admin.trash')}}" @if(Request::is('admin/*trash*')) class="current" @endif>ถังขยะ</a></li>
         @endif
     </ul>
     @elseif(session('doctor_id'))

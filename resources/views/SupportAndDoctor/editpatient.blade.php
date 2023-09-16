@@ -7,7 +7,11 @@
     <div class="space"></div>
 @include('components.adminanddoctornav')
 <div class="content-dashboard">
+    @if(session()->has('supportid'))
     <form action="{{url('admin/patient/update/'.$patient->idcard)}}" method="post" class="add-data">
+    @else
+    <form action="{{url('admin/doctor/patient/update/'.$patient->idcard)}}" method="post" class="add-data">
+    @endif
         @csrf
         @method('PUT')
         <div class="add-data-item">

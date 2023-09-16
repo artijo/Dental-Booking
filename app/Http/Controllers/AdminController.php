@@ -61,12 +61,7 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
-    function editpatient_doctor ($idcard) {
-        $patient = Patient::where('idcard',$idcard)->first();
-        return view('Doctor.editpatient')->with('patient',$patient);
-    }
-
-    function editpatient_admin ($idcard) {
+    function editpatient ($idcard) {
         $patient = Patient::where('idcard',$idcard)->first();
         return view('SupportAndDoctor.editpatient')->with('patient',$patient);
     }
@@ -372,5 +367,9 @@ class AdminController extends Controller
         $supports = Support::paginate(10);
         }
         return view('supports.showsupport')->with('supports',$supports)->with('s',$s);
+    }
+
+    function showtrash(){
+        return view('SupportAndDoctor.showtrash');
     }
 }

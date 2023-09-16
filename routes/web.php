@@ -79,6 +79,7 @@ Route::middleware(['support.check'])->group(function () {
         Route::get('/admin/patient/delete/{idcard}',[AdminController::class,'deletepatient'])->name('admin.deletepatient');
         Route::get('/admin/doctor/delete/{id}',[AdminController::class,'deletedoctor'])->name('admin.deletedoctor');
         Route::get('/admin/case/delete/{id}',[AdminController::class,'deletecase'])->name('admin.deletecase');
+        Route::get('/admin/trash',[AdminController::class,'showtrash'])->name('admin.trash');
     });
 });
 Route::middleware(['supportanddoctor'])->group(function (){
@@ -102,8 +103,7 @@ Route::middleware(['doctor.check'])->group(function (){
 });
 
 Route::middleware(['adminanddoctor'])->group(function(){
-    Route::get('/admin/patient/edit/{idcard}',[AdminController::class,'editpatient_admin'])->name('admin.editpatient');
-    Route::get('/admin/doctor/patient/edit/{idcard}',[AdminController::class,'editpatient_doctor'])->name('doctor.editpatient');
+    Route::get('/admin/patient/edit/{idcard}',[AdminController::class,'editpatient'])->name('admin.editpatient');
     Route::put('/admin/doctor/patient/update/{idcard}',[AdminController::class,'updatepatient_doctor'])->name('doctor.updatepatient');
     Route::put('/admin/patient/update/{idcard}',[AdminController::class,'updatepatient_admin'])->name('admin.updatepatient');
     Route::get('/admin/doctor/edit/{id}',[AdminController::class,'editdoctor'])->name('admin.editdoctor');
