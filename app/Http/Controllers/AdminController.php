@@ -162,7 +162,8 @@ class AdminController extends Controller
     function editcase($id){
         $case = CaseMD::where('caseid',$id)->first();
         $case_type = Casetype::all();
-        return view('SupportAndDoctor.editcase')->with('case',$case)->with('case_type',$case_type);
+        $doctor = Doctor::all();
+        return view('SupportAndDoctor.editcase')->with('case',$case)->with('case_type',$case_type)->with('doctor',$doctor);
     }
     function updatecase(Request $request, $id){
         CaseMD::Where('caseid',$id)
@@ -170,7 +171,8 @@ class AdminController extends Controller
         'case_title' => $request->case_title,
         'case_detail' => $request->case_detail,
         'case_status' => $request->case_status,
-        'casetype_id' => $request->casetype_id
+        'casetype_id' => $request->casetype_id,
+        'doctor_id' => $request->doctor_id
         ]);
         if(session()->has('doctor_id')){
             return redirect('/admin/doctor/case/'.$id)->with('success','แก้ไขข้อมูลเคสการรักษาสำเร็จ');

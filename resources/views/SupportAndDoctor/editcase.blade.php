@@ -28,7 +28,15 @@
         <label for='case_detail'>รายละเอียดการรักษา</label><br>
         <input type="text" name="case_detail" value="{{$case->case_detail}}"><br>
         <label for="doctor_id">รหัสนายแพทย์</label><br>
-        <input type="text" name="doctor_id" value="{{$case->doctor_id}}" disabled><br>
+        @if($doctor)
+            <select name="doctor_id" single>
+            @foreach($doctor as $list)
+                <option value="{{$list->doctor_id}}">{{$list->doctor_id}}</option>
+            @endforeach
+            </select><br>
+        @else
+        <input type="text" name="doctor_id" value="ไม่มีข้อมูลทันตแพทย์" disabled><br>
+        @endif
         <label for="case_status">สถานะการรักษา</label><br>
         <select single name="case_status" required>
             <option value="1">กำลังรักษา</option>
