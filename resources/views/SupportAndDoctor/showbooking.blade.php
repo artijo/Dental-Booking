@@ -40,7 +40,7 @@
             <td><a href='{{url('/admin/case/'.$book->case->caseid)}}'>รายละเอียดเคส</a></td>
             @if(session('level') == 0)
             <td><a href="{{url('/admin/booking/edit/'.$book->booking_id)}}">แก้ไข</a></td>
-            <td><a href="{{url('/admin/booking/delete/'.$book->booking_id)}}">ลบ</a></td>
+            <td><a href="{{url('/admin/booking/delete/'.$book->booking_id)}}" onclick="confrimation(event)">ลบ</a></td>
             @endif
         </tr> 
         
@@ -60,4 +60,26 @@
         })
     </script>
 @endif
+<script>
+    function confrimation(ev){
+        ev.preventDefault();
+        var urlto = ev.currentTarget.getAttribute('href');
+
+        Swal.fire({
+            title: 'คุณต้องการลบข้อมูลหรือไม่?',
+            text: "หากลบแล้วจะไม่สามารถกู้คืนได้",
+            icon: 'warning',
+            dangerMode: true,
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'ตกลง',
+            cancelButtonText: 'ยกเลิก'
+            }).then((result) => {
+                if(result.value){
+                    window.location.href = urlto;
+                }
+        })
+    }
+</script>
 @endsection

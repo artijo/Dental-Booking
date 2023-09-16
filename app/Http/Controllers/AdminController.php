@@ -121,7 +121,7 @@ class AdminController extends Controller
         }
         $patient->cases()->delete();
         Patient::where('idcard',$idcard)->delete();
-        return redirect('/admin/patientlist');
+        return redirect('/admin/patientlist')->with('success','ลบข้อมูลคนไข้สำเร็จ');
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     function storecase(Request $request){
@@ -181,7 +181,7 @@ class AdminController extends Controller
     function deletecase($id){
         CaseMD::where('caseid',$id)->delete();
         Booking::where('caseid',$id)->delete();
-        return redirect('/admin/showcase');
+        return redirect('/admin/showcase')->with('success','ลบข้อมูลเคสการรักษาสำเร็จ');
     }
 
     function storedoctor(Request $request){
@@ -285,7 +285,7 @@ class AdminController extends Controller
         $doctor->cases()->delete();
         
         $doctor->delete();
-        return redirect('/admin/showdoctor');
+        return redirect('/admin/showdoctor')->with('success','ลบข้อมูลแพทย์สำเร็จ');
     }
     function storebooking(Request $request){
         $bookingdata = Booking::select('booking_id')->orderBy('booking_id','desc')->withTrashed()->first();
@@ -338,7 +338,7 @@ class AdminController extends Controller
     }
     function deletebooking($booking_id){
         Booking::where('booking_id',$booking_id)->delete();
-        return redirect('/admin/showbooking');
+        return redirect('/admin/showbooking')->with('success','ลบข้อมูลการนัดหมายสำเร็จ');
     }
 
     function addsupport(){

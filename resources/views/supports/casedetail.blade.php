@@ -9,8 +9,8 @@
 <div class="content-dashboard">
     @if($support->level === 0)
     <div class="flex justify-end gap-5 mb-5">
-        <a href="{{url('/admin/case/edit/'.$case->caseid)}}"><button class="btn btn-edit">แก้ไขข้อมูล</button></a>
-        <a href="{{url('/admin/case/delete/'.$case->caseid)}}"><button class="btn btn-delete">ลบข้อมูล</button></a>
+        <a href="{{url('/admin/case/edit/'.$case->caseid)}}" class="btn btn-edit">แก้ไขข้อมูล</a>
+        <a href="{{url('/admin/case/delete/'.$case->caseid)}}" onclick="confrimation(event)" class="btn btn-delete">ลบข้อมูล</a>
     </div>
     @endif
         <div class="content">
@@ -53,5 +53,26 @@
     })
 </script>
 @endif
+<script>
+    function confrimation(ev){
+        ev.preventDefault();
+        var urlto = ev.currentTarget.getAttribute('href');
 
+        Swal.fire({
+            title: 'คุณต้องการลบข้อมูลหรือไม่?',
+            text: "หากลบแล้วจะไม่สามารถกู้คืนได้",
+            icon: 'warning',
+            dangerMode: true,
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'ตกลง',
+            cancelButtonText: 'ยกเลิก'
+            }).then((result) => {
+                if(result.value){
+                    window.location.href = urlto;
+                }
+        })
+    }
+</script>
 @endsection
