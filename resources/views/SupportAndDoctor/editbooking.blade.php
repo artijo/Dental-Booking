@@ -1,28 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{ url('/admin/booking/update/'.$booking->booking_id) }}" method="POST">
+@extends('layouts.global')
+@section('title') ข้อมูลเคสการรักษา @endsection
+@section('content')
+<div class="a-container">
+    <div class="space"></div>
+    <div class="head-title"><h1>ข้อมูลเคสการรักษา</h1></div>
+    <div class="space"></div>
+@include('components.adminanddoctornav')
+<div class="content-dashboard">
+    <form action="{{ url('/admin/booking/update/'.$booking->booking_id) }}" method="POST" class="add-data">
         @csrf
         @method('PUT')
-        <label for="caseid">รหัสเคส</label>
+        <div class="add-data-item">
+        <label for="caseid">รหัสเคส</label><br>
         <input type="text" name="caseid" value="{{$booking->caseid}}" disabled><br>
 
-        <label for="booking_title">หัวข้อการนัด</label>
+        <label for="booking_title">หัวข้อการนัด</label><br>
         <input type="text" name="booking_title" value="{{$booking->booking_title}}" max="255" required><br>
 
-        <label for="booking_detail">รายละเอียดการนัด</label>
+        <label for="booking_detail">รายละเอียดการนัด</label><br>
         <input type="text" name="booking_detail" value="{{$booking->booking_detail}}"><br>
 
-        <label for="booking_date">วันและเวลาที่นัด</label>
+        <label for="booking_date">วันและเวลาที่นัด</label><br>
         <input type="datetime-local" name="booking_date" value="{{$booking->booking_date}}" required><br>
 
-        <input type="submit" name="booking_submit" value="บันทึก">
+        <input type="submit" name="booking_submit" value="บันทึก" class="btn btn-plus">
+    </div>
     </form>
-</body>
-</html>
+</div>
+</div>
+@endsection
