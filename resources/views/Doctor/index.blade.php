@@ -16,18 +16,18 @@
         </div>
         <a class="btn-logout" href="{{route('doctor.logout')}}">ออกจากระบบ</a>
     </div>
-    <div class="result-data">
+    <div class="result-data flex gap-5 justify-center mt-5">
         <div class="result-item">
-            <div class="result-item-title">จำนวนเคสการรักษาทั้งหมด</div>
-            <div class="result-item-data">{{count($doctor->cases)}}</div>
+            <div class="result-item-title">จำนวนเคสการรักษาทั้งหมด (เตส)</div>
+            <div class="result-item-data text-center"><span class="text-bold">{{count($doctor->cases)}}</span></div>
         </div>
         <div class="result-item">
-            <div class="result-item-title">จำนวนผู้ป่วยที่รอเข้าพบ</div>
-            <div class="result-item-data">{{count($doctor->cases->where('case_status',1))}}</div>
+            <div class="result-item-title">จำนวนผู้ป่วยที่รอเข้าพบ (คน)</div>
+            <div class="result-item-data text-center"><span class="text-bold">{{count($doctor->cases->where('case_status',1))}}</span></div>
         </div>
         <div class="result-item">
-            <div class="result-item-title">จำนวนผู้ป่วยที่เสร็จสิ้นการรักษา</div>
-            <div class="result-item-data">{{count($doctor->cases->where('case_status',3))}}</div>
+            <div class="result-item-title">จำนวนผู้ป่วยที่เสร็จสิ้นการรักษา (คน)</div>
+            <div class="result-item-data text-center"><span class="text-bold">{{count($doctor->cases->where('case_status',3))}}</span></div>
         </div>
 
     </div>
