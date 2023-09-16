@@ -414,6 +414,10 @@ class AdminController extends Controller
     }
 
     function showtrash(){
-        return view('SupportAndDoctor.showtrash');
+        $doctor = Doctor::onlyTrashed()->get();
+        $patient = Patient::onlyTrashed()->get();
+        $case = CaseMD::onlyTrashed()->get();
+        $booking = Booking::onlyTrashed()->get();
+        return view('SupportAndDoctor.showtrash',compact('doctor','patient','case','booking'));
     }
 }
