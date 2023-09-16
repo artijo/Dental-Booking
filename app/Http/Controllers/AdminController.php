@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\CaseMD;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Support;
 use App\Models\Doctor;
@@ -183,8 +182,16 @@ class AdminController extends Controller
 
     function storedoctor(Request $request){
         $doctordata = Doctor::select('doctor_id')->orderBy('doctor_id','desc')->first();
+        $exist = Doctor::withTrashed()->orderBy('doctor_id','desc')->first();
+
         if ($doctordata == null) {
             $doctor_id = 'dr0001';
+        }elseif($exist){
+            $doctor_id = $exist->doctor_id;
+            $prefix = 'dr';
+            $last= (int)substr($doctor_id,2);
+            $next= $last + 1;
+            $doctor_id = $prefix.sprintf("%04d",$next);
         }else{
         $doctor_id = $doctordata->doctor_id;
         $prefix = 'dr';
@@ -267,11 +274,13 @@ class AdminController extends Controller
     }
     function deletedoctor($id){
         $doctor = Doctor::find($id);
+
         foreach($doctor->cases as $item){
             $item->bookings()->delete();
         }
         $doctor->cases()->delete();
-        Doctor::where('doctor_id',$id)->delete();
+        
+        $doctor->delete();
         return redirect('/admin/showdoctor');
     }
     function storebooking(Request $request){

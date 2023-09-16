@@ -79,6 +79,7 @@ Route::middleware(['support.check'])->group(function () {
         Route::get('/admin/patient/delete/{idcard}',[AdminController::class,'deletepatient'])->name('admin.deletepatient');
         Route::get('/admin/doctor/delete/{id}',[AdminController::class,'deletedoctor'])->name('admin.deletedoctor');
         Route::get('/admin/case/delete/{id}',[AdminController::class,'deletecase'])->name('admin.deletecase');
+        Route::get('/admin/booking/delete/{id}',[AdminController::class,'deletebooking'])->name('admin.deltebooking');
         Route::get('/admin/trash',[AdminController::class,'showtrash'])->name('admin.trash');
     });
 });
