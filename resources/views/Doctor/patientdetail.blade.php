@@ -9,7 +9,7 @@
 <div class="content-dashboard">
     
     <div class="flex justify-end gap-5 mb-5">
-        <a href="{{url('/admin/patient/edit/'.$patient->idcard)}}"><button class="btn btn-edit">แก้ไขข้อมูล</button></a>
+        <a href="{{url('/admin/doctor/patient/edit/'.$patient->idcard)}}"><button class="btn btn-edit">แก้ไขข้อมูล</button></a>
     
     </div>
     <div class="content">

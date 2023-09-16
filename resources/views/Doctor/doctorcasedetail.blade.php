@@ -26,7 +26,7 @@
         <tr>
             <th>หัวข้อการนัด</th>
             <th>รายละเอียดการนัด</th>
-            <th>วันที่นัด</th>
+            <th colspan='2'>วันที่นัด</th>
         </tr>
     
    
@@ -35,6 +35,7 @@
         <td>{{$item->booking_title}}</td>
         <td>{{$item->booking_detail}}</td>
         <td>{{$item->booking_date}}</td>
+        <td><a href="{{url('/admin/case/edit/'.$case->caseid)}}"><button>แก้ไข</button></a></td>
     </tr>
 
     @endforeach
@@ -44,3 +45,4 @@
 </div>
 </div>
 @endsection
+

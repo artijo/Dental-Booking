@@ -102,8 +102,10 @@ Route::middleware(['doctor.check'])->group(function (){
 });
 
 Route::middleware(['adminanddoctor'])->group(function(){
-    Route::get('/admin/patient/edit/{idcard}',[AdminController::class,'editpatient'])->name('admin.editpatient');
-    Route::put('/admin/patient/update/{idcard}',[AdminController::class,'updatepatient'])->name('admin.updatepatient');
+    Route::get('/admin/patient/edit/{idcard}',[AdminController::class,'editpatient_admin'])->name('admin.editpatient');
+    Route::get('/admin/doctor/patient/edit/{idcard}',[AdminController::class,'editpatient_doctor'])->name('doctor.editpatient');
+    Route::put('/admin/doctor/patient/update/{idcard}',[AdminController::class,'updatepatient_doctor'])->name('doctor.updatepatient');
+    Route::put('/admin/patient/update/{idcard}',[AdminController::class,'updatepatient_admin'])->name('admin.updatepatient');
     Route::get('/admin/doctor/edit/{id}',[AdminController::class,'editdoctor'])->name('admin.editdoctor');
     Route::put('/admin/doctor/update/{id}',[AdminController::class,'updatedoctor'])->name('admin.updatedoctor');
     Route::get('/admin/case/edit/{id}',[AdminController::class,'editcase'])->name('admin.editcase');
