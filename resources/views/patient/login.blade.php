@@ -9,7 +9,13 @@
                     <p>หากไม่พบข้อมูลโปรดติดต่อเจ้าหน้าที่</p>
                 </div>
                 @error('idcard')
-                    {{ $message }}
+                <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'เข้าสู่ระบบไม่สำเร็จ',
+                    text: '{{ $message }}',
+            })
+                </script>
                 @enderror
                 <form action="{{Route('patient.checklogin')}}" method="post">
                     @csrf
@@ -23,4 +29,13 @@
             
         </div>
     </div>
+    @if(session()->has('error'))
+    <script>
+        Swal.fire({
+        icon: 'error',
+        title: 'เข้าสู่ระบบไม่สำเร็จ',
+        text: 'หมายเลขโทรศัพท์หรือหมายเลขบัตรประชาชนไม่ถูกต้อง',
+})
+    </script>
+@endif
 @endsection
