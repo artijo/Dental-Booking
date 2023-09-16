@@ -64,8 +64,8 @@
             icon: 'warning',
             dangerMode: true,
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
             confirmButtonText: 'ตกลง',
             cancelButtonText: 'ยกเลิก'
             }).then((result) => {
