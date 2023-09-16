@@ -19,7 +19,7 @@ class Admin
         $support = Support::where('support_id',session('supportid'))->get()->first();
         $level = $support->level;
         if (!$request->session()->has('supportid') || $level == 1) {
-            return redirect('/admin/login');
+            return abort('403');
         }elseif($request->session()->has('idcard')){
             session()->pull('support_id');
             return redirect('/user');

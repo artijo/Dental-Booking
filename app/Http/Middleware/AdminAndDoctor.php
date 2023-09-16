@@ -28,6 +28,6 @@ class AdminAndDoctor
         }elseif ($request->session()->has('supportid') && $level == 0) {
             return $next($request);
         }
-        return redirect('/admin/login');
+        return abort('403');
     }
 }

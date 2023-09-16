@@ -21,7 +21,7 @@ class Support
         }elseif($request->session()->has('idcard')){
         return redirect('/');
     }else{
-        return redirect('/admin/login');
+        return abort('403');
     }
     
     }

@@ -21,6 +21,6 @@ class Doctor
             session()->pull('doctor_id');
             return redirect('/');
         }
-        return redirect('/admin/login');
+        return abort('403');
     }
 }
