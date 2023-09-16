@@ -19,7 +19,7 @@
         <th>รายการ</th>
         <th>วันที่นัดหมาย</th>
         <th>รายละเอียด</th>
-        <th colspan="2">สถานะการนัด</th>
+        <th @if(session('level')==0) colspan="4" @else colspan="2" @endif>สถานะการนัด</th>
         </tr>
         @if(count($booking) <= 0)
         <tr>
@@ -37,9 +37,15 @@
                 @elseif($book->case->case_status === 3)เสร็จสิ้น
                 @endif
                 </td>
-            <td><a href='{{url('/admin/booking/'.$book->booking_id)}}'>รายละเอียดเพิ่มเติม</a></td>
+            <td><a href='{{url('/admin/case/'.$book->case->caseid)}}'>รายละเอียดเคส</a></td>
+            @if(session('level') == 0)
+            <td><a href="{{url('/admin/booking/edit/'.$book->booking_id)}}">แก้ไข</a></td>
+            <td><a href="{{url('/admin/booking/delete/'.$book->booking_id)}}">ลบ</a></td>
+            @endif
         </tr> 
+        
        @endforeach
+         {{$booking}}
          @endif
     </table>
 </div>
