@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') - Dental</title>
-    <link rel="preload" href="{{ asset('fonts/LineSeed/LINESeedSansTH_W_Bd.woff2') }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ asset('fonts/LineSeed/LINESeedSansTH_W_Rg.woff2') }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ asset('fonts/LineSeed/LINESeedSansTH_W_Th.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/Anakotmai/anakotmai-medium.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/Anakotmai/anakotmai-bold.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/Anakotmai/anakotmai-light.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ asset('fonts/Thongterm/tt-bold.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ asset('fonts/Thongterm/tt-reg.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link href="{{asset('js/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" media="all"/>

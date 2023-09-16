@@ -20,6 +20,28 @@
     font-style: normal;
     font-display: swap;
 }
+//Anakotmai
+@font-face {
+    font-family: "Anakotmai";
+    src: local("Anakotmai"), url("../fonts/Anakotmai/anakotmai-medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Anakotmai";
+    src: local("Anakotmai"), url("../fonts/Anakotmai/anakotmai-bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Anakotmai";
+    src: local("Anakotmai"), url("../fonts/Anakotmai/anakotmai-light.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
 //Thongterm
 @font-face {
     font-family: "Thongterm";
