@@ -125,7 +125,7 @@ class AdminController extends Controller
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     function storecase(Request $request){
-        $casedata = CaseMD::select('caseid')->orderBy('caseid','desc')->first();
+        $casedata = CaseMD::select('caseid')->orderBy('caseid','desc')->withTrashed()->first();
         if ($casedata == null) {
             $caseid = 'cs000001';
         }else{
@@ -288,7 +288,7 @@ class AdminController extends Controller
         return redirect('/admin/showdoctor');
     }
     function storebooking(Request $request){
-        $bookingdata = Booking::select('booking_id')->orderBy('booking_id','desc')->first();
+        $bookingdata = Booking::select('booking_id')->orderBy('booking_id','desc')->withTrashed()->first();
         if ($bookingdata == null) {
             $booking_id = 'bk000001';
         }else{
@@ -345,7 +345,7 @@ class AdminController extends Controller
         return view('supports.addsupport');
     }
     function storesupport(Request $request) {
-        $supportdata = Support::select('support_id')->orderBy('support_id','desc')->first();
+        $supportdata = Support::select('support_id')->orderBy('support_id','desc')->withTrashed()->first();
         if ($supportdata == null) {
             $support_id = 'sp0001';
         }else{

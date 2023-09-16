@@ -35,7 +35,7 @@
                 <td>{{$pt->email}}</td>
                 <td>@if($pt->level == 0)ผู้ดูแลระบบ@else เจ้าหน้าที่ @endif</td>
                 <td><a href="{{url('/admin/support/edit/'.$pt->support_id)}}">แก้ไข</a></td>
-                <td><a href="{{url('/admin/support/delete/'.$pt->support_id)}}">ลบ</a></td>
+                <td><a href="{{url('/admin/support/delete/'.$pt->support_id)}}" onclick="comfrimation(even)">ลบ</a></td>
                 </tr>
         @endforeach
     </table>
@@ -53,4 +53,25 @@
         })
     </script>
 @endif
+<script>
+    function confrimation(e){
+        e.preventDefault();
+        var urlto = {{url('/admin/support/delete/'.$pt->support_id)}};
+
+        Swal({
+            title: 'คุณต้องการลบข้อมูลหรือไม่?',
+            text: "หากลบแล้วจะไม่สามารถกู้คืนได้",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ตกลง',
+            cancelButtonText: 'ยกเลิก'
+            }).then((result) => {
+                if(result.value){
+                    window.location.href = urlto;
+                }
+        })
+    }
+</script>
 @endsection
