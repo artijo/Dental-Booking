@@ -89,6 +89,23 @@
         @endforeach
     </table>
     @endif
+
+    @if(!empty($support) && COUNT($support) > 0)
+    <table class="table-show">
+        <tr>
+            <th>รหัสผู้ดูแล</th>
+            <th>ชื่อ</th>
+            <th>ระดับ</th>
+        </tr>
+        @foreach($support as $list)
+        <tr>
+            <td>{{$list->support_id}}</td>
+            <td>{{$list->name}}</td>
+            <td>{{$list->level}}</td>
+        </tr>
+        @endforeach
+    </table>
+    @endif
 </div>
     
 </div>
