@@ -255,7 +255,8 @@ th {
 .result-data {
     width: 100%;
     .result-item {
-        width: calc(100% / 2);
+        width: calc(100% / 3 - 15px);
+        min-height: 150px;
         background-color: $bg-2;
         color: #fff;
         padding: 10px;

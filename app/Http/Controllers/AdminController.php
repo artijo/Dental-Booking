@@ -19,8 +19,14 @@ class AdminController extends Controller
     function index(){
         $ss = session('supportid');
         $support = Support::where('support_id',$ss)->first();
+        $supportcount = Support::count();
+        $doctorcount = Doctor::count();
+        $patientcount = Patient::count();
+        $casecount = CaseMD::count();
+        $bookingcount = Booking::count();
+        $cases = CaseMD::all();
         $name = explode(' ',$support->name);
-        return view('SupportAndDoctor.index')->with('admin',$support)->with('ss',$ss)->with('name',$name[0]);
+        return view('SupportAndDoctor.index',compact('supportcount','doctorcount','patientcount','casecount','bookingcount','cases'))->with('admin',$support)->with('ss',$ss)->with('name',$name[0]);
     }
     function logout(){
         if(session()->has('supportid')){
