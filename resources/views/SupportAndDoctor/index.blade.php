@@ -35,7 +35,7 @@
         </div>
         <div class="result-item">
             <div class="result-item-title">จำนวนผู้ป่วยที่เสร็จสิ้นการรักษา (คน)</div>
-            <div class="result-item-data text-center"><span class="text-bold">{{count($cases->where('case_status',2))}}</span></div>
+            <div class="result-item-data text-center"><span class="text-bold">{{count($cases->where('case_status',3))}}</span></div>
         </div>
 
     </div>
