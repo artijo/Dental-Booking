@@ -65,7 +65,12 @@ class AdminController extends Controller
         $patient->intolerance = $intolerance;
         $patient->birthday = $birthday;
         $patient->save();
-        return redirect('/admin');
+        if(session()->has('doctor_id')){
+            return redirect('/admin/doctor/patient')->with('success','เพิ่มข้อมูลคนไข้สำเร็จ'); 
+        }else{
+            return redirect('/admin/patientlist/')->with('success','เพิ่มข้อมูลคนไข้สำเร็จ');
+        }
+
     }
 
     function editpatient ($idcard) {
@@ -149,7 +154,11 @@ class AdminController extends Controller
         $case->case_status = $case_status;
         $case->casetype_id = $casetype_id;
         $case->save();
-        return redirect('/admin');
+        if(session()->has('doctor_id')){
+            return redirect('/admin/doctor/case')->with('success','เพิ่มข้อมูลเคสการรักษาสำเร็จ');
+        }else{
+            return redirect('/admin/showcase')->with('success','เพิ่มข้อมูลเคสการรักษาสำเร็จ');
+        }
     }
     function editcase($id){
         $case = CaseMD::where('caseid',$id)->first();
@@ -216,7 +225,7 @@ class AdminController extends Controller
         $doctor = Doctor::where('doctor_id',$doctor_id)->first();
         $specialist = $spacialist_id;
             $doctor->specialists()->attach($specialist);
-        return redirect('/admin');
+        return redirect('/admin/showdoctor')->with('success','เพิ่มข้อมูลแพทย์สำเร็จ');
     }
     function editdoctor($id){
         $spacialist = Specialist::select('specialist_id','name_th')->get();
