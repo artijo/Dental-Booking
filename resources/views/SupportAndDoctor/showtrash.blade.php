@@ -87,7 +87,7 @@
             <td>{{$list->booking_id}}</td>
             <td>{{$list->caseid}}</td>
             <td>{{$list->booking_title}}</td>
-            <td>{{$list->booking_date}}</td>
+            <td>{{date('d M Y H:m:s',strtotime($list->booking_date))}}</td>
             <td><a href="{{url('/admin/restore/booking/'.$list->caseid)}}">Restore</a></td>
         </tr>
         @endforeach
