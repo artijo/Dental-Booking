@@ -309,7 +309,11 @@ class AdminController extends Controller
         $booking->booking_date = $booking_date;
         $booking->caseid = $caseid;
         $booking->save();
-        return redirect('/admin');
+        if(session()->has('doctor_id')){
+            return redirect('/admin/doctor/booking')->with('success','เพิ่มข้อมูลการนัดหมายสำเร็จ');
+        }else{
+            return redirect('/admin/showbooking')->with('success','เพิ่มข้อมูลการนัดหมายสำเร็จ');
+        }
     }
     function editbooking($id){
         $booking = Booking::where('booking_id',$id)->first();
@@ -365,7 +369,7 @@ class AdminController extends Controller
         $support->tel = $tel;
         $support->level = $level;
         $support->save();
-        return redirect('/admin');
+        return redirect('/admin/supportlist')->with('success','เพิ่มข้อมูลผู้ดูแลระบบสำเร็จ');
     }
     function editsupport($id){
         $support = Support::where('support_id',$id)->first();

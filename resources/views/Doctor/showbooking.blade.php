@@ -38,4 +38,14 @@
     </table>
 </div>
 </div>
+@if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'สำเร็จ',
+            text: 'ทำรายการสำเร็จ',
+            confirmButtonText: 'ตกลง'
+        })
+    </script>
+@endif
 @endsection
