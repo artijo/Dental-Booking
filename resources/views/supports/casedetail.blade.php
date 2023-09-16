@@ -22,7 +22,7 @@
                 <p>{{$case->case_title}}</p>
             <h3>รายละเอียดการรักษา</h3>
                  <ul><li>{{$case->case_detail}}</li></ul> 
-            <h3>แพทย์ที่รักษา</h3>{{$case->doctor->name_th}} 
+            <h3>แพทย์ที่รักษา</h3>@if($case->doctor != NULL){{$case->doctor->name_th}}@else ไม่มีข้อมูลแพทย์ @endif 
            <h3>วันที่นัดหมาย</h3> 
                 @foreach($case->bookings as $time)
                         @if($time->booking_date != NULL) 

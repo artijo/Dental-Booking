@@ -429,4 +429,32 @@ class AdminController extends Controller
         $support = Support::onlyTrashed()->get();
         return view('SupportAndDoctor.showtrash',compact('doctor','patient','case','booking','support'));
     }
+
+    function restore_patient($id){
+        Patient::where('idcard',$id)->restore();
+        return redirect('/admin/trash');
+    }
+
+    function restore_doctor($id){
+        Doctor::where('doctor_id',$id)->restore();
+        return redirect('/admin/trash');
+    }
+
+    function restore_case($id){
+        CaseMD::where('caseid',$id)->restore();
+        return redirect('/admin/trash');
+    }
+
+    function restore_booking($id){
+        Booking::where('caseid',$id)->restore();
+        CaseMD::where('caseid',$id)->restore();
+
+        return redirect('/admin/trash');
+    }
+
+    function restore_support($id){
+        Support::where('support_id',$id)->restore();
+        
+        return redirect('/admin/trash');
+    }
 }
