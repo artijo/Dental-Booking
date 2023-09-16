@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\CaseMD;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Support;
 use App\Models\Doctor;
@@ -110,8 +111,12 @@ class AdminController extends Controller
 
 
     function deletepatient($idcard){
+        $patient = Patient::find($idcard);
+        foreach($patient->cases as $item){
+            $item->bookings()->delete();
+        }
+        $patient->cases()->delete();
         Patient::where('idcard',$idcard)->delete();
-        CaseMD::where('idcard',$idcard)->delete();
         return redirect('/admin/patientlist');
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -252,8 +257,12 @@ class AdminController extends Controller
         return redirect('/admin');
     }
     function deletedoctor($id){
+        $doctor = Doctor::find($id);
+        foreach($doctor->cases as $item){
+            $item->bookings()->delete();
+        }
+        $doctor->cases()->delete();
         Doctor::where('doctor_id',$id)->delete();
-        CaseMD::where('doctor_id',$id)->delete();
         return redirect('/admin/showdoctor');
     }
     function storebooking(Request $request){
@@ -296,6 +305,10 @@ class AdminController extends Controller
         'booking_date' => $request->booking_date
         ]);
         return redirect('/admin');
+    }
+    function deletebooking($booking_id){
+        Booking::where('booking_id',$booking_id)->delete();
+        return redirect('/admin/showbooking');
     }
 
     function addsupport(){
