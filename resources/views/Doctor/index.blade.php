@@ -16,9 +16,13 @@
         </div>
         <a class="btn-logout" href="{{route('doctor.logout')}}">ออกจากระบบ</a>
     </div>
-    <div class="result-data flex gap-5 justify-center mt-5">
+    <div class="result-data flex flex-wrap gap-5 justify-center mt-5">
         <div class="result-item">
-            <div class="result-item-title">จำนวนเคสการรักษาทั้งหมด (เตส)</div>
+            <div class="result-item-title">จำนวนผู้รักษากับท่านทั้งหมด (คน)</div>
+            <div class="result-item-data text-center"><span class="text-bold">{{$patientcount}}</span></div>
+        </div>
+        <div class="result-item">
+            <div class="result-item-title">จำนวนเคสการรักษาทั้งหมด (เคส)</div>
             <div class="result-item-data text-center"><span class="text-bold">{{count($doctor->cases)}}</span></div>
         </div>
         <div class="result-item">

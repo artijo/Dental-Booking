@@ -15,7 +15,8 @@ class DoctorController extends Controller
 {
     function index(){
         $doctor = Doctor::where('doctor_id', session(('doctor_id')))->first();
-        return view('Doctor.index')->with('doctor',$doctor);
+        $patientcount = CaseMD::where('doctor_id', session(('doctor_id')))->groupBy('idcard')->count();
+        return view('Doctor.index')->with('doctor',$doctor)->with('patientcount',$patientcount);
     }
     function adddoctor(){
         $spacialist = Specialist::select('specialist_id','name_th')->get();
