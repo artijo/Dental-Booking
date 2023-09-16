@@ -81,6 +81,11 @@ Route::middleware(['support.check'])->group(function () {
         Route::get('/admin/case/delete/{id}',[AdminController::class,'deletecase'])->name('admin.deletecase');
         Route::get('/admin/booking/delete/{id}',[AdminController::class,'deletebooking'])->name('admin.deltebooking');
         Route::get('/admin/trash',[AdminController::class,'showtrash'])->name('admin.trash');
+        Route::get('/admin/restore/patient/{id}',[AdminController::class,'restore_patient'])->name('restore.patient');
+        Route::get('/admin/restore/doctor/{id}',[AdminController::class,'restore_doctor'])->name('restore.doctor');
+        Route::get('/admin/restore/case/{id}',[AdminController::class,'restore_case'])->name('restore.case');
+        Route::get('/admin/restore/booking/{id}',[AdminController::class,'restore_booking'])->name('restore.booking');
+        Route::get('/admin/restore/support/{id}',[AdminController::class,'restore_support'])->name('restore.support');
     });
 });
 Route::middleware(['supportanddoctor'])->group(function (){

@@ -14,7 +14,7 @@
             <th>ชื่อ-นามสกุล</th>
             <th>อี-เมล</th>
             <th>เบอร์โทรศัพท์</th>
-            <th>วันเกิด</th>
+            <th colspan="3">วันเกิด</th>
         </tr>
         @foreach($patient as $list)
         <tr>
@@ -23,6 +23,7 @@
             <td>{{$list->email}}</td>
             <td>{{$list->tel}}</td>
             <td>{{$list->birthday}}</td>
+            <td><a href="{{url('/admin/restore/patient/'.$list->idcard)}}">Restore</a></td>
         </tr>
         @endforeach
     </table>
@@ -34,7 +35,7 @@
             <th>รหัสทันตแพทย์</th>
             <th>ชื่อ-นามสกุล</th>
             <th>อี-เมล</th>
-            <th>เบอร์โทรศัพท์</th>
+            <th colspan="3">เบอร์โทรศัพท์</th>
         </tr>
         @foreach($doctor as $list)
         <tr>
@@ -42,6 +43,7 @@
             <td>{{$list->name_th}} {{$list->lastname_th}}</td>
             <td>{{$list->email}}</td>
             <td>{{$list->tel}}</td>
+            <td><a href="{{url('/admin/restore/doctor/'.$list->doctor_id)}}">Restore</a></td>
         </tr>
         @endforeach
     </table>
@@ -54,7 +56,7 @@
             <th>หัวเรื่อง</th>
             <th>รายละเอียด</th>
             <th>สถานะการนัด</th>
-            <th>รหัสทันตแพทย์</th>
+            <th colspan="3">รหัสทันตแพทย์</th>
         </tr>
         @foreach($case as $list)
         <tr>
@@ -66,6 +68,7 @@
                 @elseif($list->case_status === 3)เสร็จสิ้น
                 @endif</td>
             <td>{{$list->doctor_id}}</td>
+            <td><a href="{{url('/admin/restore/case/'.$list->caseid)}}">Restore</a></td>
         </tr>
         @endforeach
     </table>
@@ -77,7 +80,7 @@
             <th>รหัสตารางนัด</th>
             <th>รหัสเคส</th>
             <th>หัวเรื่อง</th>
-            <th>วันเวลาที่นัดหมาย</th>
+            <th colspan="3">วันเวลาที่นัดหมาย</th>
         </tr>
         @foreach($booking as $list)
         <tr>
@@ -85,6 +88,7 @@
             <td>{{$list->caseid}}</td>
             <td>{{$list->booking_title}}</td>
             <td>{{$list->booking_date}}</td>
+            <td><a href="{{url('/admin/restore/booking/'.$list->caseid)}}">Restore</a></td>
         </tr>
         @endforeach
     </table>
@@ -95,13 +99,14 @@
         <tr>
             <th>รหัสผู้ดูแล</th>
             <th>ชื่อ</th>
-            <th>ระดับ</th>
+            <th colspan="3">ระดับ</th>
         </tr>
         @foreach($support as $list)
         <tr>
             <td>{{$list->support_id}}</td>
             <td>{{$list->name}}</td>
             <td>{{$list->level}}</td>
+            <td><a href="{{url('/admin/restore/support/'.$list->support_id)}}">Restore</a></td>
         </tr>
         @endforeach
     </table>
