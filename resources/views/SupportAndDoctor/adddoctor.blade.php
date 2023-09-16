@@ -5,18 +5,7 @@
     <div class="space"></div>
     <div class="head-title"><h1>เพิ่มข้อมูลแพทย์</h1></div>
     <div class="space"></div>
-<nav class="dashboard-nav">
-    <ul>
-        <li><a href="{{route('admin.index')}}">หน้าหลัก</a></li>
-        <li><a href="{{route('patientlist.showpatient')}}">รายชื่อผู้รักษา</a></li>
-        <li><a href="{{route('doctor.showdoctor')}}" class="current">รายชื่อแพทย์</a></li>
-        <li><a href="{{route('showcase.showcase')}}">ข้อมูลเคสการรักษา</a></li>
-        <li><a href="{{route('showcase.showbooking')}}">ข้อมูลการนัด</a></li>
-        @if(session('level') === 0)
-        <li><a href="{{route('admin.showsupport')}}">รายชื่อผู้ดูแลระบบ</a></li>
-        @endif
-    </ul>
-</nav>
+@include('components.adminanddoctornav')
 <div class="content-dashboard">
     <form action="{{route('doctor.storedoctor')}}" method="POST" class="add-data">
     @csrf

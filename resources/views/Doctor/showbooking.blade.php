@@ -5,14 +5,7 @@
     <div class="space"></div>
     <div class="head-title"><h1>บันทึกการนัด</h1></div>
     <div class="space"></div>
-<nav class="dashboard-nav">
-    <ul>
-        <li><a href="{{route('Doctor')}}">หน้าหลัก</a></li>
-        <li><a href="{{route('Doctor.shpwpatient')}}">รายชื่อผู้รักษาของคุณ</a></li>
-        <li><a href="{{route('doctor.showcase')}}">ประวัติเคสการรักษาของคุณ</a></li>
-        <li><a href="{{route('doctor.showbooking')}}" class="current">บันทึกการนัดของคุณ</a></li>
-    </ul>
-</nav>
+    @include('components.adminanddoctornav')
 <div class="content-dashboard">
     <div class="mb-3 flex justify-end items-center">
         <a href="{{route('booking.addbooking')}}"><button class="btn btn-plus">เพิ่มข้อมูลการนัด</button></a>
@@ -36,7 +29,7 @@
                 <td>{{$item->booking_title}}</td>
                 <td>{{$item->booking_detail}}</td>
                 <td>{{$item->booking_date}}</td>
-                <td><a href="{{url('/admin/doctor/case/'.$item->case->caseid)}}">เพิ่มเติมเกี่ยวกับการนัด</a></td>
+                <td><a href="{{url('/admin/booking/edit/'.$item->booking_id)}}">แก้ไข</a></td>
             </tr>
             @endforeach
         @endforeach

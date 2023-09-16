@@ -5,14 +5,7 @@
     <div class="space"></div>
     <div class="head-title"><h1>รายชื่อผู้รักษาของคุณ</h1></div>
     <div class="space"></div>
-<nav class="dashboard-nav">
-    <ul>
-        <li><a href="{{route('Doctor')}}">หน้าหลัก</a></li>
-        <li><a href="{{route('Doctor.shpwpatient')}}" class="current">รายชื่อผู้รักษาของคุณ</a></li>
-        <li><a href="{{route('doctor.showcase')}}">ประวัติเคสการรักษาของคุณ</a></li>
-        <li><a href="{{route('doctor.showbooking')}}">บันทึกการนัดของคุณ</a></li>
-    </ul>
-</nav>
+    @include('components.adminanddoctornav')
 <div class="content-dashboard">
     <div class="mb-3 flex justify-between items-center">
         <form action="" method="GET" class="search">
