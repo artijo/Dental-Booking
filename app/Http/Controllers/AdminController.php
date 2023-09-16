@@ -92,7 +92,7 @@ class AdminController extends Controller
         'intolerance' => $request->intolerance,
         'birthday' => $request->birthday
         ]);
-        return redirect('/admin/doctor/patient/'.$caseid->idcard);
+        return redirect('/admin/doctor/patient/'.$caseid->idcard)->with('success','แก้ไขข้อมูลคนไข้สำเร็จ');
     }
 
 
@@ -110,7 +110,7 @@ class AdminController extends Controller
         'intolerance' => $request->intolerance,
         'birthday' => $request->birthday
         ]);
-        return redirect('/admin/patient/'.$caseid->idcard);
+        return redirect('/admin/patient/'.$caseid->idcard)->with('success','แก้ไขข้อมูลคนไข้สำเร็จ');
     }
 
 
@@ -172,7 +172,11 @@ class AdminController extends Controller
         'case_status' => $request->case_status,
         'casetype_id' => $request->casetype_id
         ]);
-        return redirect('/admin');
+        if(session()->has('doctor_id')){
+            return redirect('/admin/doctor/case/'.$id)->with('success','แก้ไขข้อมูลเคสการรักษาสำเร็จ');
+        }else{
+            return redirect('/admin/case/'.$id)->with('success','แก้ไขข้อมูลเคสการรักษาสำเร็จ');
+        }
     }
     function deletecase($id){
         CaseMD::where('caseid',$id)->delete();
@@ -270,7 +274,7 @@ class AdminController extends Controller
     }
         $specialist = $addmoresp;
             $data->specialists()->attach($specialist);
-        return redirect('/admin');
+        return redirect('/admin/showdoctor/'.$id)->with('success','แก้ไขข้อมูลแพทย์สำเร็จ');
     }
     function deletedoctor($id){
         $doctor = Doctor::find($id);
@@ -326,7 +330,11 @@ class AdminController extends Controller
         'booking_detail' => $request->booking_detail,
         'booking_date' => $request->booking_date
         ]);
-        return redirect('/admin');
+        if(session()->has('doctor_id')){
+            return redirect('/admin/doctor/booking/')->with('success','แก้ไขข้อมูลการนัดหมายสำเร็จ');
+        }else{
+            return redirect('/admin/showbooking/')->with('success','แก้ไขข้อมูลการนัดหมายสำเร็จ');
+        }
     }
     function deletebooking($booking_id){
         Booking::where('booking_id',$booking_id)->delete();
@@ -396,7 +404,7 @@ class AdminController extends Controller
         'tel' => $request->tel,
         'level' => $request->level
         ]);
-        return redirect('/admin');
+        return redirect('/admin/supportlist')->with('success','แก้ไขข้อมูลผู้ดูแลระบบสำเร็จ');
     }
     function deletesupport($id){
         Support::where('support_id',$id)->delete();

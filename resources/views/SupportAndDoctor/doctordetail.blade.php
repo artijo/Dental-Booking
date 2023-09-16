@@ -33,4 +33,14 @@
 </div>
     </div>
     </div>
+    @if(session('success'))
+    <script>
+        swal.fire({
+            icon: 'success',
+            title: 'สำเร็จ',
+            text: '{{session("success")}}',
+            showConfirmButton: true,
+        })
+    </script>  
+    @endif
 @endsection

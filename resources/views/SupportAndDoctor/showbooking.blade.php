@@ -55,7 +55,7 @@
         Swal.fire({
             icon: 'success',
             title: 'สำเร็จ',
-            text: 'ทำรายการสำเร็จ',
+            text: '{{session("success")}}',
             confirmButtonText: 'ตกลง'
         })
     </script>
