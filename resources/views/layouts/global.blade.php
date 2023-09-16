@@ -10,9 +10,7 @@
     <link rel="preload" href="{{ asset('fonts/LineSeed/LINESeedSansTH_W_Th.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ asset('fonts/Thongterm/tt-bold.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ asset('fonts/Thongterm/tt-reg.woff2') }}" as="font" type="font/woff2" crossorigin>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="{{asset('js/select2/css/select2.min.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}?ver={{config('app.version')}}" type='text/css' media='all'>
     <link rel="stylesheet" href="{{ asset('css/mobile.css') }}?ver={{config('app.version')}}" type='text/css' media='all'>
     <link rel="stylesheet" href="{{ asset('css/desktop.css') }}?ver={{config('app.version')}}" type='text/css' media='(min-width: 990px)'>
@@ -28,6 +26,8 @@
     <footer class="footer">
         
     </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="{{asset('js/select2/js/select2.min.js')}}"></script>
     <script src="{{asset('js/select2.js')}}"></script>
 </body>
 </html>
