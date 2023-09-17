@@ -18,24 +18,29 @@
             <h3>รหัสการรักษา:{{$case->caseid}}</h3>
         </div>
         <div class="body">
-            <h3>ประเภทการรักษา</h3>
-                <p>{{$case->case_title}}</p>
-            <h3>รายละเอียดการรักษา</h3>
-                 <ul><li>{{$case->case_detail}}</li></ul> 
-            <h3>แพทย์ที่รักษา</h3>@if($case->doctor != NULL){{$case->doctor->name_th}}@else ไม่มีข้อมูลแพทย์ @endif 
+                <p><span class="font-bold">เคสการรักษา: </span>{{$case->case_title}}</p>
+                <p><span class="font-bold">รายละเอียดการรักษา: </span>{{$case->case_detail}} </p>
+            <p><span class="font-bold">แพทย์ที่รักษา: </span>@if($case->doctor != NULL){{$case->doctor->name_th}} {{$case->doctor->lastname_th}}@else ไม่มีข้อมูลแพทย์ @endif</p> 
+            <p><span class="font-bold">ผู้ป่วย: </span>@if($case->patient != NULL){{$case->patient->name_th}} {{$case->patient->lastname_th}}@else ไม่มีข้อมูลผู้ป่วย @endif</p>
+            <p><span class="font-bold">วันที่เริ่มรักษา: </span>{{date('d-m-Y',strtotime($case->created_at))}}</p>
+            <div class="space"></div>
            <h3>วันที่นัดหมาย</h3> 
+           <ul>
                 @foreach($case->bookings as $time)
                         @if($time->booking_date != NULL) 
-                                {{$time->booking_date}} น. <br>
+                                <li>{{$time->booking_date}} น.</li>
                          @else 
                           ยังไม่ลงเวลานัด
                         @endif
                 @endforeach
-            <h3>สถานะการรักษา</h3>
+            </ul>
+            <div class="space"></div>
+            <p><span class="font-bold">สถานะการรักษา: </span>
              @if($case->case_status === 1)รอเข้าพบ 
                 @elseif($case->case_status === 2)ไม่มาพบตามนัด 
                 @elseif($case->case_status === 3)เสร็จสิ้น
                 @endif
+            </p>
                 </div>
         </div>
     </div>

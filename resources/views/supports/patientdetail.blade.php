@@ -18,16 +18,22 @@
             <h3>รหัสบัตรประจำตัวประชาชน (IDCard): <span class="font-bold">{{$patient->idcard}}</span></h3>
         </div>
     <div class="body">
-    คุุณ {{$patient->name_th}} {{$patient->lastname_th}} <br>
-    <span class="font-bold">รหัสบัตรประชาชน</span> {{$patient->idcard}} <br>
-    <span class="font-bold">เกิดวันที่</span> {{$patient->birthday}}<br>
-    <span class="font-bold">เพศ</span> @if($patient->gender === 'male')ชาย @elseif($patient->gender === 'female')หญิง @endif <br>
-    <span class="font-bold">โรคประจำตัว</span>@if($patient->intolerance) {{$patient->intolerance}} @else ไม่มีโรคประจำตัว @endif<br>
-    <span class="font-bold">จำนวนการรักษา</span> {{$patient->cases->count()}} ครั้ง <br>
+    <p><span class="font-bold">ชื่อ-สกุล</span> {{$patient->name_th}} {{$patient->lastname_th}} </p>
+    <p><span class="font-bold">ชื่อ-สกุล (อังกฤษ): </span> {{$patient->name_en}} {{$patient->lastname_en}}</p>
+    <p><span class="font-bold">รหัสบัตรประชาชน: </span> {{$patient->idcard}}</p>
+    <p><span class="font-bold">เบอร์โทรศัพท์: </span> {{$patient->tel}}</p>
+    <p><span class="font-bold">อีเมล: </span> {{$patient->email}}</p>
+    <p><span class="font-bold">เกิดวันที่: </span> {{date('d-m-Y',strtotime($patient->birthday))}}</p>
+    <p><span class="font-bold">อายุ: </span> {{date('Y')-date('Y',strtotime($patient->birthday))}} ปี</p>
+    <p><span class="font-bold">เพศ: </span> @if($patient->gender === 'male')ชาย @elseif($patient->gender === 'female')หญิง @endif </p>
+    <p><span class="font-bold">โรคประจำตัว: </span>@if($patient->intolerance) {{$patient->intolerance}} @else ไม่มีโรคประจำตัว @endif</p>
+    <p><span class="font-bold">จำนวนการรักษา: </span> {{$patient->cases->count()}} ครั้ง </p>
     
     @if($patient->cases->count() > 0)
+    <div class="space"></div>
     <hr>
-    <h2 class="mt-2">ประวัติการรักษา</h2>
+    <div class="space"></div>
+    <h2 class="text-2xl">ประวัติการรักษา</h2>
     <table class="table-show">
         <tr>
             <th>รายการ</th>

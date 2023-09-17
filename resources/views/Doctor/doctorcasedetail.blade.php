@@ -16,20 +16,19 @@
         </div>
         <div class="body">
 
-    ชื่อผู้ป่วย : {{$case->patient->name_th}} {{$case->patient->lastname_th}} <br>
-
-    หัวข้อการรักษา : {{$case->case_title}} <br>
-    รายละเอียดการรักษา : {{$case->case_detail}} <br>
-    สถานะการรักษา : @if($case->case_status === 1)รอเข้าพบ @elseif($case->case_status === 2)ไม่มาพบตามนัด @elseif($case->case_status === 3)เสร็จสิ้น@endif <br>
-    การนัด
+    <p><span class="font-bold">ชื่อผู้ป่วย : </span>{{$case->patient->name_th}} {{$case->patient->lastname_th}} </p>
+    <p><span class="font-bold">หัวข้อการรักษา :</span> {{$case->case_title}}</p>
+    <p><span class="font-bold">รายละเอียดการรักษา : </span>{{$case->case_detail}}</p>
+    <p><span class="font-bold">วันที่เริ่มรักษา : </span>{{date('d-m-Y',strtotime($case->case_start))}}</p>
+    <p><span class="font-bold">สถานะการรักษา : </span>@if($case->case_status === 1)รอเข้าพบ @elseif($case->case_status === 2)ไม่มาพบตามนัด @elseif($case->case_status === 3)เสร็จสิ้น@endif</p>
+    <div class="space"></div>
+    <p class="font-bold">ข้อมูลการนัด</p>
     <table class="table-show">
         <tr>
             <th>หัวข้อการนัด</th>
             <th>รายละเอียดการนัด</th>
             <th colspan='2'>วันที่นัด</th>
         </tr>
-    
-   
     @foreach ($case->bookings as $item)
     <tr>
         <td>{{$item->booking_title}}</td>
