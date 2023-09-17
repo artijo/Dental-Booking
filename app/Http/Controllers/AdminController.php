@@ -450,6 +450,17 @@ class AdminController extends Controller
         return view('supports.editsupport')->with('support',$support);
     }
     function updatesupport(Request $request, $id){
+        $request->validate([
+            'email' => 'required|email|unique:supports,email,'.$id.',support_id',
+            'tel' => ['required', 'unique:supports,tel,'.$id.',support_id']
+        ],
+        ['email.required' => 'กรุณากรอกอีเมล',
+        'email.email' => 'กรุณากรอกอีเมลให้ถูกต้อง',
+        'email.unique' => 'อีเมลนี้มีในระบบแล้ว',
+        'tel.required' => 'กรุณากรอกเบอร์โทรศัพท์',
+        'tel.unique' => 'เบอร์โทรศัพท์นี้มีในระบบแล้ว'
+        ]
+        );
         $data = Support::where('support_id',$id)->first();
         //caheckmathpassword
         if ($request->password != $request->password_cf) {

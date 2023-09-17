@@ -18,8 +18,18 @@
             <option value="0">ผู้ดูแลระบบ</option>
             <option value="1">เจ้าหน้าที่</option>
         </select><br>
+        <div class="error-form">
+            @error('tel')
+                {{ $message }}
+            @enderror
+        </div>
         <label for="tel">เบอร์โทรศัพท์</label><br>
         <input type="text" name="tel" placeholder="เบอร์โทรศัพท์" value="{{$support->tel}}" pattern="[0-9]{10}" required><br>
+        <div class="error-form">
+            @error('email')
+                {{ $message }}
+            @enderror
+        </div>
         <label for="email">อีเมล</label><br>
         <input type="email" name="email" placeholder="อีเมล" value="{{$support->email}}" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required><br>
         @if(session()->has('error'))
