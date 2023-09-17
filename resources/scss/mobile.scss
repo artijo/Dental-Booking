@@ -88,6 +88,10 @@ main {
             max-width: 350px;
             margin: auto;
             margin-top: 5px;
+            .error-form {
+                color: red;
+                font-size: 14px;
+            }
         }
         input {
             width: 100%;
@@ -294,6 +298,10 @@ th {
     border-radius: 10px;
     box-shadow: 1px 1px 5px #fff;
     padding: 20px 50px;
+}
+.error-form {
+    color: red;
+    font-size: 14px;
 }
 ._desktop {
     display: none;

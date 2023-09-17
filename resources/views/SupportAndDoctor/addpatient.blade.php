@@ -7,12 +7,14 @@
     <div class="space"></div>
 @include('components.adminanddoctornav')
 <div class="content-dashboard">
-    @error('idcard')
-    {{ $message }}
-    @enderror
     <form action="{{route('admin.storepatient')}}" method="post" class="add-data">
     @csrf
     <div class="add-data-item">
+        <div class="error-form">
+        @error('idcard')
+            {{ $message }}
+        @enderror
+    </div>
         <label for="idcard">บัตรประจำตัวประชาชน</label> <br>
         <input type="number" name="idcard" pattern="[0-9]{13}" required><br>
         <label for="name_th">ชื่อ (ภาษาไทย)</label><br>
@@ -23,10 +25,20 @@
         <input type="text" name="name_en" max="255" pattern="[a-zA-Z]+"><br>
         <label for="surname_en">นามสกุล (ภาษาอังกฤษ)</label><br>
         <input type="text" name="lastname_en" max="255" pattern="[a-zA-Z]+"><br>
+        <div class="error-form">
+        @error('tel')
+            {{ $message }}
+        @enderror
+    </div>
         <label for="tel">เบอร์โทรศัพท์</label><br>
         <input type="tel" name="tel" pattern="[0-9]{10}" required><br>
     </div>
     <div class="add-data-item">
+        <div class="error-form">
+            @error('email')
+                {{ $message }}
+            @enderror
+        </div>
         <label for="email">อีเมล</label><br>
         <input type="email" name="email" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"><br>
         <label for="gender">เพศ</label><br>
