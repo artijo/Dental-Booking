@@ -12,7 +12,6 @@
     </div>
     <table class="table-show">
         <tr>
-            <th>ลำดับ</th>
             <th>รายการนัด</th>
             <th>รายละเอียดการนัด</th>
             <th colspan="2">วันที่นัด</th>
@@ -25,7 +24,6 @@
         @foreach($booking as $bk)
             @foreach($bk->bookings as $item)
             <tr>
-                <td>{{$booking->firstItem()+$loop->index}}</td>
                 <td>{{$item->booking_title}}</td>
                 <td>{{$item->booking_detail}}</td>
                 <td>{{$item->booking_date}}</td>
