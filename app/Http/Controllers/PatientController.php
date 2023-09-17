@@ -75,7 +75,7 @@ class PatientController extends Controller
             if($s != null){
                 $page = Patient::where('name_th','like','%'.$s.'%')->orWhere('lastname_th','like','%'.$s.'%')->orWhere('idcard','like','%'.$s.'%')->paginate(3);
             }else{
-                $page = Patient::paginate(3);
+                $page = Patient::paginate(10);
             }
             return view('SupportAndDoctor.patienlist',compact('page','s'));
     }
