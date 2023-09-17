@@ -24,8 +24,8 @@
             <td>{{$list->email}}</td>
             <td>{{$list->tel}}</td>
             <td>{{date('d M Y',strtotime($list->birthday))}}</td>
-            <td><a href="{{url('/admin/restore/patient/'.$list->idcard)}}">Restore</a></td>
-            <td><a href="{{url('/admin/delete/patient/'.$list->idcard)}}">Delete</a></td>
+            <td><a href="{{url('/admin/restore/patient/'.$list->idcard)}}" onclick="confrimation_restore(event)">Restore</a></td>
+            <td><a href="{{url('/admin/delete/patient/'.$list->idcard)}}" onclick="confrimation_delete(event)">Delete</a></td>
         </tr>
         @endforeach
     </table>
@@ -46,8 +46,8 @@
             <td>{{$list->name_th}} {{$list->lastname_th}}</td>
             <td>{{$list->email}}</td>
             <td>{{$list->tel}}</td>
-            <td><a href="{{url('/admin/restore/doctor/'.$list->doctor_id)}}">Restore</a></td>
-            <td><a href="{{url('/admin/delete/doctor/'.$list->doctor_id)}}">Delete</a></td>
+            <td><a href="{{url('/admin/restore/doctor/'.$list->doctor_id)}}" onclick="confrimation_restore(event)">Restore</a></td>
+            <td><a href="{{url('/admin/delete/doctor/'.$list->doctor_id)}}" onclick="confrimation_delete(event)">Delete</a></td>
         </tr>
         @endforeach
     </table>
@@ -73,8 +73,8 @@
                 @elseif($list->case_status === 3)เสร็จสิ้น
                 @endif</td>
             <td>{{$list->doctor_id}}</td>
-            <td><a href="{{url('/admin/restore/case/'.$list->caseid)}}">Restore</a></td>
-            <td><a href="{{url('/admin/delete/case/'.$list->caseid)}}">Delete</a></td>
+            <td><a href="{{url('/admin/restore/case/'.$list->caseid)}}" onclick="confrimation_restore(event)">Restore</a></td>
+            <td><a href="{{url('/admin/delete/case/'.$list->caseid)}}" onclick="confrimation_delete(event)">Delete</a></td>
         </tr>
         @endforeach
     </table>
@@ -95,8 +95,8 @@
             <td>{{$list->caseid}}</td>
             <td>{{$list->booking_title}}</td>
             <td>{{date('d M Y H:m:s',strtotime($list->booking_date))}}</td>
-            <td><a href="{{url('/admin/restore/booking/'.$list->booking_id.'/'.$list->caseid)}}">Restore</a></td>
-            <td><a href="{{url('/admin/delete/booking/'.$list->booking_id)}}">Delete</a></td>
+            <td><a href="{{url('/admin/restore/booking/'.$list->booking_id.'/'.$list->caseid)}}" onclick="confrimation_restore(event)">Restore</a></td>
+            <td><a href="{{url('/admin/delete/booking/'.$list->booking_id)}}" onclick="confrimation_delete(event)">Delete</a></td>
         </tr>
         @endforeach
     </table>
@@ -115,8 +115,8 @@
             <td>{{$list->support_id}}</td>
             <td>{{$list->name}}</td>
             <td>{{$list->level}}</td>
-            <td><a href="{{url('/admin/restore/support/'.$list->support_id)}}">Restore</a></td>
-            <td><a href="{{url('/admin/delete/support/'.$list->support_id)}}">Delete</a></td>
+            <td><a href="{{url('/admin/restore/support/'.$list->support_id)}}" onclick="confrimation_restore(event)">Restore</a></td>
+            <td><a href="{{url('/admin/delete/support/'.$list->support_id)}}" onclick="confrimation_delete(event)">Delete</a></td>
         </tr>
         @endforeach
     </table>
@@ -124,5 +124,47 @@
 </div>
     
 </div>
+<script>
+     function confrimation_restore(ev){
+        ev.preventDefault();
+        var urlto = ev.currentTarget.getAttribute('href');
+
+        Swal.fire({
+            title: 'คุณต้องการกู้คืนข้อมูลหรือไม่?',
+            text: "หากกู้คืนแล้วจะสามารถใช้งานได้ตามปกติ",
+            icon: 'warning',
+            dangerMode: true,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ตกลง',
+            cancelButtonText: 'ยกเลิก'
+            }).then((result) => {
+                if(result.value){
+                    window.location.href = urlto;
+                }
+        })
+    }
+    function confrimation_delete(ev){
+        ev.preventDefault();
+        var urlto = ev.currentTarget.getAttribute('href');
+
+        Swal.fire({
+            title: 'คุณต้องการลบข้อมูลถาวรหรือไม่?',
+            text: "หากลบแล้วจะไม่สามารถกู้คืนได้",
+            icon: 'warning',
+            dangerMode: true,
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'ตกลง',
+            cancelButtonText: 'ยกเลิก'
+            }).then((result) => {
+                if(result.value){
+                    window.location.href = urlto;
+                }
+        })
+    }
+</script>
 
 @endsection
