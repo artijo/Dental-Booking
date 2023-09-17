@@ -11,6 +11,7 @@ use App\Models\Patient;
 use App\Models\Specialist;
 use App\Models\Casetype;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Phattarachai\ThaiIdCardValidation\ThaiIdCardRule;
 use Illuminate\Support\Facades\DB;
 
@@ -326,8 +327,8 @@ class AdminController extends Controller
         'specialist_id' => $more
         ]);
     }
-        $specialist = $addmoresp;
-            $data->specialists()->attach($specialist);
+        $data->specialists()->syncWithoutDetaching($addmoresp);
+
         return redirect('/admin/showdoctor/'.$id)->with('success','แก้ไขข้อมูลแพทย์สำเร็จ');
     }
     function deletedoctor($id){
