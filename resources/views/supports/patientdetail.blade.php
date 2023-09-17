@@ -27,8 +27,8 @@
     
     @if($patient->cases->count() > 0)
     <hr>
-    <h2>ประวัติการรักษา</h2>
-    <table>
+    <h2 class="mt-2">ประวัติการรักษา</h2>
+    <table class="table-show">
         <tr>
             <th>รายการ</th>
             <th colspan="2">สถานะ</th>
