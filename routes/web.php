@@ -84,8 +84,10 @@ Route::middleware(['support.check'])->group(function () {
         Route::get('/admin/restore/patient/{id}',[AdminController::class,'restore_patient'])->name('restore.patient');
         Route::get('/admin/restore/doctor/{id}',[AdminController::class,'restore_doctor'])->name('restore.doctor');
         Route::get('/admin/restore/case/{id}',[AdminController::class,'restore_case'])->name('restore.case');
-        Route::get('/admin/restore/booking/{id}',[AdminController::class,'restore_booking'])->name('restore.booking');
+        Route::get('/admin/restore/booking/{bookingid}/{caseid}',[AdminController::class,'restore_booking'])->name('restore.booking');
         Route::get('/admin/restore/support/{id}',[AdminController::class,'restore_support'])->name('restore.support');
+        Route::get('/admin/delete/patient/{id}',[AdminController::class,'harddelete_patient'])->name('delete.patient');
+        Route::get('/admin/delete/doctor/{id}',[AdminController::class,'harddelete_doctor'])->name('delete.doctor');
     });
 });
 Route::middleware(['supportanddoctor'])->group(function (){
