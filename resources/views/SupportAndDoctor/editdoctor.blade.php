@@ -47,8 +47,7 @@
         </div>
         <label for="tel">เบอร์โทรศัพท์</label>
         <input type="text" name="tel" value="{{$doctor->tel}}" pattern="[0-9]{10}" required> <br>
-        <label for="specialist_id">ความเชี่ยวชาญ</label>
-        
+        <label for="specialist_id">เพิ่มความเชี่ยวชาญ</label>
         @if(!empty($spacialist) && count($spacialist) > 0)
             <select name="specialist_id[]" id="specialist" multiple class="specailist">
                 @foreach($spacialist as $list)
