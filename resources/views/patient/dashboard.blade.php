@@ -40,7 +40,7 @@
                                         <td>{{$cases->firstItem()+$loop->index}}</td>
                                         <td>{{$case->case_title}}</td>
                                         <td>{{$case->case_detail}}</td>
-                                        <td>@if($case->case_status == 1) กำลังรักษา @elseif($case->case_status==2) การรักษาไม่เสร็จสมบูรณ์ @elseif($case->case_status==3) เสร็จสิ้น @endif</td>
+                                        <td class="flex gap-2">@if($case->case_status == 1) <img src="{{asset('img/icon/clock.svg')}}" alt="wait"> <span>กำลังรักษา</span> @elseif($case->case_status==2) <img src="{{asset('img/icon/floppy.svg')}}" alt="cancel"><span>การรักษาไม่เสร็จสมบูรณ์</span>@elseif($case->case_status==3) <img src="{{asset('img/icon/check-circle.svg')}}" alt="finish"><span>เสร็จสิ้น</span> @endif</td>
                                         <td><a href="{{url('/user/case/'.$case->caseid)}}">รายละเอียดการนัด</a></td>
                                     </tr>
                                 @endforeach
