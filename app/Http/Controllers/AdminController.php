@@ -473,11 +473,11 @@ class AdminController extends Controller
     }
 
     function harddelete_doctor($id){
-        $doctor = Doctor::findOrFail($id)->restore();
-
-        foreach($doctor->doctor_id as $id){
-        $id->specialists()->detach();
-        $doctor->forceDelete();
+        $doctor = Doctor::onlyTrashed()->where('doctor_id',$id)->first();
+        
+        $doctor->specialists()->detach();
+        if($doctor->trashed()){
+            $doctor->forceDelete();
         }
 
         return redirect('/admin/trash');
