@@ -10,7 +10,7 @@
     <form action="{{ url('/admin/doctor/update/'.$doctor->doctor_id) }}" method="POST" class="add-data">
     @csrf
     @method('PUT')
-    <div class="add-data-item"
+    <div class="add-data-item">
         <label for="name_en">ขื่อ(ภาษาอังกฤษ)</label>
         <input type="text" name="name_en" value="{{$doctor->name_en}}" max="255" pattern="[a-zA-Z]+"> <br>
         <label for="lastname_en">นามสกุล(ภาษาอังกฤษ)</label>
@@ -19,6 +19,11 @@
         <input type="text" name="name_th" value="{{$doctor->name_th}}" max="255" pattern="[\u0E00-\u0E7F]+" required> <br>
         <label for="lastname_th">นามสกุล(ภาษาไทย)</label>
         <input type="text" name="lastname_th" value="{{$doctor->lastname_th}}" max="255" pattern="[\u0E00-\u0E7F]+" required> <br>
+        <div class="error-form">
+            @error('email')
+                {{ $message }}
+            @enderror
+        </div>
         <label for="email">อีเมล</label>
         <input type="email" name="email" value="{{$doctor->email}}" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required> <br>
     </div>
@@ -26,10 +31,20 @@
         @if(session()->has('error'))
             {{ session()->get('error') }}
         @endif
+        <div class="error-form">
+            @error('password')
+                {{ $message }}
+            @enderror
+        </div>
         <label for="password">รหัสผ่าน</label>
-        <input type="password" name="password" > <br>
+        <input type="password" name="password" minlength="8" required> <br>
         <label for="password">ยืนยันรหัสผ่าน</label>
-        <input type="password" name="password_cf" > <br>
+        <input type="password" name="password_cf" required> <br>
+        <div class="error-form">
+            @error('tel')
+                {{ $message }}
+            @enderror
+        </div>
         <label for="tel">เบอร์โทรศัพท์</label>
         <input type="text" name="tel" value="{{$doctor->tel}}" pattern="[0-9]{10}" required> <br>
         <label for="specialist_id">ความเชี่ยวชาญ</label>

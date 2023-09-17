@@ -296,6 +296,16 @@ class AdminController extends Controller
         return view('SupportAndDoctor.editdoctor')->with('spacialist',$spacialist)->with('doctor',$doctor);
     }
     function updatedoctor(Request $request, $id){
+        $request->validate([
+            'email' => 'required|email|unique:doctors,email,'.$id.',doctor_id',
+            'tel' => ['required', 'unique:doctors,tel,'.$id.',doctor_id']
+        ],
+        ['email.required' => 'กรุณากรอกอีเมล',
+        'email.email' => 'กรุณากรอกอีเมลให้ถูกต้อง',
+        'email.unique' => 'อีเมลนี้มีในระบบแล้ว',
+        'tel.required' => 'กรุณากรอกเบอร์โทรศัพท์',
+        'tel.unique' => 'เบอร์โทรศัพท์นี้มีในระบบแล้ว'
+    ]);
         $data = Doctor::where('doctor_id',$id)->first();
                 //caheckmathpassword
         if ($request->password != $request->password_cf) {
