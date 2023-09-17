@@ -3,14 +3,14 @@
 @section('content')
 <div class='patient'>
 <div class="a-container">
-
-        <div class='detail'>
-            <ul>
-                <li><a  href="{{route('patient.logout')}}">ออกจากระบบ</a></li>
-            </ul>
+        <div class="space"></div>
+        <div class="space"></div>
+        <div class="head flex justify-between items-center">
+            <p class="text-xl">สวัสดีคุณ <span class="font-bold">{{$user->name_th}} {{$user->lastname_th}}</span></p>
+            <a  href="{{route('patient.logout')}}" class="btn btn-logout">ออกจากระบบ</a>
         </div>
-                <p>สวัสดีคุณ {{$user->name_th}} {{$user->lastname_th}}</p>
-                <p>ประวัติ-ตารางเวลานัดหมาย</p>
+                
+                <h1 class="text-2xl mt-5">ประวัติ-ตารางเวลานัดหมาย</h1>
                     <table class='table-show'>
                         <th>รายการ</th>
                         <th>วันที่นัดหมาย</th>
