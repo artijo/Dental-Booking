@@ -40,16 +40,12 @@ class AdminController extends Controller
     function storepatient(Request $request){
         $request->validate([
             'idcard' => ['required', 'unique:patients', new ThaiIdCardRule],
-            'tel' => ['required', 'unique:patients'],
-            'email' => 'required|email|unique:patients'
+            'tel' => ['required', 'unique:patients']
         ],
         ['idcard.required' => 'กรุณากรอกเลขบัตรประชาชน',
         'idcard.unique' => 'เลขบัตรประชาชนนี้มีในระบบแล้ว',
         'tel.required' => 'กรุณากรอกเบอร์โทรศัพท์',
-        'tel.unique' => 'เบอร์โทรศัพท์นี้มีในระบบแล้ว',
-        'email.required' => 'กรุณากรอกอีเมล',
-        'email.email' => 'กรุณากรอกอีเมลให้ถูกต้อง',
-        'email.unique' => 'อีเมลนี้มีในระบบแล้ว'
+        'tel.unique' => 'เบอร์โทรศัพท์นี้มีในระบบแล้ว'
         ]
     );
 

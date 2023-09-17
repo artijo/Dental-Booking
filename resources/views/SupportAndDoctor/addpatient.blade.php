@@ -34,11 +34,6 @@
         <input type="tel" name="tel" pattern="[0-9]{10}" required><br>
     </div>
     <div class="add-data-item">
-        <div class="error-form">
-            @error('email')
-                {{ $message }}
-            @enderror
-        </div>
         <label for="email">อีเมล</label><br>
         <input type="email" name="email" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"><br>
         <label for="gender">เพศ</label><br>
