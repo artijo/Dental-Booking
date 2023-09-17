@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Booking;
 use App\Models\CaseMD;
 use App\Models\Casetype;
 use App\Models\Patient;
@@ -16,9 +17,14 @@ class PatientController extends Controller
     //
     function index(){
         $session = session('idcard');
-        $cases = CaseMD::where('idcard',$session)->with('bookings')->get(); //ยังไม่มีการลงบันทึกในตารางจึงต้องดึงมาจาก case ตรงๆก่อน
+        $cases = CaseMD::where('idcard',$session)->orderBy('caseid','DESC')->paginate(10); //ยังไม่มีการลงบันทึกในตารางจึงต้องดึงมาจาก case ตรงๆก่อน
         $user = Patient::where('idcard',$session)->first();
-        return view('patient.dashboard')->with('cases',$cases)->with('user',$user);
+        // $lastbooking = DB::table('bookings')->where('idcard',$session)->orderBy('bookingid','DESC')->first();
+        $lastbooking = CaseMD::where('idcard',$session)->orderBy('caseid','DESC')->first();
+        if($lastbooking){
+            $lastbooking = Booking::where('caseid',$lastbooking->caseid)->orderBy('booking_id','DESC')->first();
+        }
+        return view('patient.dashboard')->with('cases',$cases)->with('user',$user)->with('lastbooking',$lastbooking);
     }
 
     function showcasedetail($caseid){

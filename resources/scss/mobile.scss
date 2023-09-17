@@ -114,12 +114,27 @@ main {
             padding-left: 5px;
         }
     }
-    .head {
+    .head-pt {
         background-color: #fff;
         padding: 10px;
         border-radius: 10px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 
+    }
+    .content {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        .head {
+            background-color: $btn-color;
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+            padding: 10px;
+            color: #fff;
+        }
+        .body {
+            padding: 20px;
+        }
     }
 }
 .dashboard-nav {
@@ -278,16 +293,7 @@ th {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 1px 1px 5px #fff;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    h4{
-        margin-left: 40px;
-        margin-top: 5px;
-
-    }
-    .text-dt{
-        margin-left: 50px;
-    }
+    padding: 20px 50px;
 }
 ._desktop {
     display: none;
@@ -326,9 +332,12 @@ th {
         flex-direction: column;
     }
     .patient {
-        .head {
+        .head-pt {
             flex-direction: column;
             gap: 10px;
         }
+    }
+    .box-casedetail{
+        padding: 20px 20px;
     }
 }
