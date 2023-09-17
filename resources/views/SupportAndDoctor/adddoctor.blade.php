@@ -48,6 +48,9 @@
         <label for="tel">เบอร์โทรศัพท์</label><br>
         <input type="text" name="tel" pattern="[0-9]{10}"> <br>
         <label for="specialist_id">ความเชี่ยวชาญ</label><br>
+        @if(session()->has('error_sp'))
+            {{ session()->get('error_sp') }}
+        @endif
         @if(!empty($spacialist) && count($spacialist) > 0)
             <select class="specailist" name="specialist_id[]" id="specialist" multiple="multiple" >
                 @foreach($spacialist as $list)

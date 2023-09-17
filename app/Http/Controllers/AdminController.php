@@ -247,6 +247,9 @@ class AdminController extends Controller
         if ($request->password != $request->password_cf) {
             return back()->with('error','รหัสผ่านไม่ตรงกัน');
         }
+        if ($request->specialist_id === null){
+            return back()->with('error_sp','โปรดกรอกความสามารถของคุณ');
+        }
 
         // $doctor_id = $request->doctor_id;
         $name_en = $request->name_en;
@@ -259,7 +262,7 @@ class AdminController extends Controller
         foreach($request->specialist_id as $special){
         $spacialist_id [] = $special;
         }
-
+        
         $adddoctor = new Doctor;
         $adddoctor->doctor_id = $doctor_id;
         $adddoctor->name_en = $name_en;
@@ -272,6 +275,7 @@ class AdminController extends Controller
         foreach($spacialist_id as $addspecial){
         $adddoctor->specialist_id = $addspecial;
         }
+
         $adddoctor->save();
         $doctor = Doctor::where('doctor_id',$doctor_id)->first();
         $specialist = $spacialist_id;
