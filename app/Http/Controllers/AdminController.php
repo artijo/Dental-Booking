@@ -375,6 +375,22 @@ class AdminController extends Controller
         return view('supports.addsupport');
     }
     function storesupport(Request $request) {
+        $request->validate([
+            'email' => 'required|email|unique:supports',
+            'password' => 'required|min:8',
+            'password_cf' => 'required',
+            'tel' => ['required', 'unique:supports']
+        ],
+        ['email.required' => 'กรุณากรอกอีเมล',
+        'email.email' => 'กรุณากรอกอีเมลให้ถูกต้อง',
+        'email.unique' => 'อีเมลนี้มีในระบบแล้ว',
+        'password.required' => 'กรุณากรอกรหัสผ่าน',
+        'password_cf.required' => 'กรุณากรอกรหัสผ่านอีกครั้ง',
+        'password.min' => 'กรุณากรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร',
+        'tel.required' => 'กรุณากรอกเบอร์โทรศัพท์',
+        'tel.unique' => 'เบอร์โทรศัพท์นี้มีในระบบแล้ว'
+        ]
+        );
         $supportdata = Support::select('support_id')->orderBy('support_id','desc')->withTrashed()->first();
         if ($supportdata == null) {
             $support_id = 'sp0001';

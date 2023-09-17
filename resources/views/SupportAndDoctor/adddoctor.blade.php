@@ -33,6 +33,9 @@
                 {{ $message }}
             @enderror
         </div>
+        @if(session()->has('error'))
+            {{ session()->get('error') }}
+        @endif
         <label for="password">รหัสผ่าน</label><br>
         <input type="password" name="password" required> <br>
         <label for="password">ยืนยันรหัสผ่าน</label><br>
