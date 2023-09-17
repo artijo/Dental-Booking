@@ -18,17 +18,30 @@
         <input type="text" name="name_en" max="255" pattern="[a-zA-Z]+"> <br>
         <label for="lastname_en">นามสกุล(ภาษาอังกฤษ)</label>
         <input type="text" name="lastname_en" max="255" pattern="[a-zA-Z]+"> <br>
+        <div class="error-form">
+            @error('email')
+                {{ $message }}
+            @enderror
+
+        </div>
         <label for="email">อีเมล</label><br>
         <input type="text" name="email" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required> <br>
     </div>
     <div class="add-data-item">
-        @if(session()->has('error'))
-            {{ session()->get('error') }}
-        @endif
+        <div class="error-form">
+            @error('password')
+                {{ $message }}
+            @enderror
+        </div>
         <label for="password">รหัสผ่าน</label><br>
         <input type="password" name="password" required> <br>
         <label for="password">ยืนยันรหัสผ่าน</label><br>
         <input type="password" name="password_cf" required> <br>
+        <div class="error-form">
+            @error('tel')
+                {{ $message }}
+            @enderror
+        </div>
         <label for="tel">เบอร์โทรศัพท์</label><br>
         <input type="text" name="tel" pattern="[0-9]{10}"> <br>
         <label for="specialist_id">ความเชี่ยวชาญ</label><br>

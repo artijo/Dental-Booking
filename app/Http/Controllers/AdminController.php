@@ -199,6 +199,22 @@ class AdminController extends Controller
     }
 
     function storedoctor(Request $request){
+        $request->validate([
+            'email' => 'required|email|unique:doctors',
+            'password' => 'required|min:8',
+            'password_cf' => 'required',
+            'tel' => ['required', 'unique:doctors']
+        ],
+        ['email.required' => 'กรุณากรอกอีเมล',
+        'email.email' => 'กรุณากรอกอีเมลให้ถูกต้อง',
+        'email.unique' => 'อีเมลนี้มีในระบบแล้ว',
+        'password.required' => 'กรุณากรอกรหัสผ่าน',
+        'password_cf.required' => 'กรุณากรอกรหัสผ่านอีกครั้ง',
+        'password.min' => 'กรุณากรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร',
+        'tel.required' => 'กรุณากรอกเบอร์โทรศัพท์',
+        'tel.unique' => 'เบอร์โทรศัพท์นี้มีในระบบแล้ว'
+        ]
+        );
         $doctordata = Doctor::select('doctor_id')->orderBy('doctor_id','desc')->first();
         $exist = Doctor::withTrashed()->orderBy('doctor_id','desc')->first();
 
