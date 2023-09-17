@@ -21,7 +21,7 @@
     คุุณ {{$patient->name_th}} {{$patient->lastname_th}} <br>
     <span class="font-bold">รหัสบัตรประชาชน</span> {{$patient->idcard}} <br>
     <span class="font-bold">เกิดวันที่</span> {{$patient->birthday}}<br>
-    <span class="font-bold">เพศ</span> {{$patient->gender}} <br>
+    <span class="font-bold">เพศ</span> @if($patient->gender === 'male')ชาย @elseif($patient->gender === 'female')หญิง @endif <br>
     <span class="font-bold">โรคประจำตัว</span>@if($patient->intolerance) {{$patient->intolerance}} @else ไม่มีโรคประจำตัว @endif<br>
     <span class="font-bold">จำนวนการรักษา</span> {{$patient->cases->count()}} ครั้ง <br>
     
