@@ -12,6 +12,7 @@ use App\Models\Specialist;
 use App\Models\Casetype;
 use Illuminate\Support\Facades\Hash;
 use Phattarachai\ThaiIdCardValidation\ThaiIdCardRule;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -447,9 +448,15 @@ class AdminController extends Controller
         return redirect('/admin/trash');
     }
 
-    function restore_booking($id){
-        Booking::where('caseid',$id)->restore();
-        CaseMD::where('caseid',$id)->restore();
+    function restore_booking($booking_id,$case_id){
+        $booking = Booking::onlyTrashed()->where('booking_id', $booking_id)->first();
+        $booking->restore();
+
+        $case = CaseMD::onlyTrashed()->where('caseid', $case_id)->first();
+        if($case && $case->trashed()){
+        $case->restore();
+        }
+
 
         return redirect('/admin/trash');
     }
@@ -457,6 +464,22 @@ class AdminController extends Controller
     function restore_support($id){
         Support::where('support_id',$id)->restore();
         
+        return redirect('/admin/trash');
+    }
+
+    function harddelete_patient($id){
+        Patient::where('idcard',$id)->forceDelete();
+        return redirect('/admin/trash');
+    }
+
+    function harddelete_doctor($id){
+        $doctor = Doctor::findOrFail($id)->restore();
+
+        foreach($doctor->doctor_id as $id){
+        $id->specialists()->detach();
+        $doctor->forceDelete();
+        }
+
         return redirect('/admin/trash');
     }
 }

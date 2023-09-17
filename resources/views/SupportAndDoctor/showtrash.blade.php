@@ -23,8 +23,9 @@
             <td>{{$list->name_th}} {{$list->lastname_th}}</td>
             <td>{{$list->email}}</td>
             <td>{{$list->tel}}</td>
-            <td>{{$list->birthday}}</td>
+            <td>{{date('d M Y',strtotime($list->birthday))}}</td>
             <td><a href="{{url('/admin/restore/patient/'.$list->idcard)}}">Restore</a></td>
+            <td><a href="{{url('/admin/delete/patient/'.$list->idcard)}}">Delete</a></td>
         </tr>
         @endforeach
     </table>
@@ -46,6 +47,7 @@
             <td>{{$list->email}}</td>
             <td>{{$list->tel}}</td>
             <td><a href="{{url('/admin/restore/doctor/'.$list->doctor_id)}}">Restore</a></td>
+            <td><a href="{{url('/admin/delete/doctor/'.$list->doctor_id)}}">Delete</a></td>
         </tr>
         @endforeach
     </table>
@@ -92,7 +94,7 @@
             <td>{{$list->caseid}}</td>
             <td>{{$list->booking_title}}</td>
             <td>{{date('d M Y H:m:s',strtotime($list->booking_date))}}</td>
-            <td><a href="{{url('/admin/restore/booking/'.$list->caseid)}}">Restore</a></td>
+            <td><a href="{{url('/admin/restore/booking/'.$list->booking_id.'/'.$list->caseid)}}">Restore</a></td>
         </tr>
         @endforeach
     </table>
