@@ -37,9 +37,9 @@
             @enderror
         </div>
         <label for="password">รหัสผ่าน</label>
-        <input type="password" name="password" minlength="8" required> <br>
+        <input type="password" name="password" minlength="8"> <br>
         <label for="password">ยืนยันรหัสผ่าน</label>
-        <input type="password" name="password_cf" required> <br>
+        <input type="password" name="password_cf"> <br>
         <div class="error-form">
             @error('tel')
                 {{ $message }}
@@ -48,6 +48,7 @@
         <label for="tel">เบอร์โทรศัพท์</label>
         <input type="text" name="tel" value="{{$doctor->tel}}" pattern="[0-9]{10}" required> <br>
         <label for="specialist_id">ความเชี่ยวชาญ</label>
+        
         @if(!empty($spacialist) && count($spacialist) > 0)
             <select name="specialist_id[]" id="specialist" multiple class="specailist">
                 @foreach($spacialist as $list)
