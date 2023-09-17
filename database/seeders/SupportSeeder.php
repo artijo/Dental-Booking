@@ -15,11 +15,11 @@ class SupportSeeder extends Seeder
     {
         //
         \App\Models\Support::create([
-            'support_id' => 'SP0000',
+            'support_id' => 'sp0000',
             'name' => 'Admin',
             'tel' => '0000000000',
             'level' => 0,
-            'email' => 'admin@dental.co',
+            'email' => 'admin@dental.app',
             'password' => Hash::make('12345678')
         ]);
     }
