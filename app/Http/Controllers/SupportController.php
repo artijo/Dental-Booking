@@ -41,9 +41,9 @@ class SupportController extends Controller
     function showcase(Request $request){
         $s = $request->query('search');
         if($s){
-            $cases = CaseMD::where('caseid','LIKE',"%{$s}%")->orWhere('case_title','LIKE',"%{$s}%")->orWhere('case_detail','LIKE',"%{$s}%")->paginate(10);
+            $cases = CaseMD::where('caseid','LIKE',"%{$s}%")->orWhere('case_title','LIKE',"%{$s}%")->orWhere('case_detail','LIKE',"%{$s}%")->orderBy('caseid','DESC')->paginate(10);
         }else{
-        $cases = CaseMD::paginate(10);
+        $cases = CaseMD::orderBy('caseid','DESC')->paginate(10);
         }
         return view('Supports.showcase')->with('cases',$cases)->with('s',$s);
     }

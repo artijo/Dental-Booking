@@ -75,9 +75,9 @@ class DoctorController extends Controller
     function showcase(){
         $s = request()->query('search');
         if($s){
-            $cases = CaseMD::where('doctor_id', session(('doctor_id')))->where('caseid','LIKE',"%{$s}%")->orWhere('case_title','LIKE',"%{$s}%")->orWhere('case_detail','LIKE',"%{$s}%")->paginate(10);
+            $cases = CaseMD::where('doctor_id', session(('doctor_id')))->where('caseid','LIKE',"%{$s}%")->orWhere('case_title','LIKE',"%{$s}%")->orWhere('case_detail','LIKE',"%{$s}%")->orderBy('caseid','DESC')->paginate(10);
         }else{
-        $cases = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(10);
+        $cases = CaseMD::where('doctor_id', session(('doctor_id')))->orderBy('caseid','DESC')->paginate(10);
         }
         return view('Doctor.showcase')->with('cases',$cases)->with('s',$s);
     }
@@ -86,7 +86,7 @@ class DoctorController extends Controller
         return view("Doctor.doctorcasedetail",compact('case'));
     }
     function showbooking(){
-        $booking = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(10);
+        $booking = CaseMD::where('doctor_id', session(('doctor_id')))->orderBy('caseid','DESC')->paginate(10);
         return view('Doctor.showbooking',compact('booking'));
     }
 }

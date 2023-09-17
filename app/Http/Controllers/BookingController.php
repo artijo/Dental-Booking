@@ -18,9 +18,9 @@ class BookingController extends Controller
     function showhistory(Request $request){
         $s = $request->query('search');
         if($s){
-            $booking = Booking::where('booking_id','LIKE',"%{$s}%")->orWhere('booking_title','LIKE',"%{$s}%")->orWhere('booking_detail','LIKE',"%{$s}%")->paginate(10);
+            $booking = Booking::where('booking_id','LIKE',"%{$s}%")->orWhere('booking_title','LIKE',"%{$s}%")->orWhere('booking_detail','LIKE',"%{$s}%")->orderBy('booking_id','DESC')->paginate(10);
         }else{
-        $booking = Booking::paginate(10);
+        $booking = Booking::orderBy('booking_id','DESC')->paginate(10);
         }
         // $booking = Booking::with('case')->paginate(10);
         return view('SupportAndDoctor.showbooking',compact('booking','s'));
