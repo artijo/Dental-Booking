@@ -93,11 +93,10 @@ class AdminController extends Controller
     function updatepatient_doctor (Request $request, $idcard) {
         $request->validate([
             'tel' => ['required', 'unique:patients,tel,'.$idcard.',idcard'],
-            'email' => 'required|email|unique:patients,email,'.$idcard.',idcard'
+            'email' => 'email|unique:patients,email,'.$idcard.',idcard'
         ],
         ['tel.required' => 'กรุณากรอกเบอร์โทรศัพท์',
         'tel.unique' => 'เบอร์โทรศัพท์นี้มีในระบบแล้ว',
-        'email.required' => 'กรุณากรอกอีเมล',
         'email.email' => 'กรุณากรอกอีเมลให้ถูกต้อง',
         'email.unique' => 'อีเมลนี้มีในระบบแล้ว'
         ]
