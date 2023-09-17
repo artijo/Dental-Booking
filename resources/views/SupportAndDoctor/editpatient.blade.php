@@ -34,11 +34,6 @@
             <input type="number" name="tel" value="{{$patient->tel}}" pattern="[0-9]{10}" required><br>
         </div>
         <div class="add-data-item">
-            <div class="error-form">
-                @error('email')
-                    {{ $message }}
-                @enderror
-            </div>
             <label for="email">อีเมล</label><br>
             <input type="email" name="email" value="{{$patient->email}}" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"><br>
             @if($patient->gender === 'male')

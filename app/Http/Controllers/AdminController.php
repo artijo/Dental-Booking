@@ -92,13 +92,10 @@ class AdminController extends Controller
 
     function updatepatient_doctor (Request $request, $idcard) {
         $request->validate([
-            'tel' => ['required', 'unique:patients,tel,'.$idcard.',idcard'],
-            'email' => 'email|unique:patients,email,'.$idcard.',idcard'
+            'tel' => ['required', 'unique:patients,tel,'.$idcard.',idcard']
         ],
         ['tel.required' => 'กรุณากรอกเบอร์โทรศัพท์',
-        'tel.unique' => 'เบอร์โทรศัพท์นี้มีในระบบแล้ว',
-        'email.email' => 'กรุณากรอกอีเมลให้ถูกต้อง',
-        'email.unique' => 'อีเมลนี้มีในระบบแล้ว'
+        'tel.unique' => 'เบอร์โทรศัพท์นี้มีในระบบแล้ว'
         ]
     );
         $caseid = CaseMD::Where('idcard',$idcard)->first();
@@ -114,20 +111,16 @@ class AdminController extends Controller
         'intolerance' => $request->intolerance,
         'birthday' => $request->birthday
         ]);
-        return redirect('/admin/doctor/patient/'.$caseid->idcard)->with('success','แก้ไขข้อมูลคนไข้สำเร็จ');
+        return redirect('/admin/doctor/patient/'.$idcard)->with('success','แก้ไขข้อมูลคนไข้สำเร็จ');
     }
 
 
     function updatepatient_admin (Request $request, $idcard) {
         $request->validate([
-            'tel' => ['required', 'unique:patients,tel,'.$idcard.',idcard'],
-            'email' => 'required|email|unique:patients,email,'.$idcard.',idcard'
+            'tel' => ['required', 'unique:patients,tel,'.$idcard.',idcard']
         ],
         ['tel.required' => 'กรุณากรอกเบอร์โทรศัพท์',
         'tel.unique' => 'เบอร์โทรศัพท์นี้มีในระบบแล้ว',
-        'email.required' => 'กรุณากรอกอีเมล',
-        'email.email' => 'กรุณากรอกอีเมลให้ถูกต้อง',
-        'email.unique' => 'อีเมลนี้มีในระบบแล้ว'
         ]
     );
         $caseid = CaseMD::Where('idcard',$idcard)->first();
@@ -143,7 +136,7 @@ class AdminController extends Controller
         'intolerance' => $request->intolerance,
         'birthday' => $request->birthday
         ]);
-        return redirect('/admin/patient/'.$caseid->idcard)->with('success','แก้ไขข้อมูลคนไข้สำเร็จ');
+        return redirect('/admin/patient/'.$idcard)->with('success','แก้ไขข้อมูลคนไข้สำเร็จ');
     }
 
 
