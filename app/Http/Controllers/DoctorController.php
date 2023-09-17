@@ -30,12 +30,12 @@ class DoctorController extends Controller
     ->join('patients', 'case_m_d_s.idcard', '=', 'patients.idcard')->where('doctor_id',$dt)
     ->groupBy('patients.name_th','patients.lastname_th','patients.tel', 'patients.idcard')
     ->where('patients.name_th','LIKE',"%{$s}%")->orWhere('patients.lastname_th','LIKE',"%{$s}%")->orWhere('patients.tel','LIKE',"%{$s}%")->orWhere('patients.idcard','LIKE',"%{$s}%")
-    ->paginate(6);
+    ->paginate(10);
         }else{
         $cases = CaseMD::select(DB::raw('count(caseid) as casetotal, CONCAT(patients.name_th, " ", patients.lastname_th) as fullname, patients.tel as tel, patients.idcard as idcard'))
     ->join('patients', 'case_m_d_s.idcard', '=', 'patients.idcard')->where('doctor_id',$dt)
     ->groupBy('patients.name_th','patients.lastname_th','patients.tel', 'patients.idcard')
-    ->paginate(6);
+    ->paginate(10);
         }
         $doctor = Doctor::where('doctor_id',$dt)->first();
         // $patient = CaseMD::where('doctor_id', session(('doctor_id')))->paginate(6);

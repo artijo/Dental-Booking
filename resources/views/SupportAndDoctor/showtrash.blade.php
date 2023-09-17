@@ -74,6 +74,7 @@
                 @endif</td>
             <td>{{$list->doctor_id}}</td>
             <td><a href="{{url('/admin/restore/case/'.$list->caseid)}}">Restore</a></td>
+            <td><a href="{{url('/admin/delete/case/'.$list->caseid)}}">Delete</a></td>
         </tr>
         @endforeach
     </table>
@@ -95,6 +96,7 @@
             <td>{{$list->booking_title}}</td>
             <td>{{date('d M Y H:m:s',strtotime($list->booking_date))}}</td>
             <td><a href="{{url('/admin/restore/booking/'.$list->booking_id.'/'.$list->caseid)}}">Restore</a></td>
+            <td><a href="{{url('/admin/delete/booking/'.$list->booking_id)}}">Delete</a></td>
         </tr>
         @endforeach
     </table>
@@ -114,6 +116,7 @@
             <td>{{$list->name}}</td>
             <td>{{$list->level}}</td>
             <td><a href="{{url('/admin/restore/support/'.$list->support_id)}}">Restore</a></td>
+            <td><a href="{{url('/admin/delete/support/'.$list->support_id)}}">Delete</a></td>
         </tr>
         @endforeach
     </table>

@@ -88,6 +88,9 @@ Route::middleware(['support.check'])->group(function () {
         Route::get('/admin/restore/support/{id}',[AdminController::class,'restore_support'])->name('restore.support');
         Route::get('/admin/delete/patient/{id}',[AdminController::class,'harddelete_patient'])->name('delete.patient');
         Route::get('/admin/delete/doctor/{id}',[AdminController::class,'harddelete_doctor'])->name('delete.doctor');
+        Route::get('/admin/delete/case/{id}',[AdminController::class,'harddelete_case'])->name('delete.case');
+        Route::get('/admin/delete/booking/{id}',[AdminController::class,'harddelete_booking'])->name('delete.booking');
+        Route::get('/admin/delete/support/{id}',[AdminController::class,'harddelete_support'])->name('delete.support');
     });
 });
 Route::middleware(['supportanddoctor'])->group(function (){

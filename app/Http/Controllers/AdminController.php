@@ -482,4 +482,23 @@ class AdminController extends Controller
 
         return redirect('/admin/trash');
     }
+
+    function harddelete_case($id){
+        Booking::onlyTrashed()->where('caseid',$id)->forceDelete();
+        CaseMD::onlyTrashed()->where('caseid',$id)->forceDelete();
+        
+        return redirect('/admin/trash');
+    }
+
+    function harddelete_booking($id){
+        Booking::onlyTrashed()->where('booking_id',$id)->forceDelete();
+        
+        return redirect('/admin/trash');
+    }
+
+    function harddelete_support($id){
+        Support::onlyTrashed()->where('support_id',$id)->forceDelete();
+
+        return redirect('/admin/trash');
+    }
 }

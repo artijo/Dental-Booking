@@ -73,7 +73,7 @@ class PatientController extends Controller
     function showpatient(Request $request){
             $s = $request->query('search');
             if($s != null){
-                $page = Patient::where('name_th','like','%'.$s.'%')->orWhere('lastname_th','like','%'.$s.'%')->orWhere('idcard','like','%'.$s.'%')->paginate(3);
+                $page = Patient::where('name_th','like','%'.$s.'%')->orWhere('lastname_th','like','%'.$s.'%')->orWhere('idcard','like','%'.$s.'%')->paginate(10);
             }else{
                 $page = Patient::paginate(10);
             }
