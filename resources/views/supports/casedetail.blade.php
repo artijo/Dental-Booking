@@ -26,12 +26,12 @@
            <h3>วันที่นัดหมาย</h3> 
                 @foreach($case->bookings as $time)
                         @if($time->booking_date != NULL) 
-                                {{$time->booking_date}} น.
+                                {{$time->booking_date}} น. <br>
                          @else 
                           ยังไม่ลงเวลานัด
                         @endif
-                @endforeach  <br>
-            สถานะการรักษา <br>
+                @endforeach
+            <h3>สถานะการรักษา</h3>
              @if($case->case_status === 1)รอเข้าพบ 
                 @elseif($case->case_status === 2)ไม่มาพบตามนัด 
                 @elseif($case->case_status === 3)เสร็จสิ้น
