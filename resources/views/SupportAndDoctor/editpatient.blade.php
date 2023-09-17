@@ -25,10 +25,20 @@
             <input type="text" name="name_en" value="{{$patient->name_en}}" max="255" pattern="[a-zA-Z]+"><br>
             <label for="surname_en">นามสกุล (ภาษาอังกฤษ)</label><br>
             <input type="text" name="lastname_en" value="{{$patient->lastname_en}}" max="255" pattern="[a-zA-Z]+"><br>
+            <div class="error-form">
+                @error('tel')
+                    {{ $message }}
+                @enderror
+            </div>
             <label for="tel">เบอร์โทรศัพท์</label><br>
             <input type="number" name="tel" value="{{$patient->tel}}" pattern="[0-9]{10}" required><br>
         </div>
         <div class="add-data-item">
+            <div class="error-form">
+                @error('email')
+                    {{ $message }}
+                @enderror
+            </div>
             <label for="email">อีเมล</label><br>
             <input type="email" name="email" value="{{$patient->email}}" max="255" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"><br>
             @if($patient->gender === 'male')
