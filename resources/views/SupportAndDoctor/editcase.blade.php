@@ -1,6 +1,40 @@
 @extends('layouts.global')
 @section('title') แก้ไขเคสการรักษา @endsection
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function () {
+        $(document).on('change', '.casetype',function () {
+        //    console.log('Case change');
+
+           var casetype = $(this).val();
+           var prefix = casetype.substr(0,2);
+           var div =$(this).parents();
+        //    console.log(casetype); 
+            $.ajax({
+                type:'get',
+                url:'/admin/editcase/filter',
+                data:{'id':prefix},
+                success:function(data){
+                    console.log('success');
+                    console.log(data);
+                    console.log(data.length);
+                    var doctor_option = " ";
+                    doctor_option+='<option value="0" selected disabled>เลือกหมอ</option>';
+                    for(var i = 0;i<data.length;i++){
+                    doctor_option+='<option value="'+data[i].doctor_id+'">'+data[i].name_th+' '+data[i].lastname_th+'</option>';
+                    }
+
+                    $('.doctor').html('');
+                    $('.doctor').append(doctor_option);
+                },
+                error:function(){
+
+                }
+            });
+        });
+    });
+</script>
 <div class="a-container">
     <div class="space"></div>
     <div class="head-title"><h1>แก้ไขเคสการรักษา</h1></div>
@@ -17,7 +51,8 @@
         <input type="text" name="case_title" value="{{$case->case_title}}" max="255" required><br>
         <label for="casetype_id">รูปแบบการรักษา</label><br>
         @if(!empty($case_type) && count($case_type) > 0)
-            <select name="casetype_id" id="casetype">
+            <select name="casetype_id" id="casetype" class="casetype">
+                <option value="0" disabled selected>เลือกประเภทการรักษา</option>
                 @foreach($case_type as $list)
                 <option value="{{ $list->casetype_id }}">{{ $list->casetype_name }}</option>
                 @endforeach
@@ -29,10 +64,8 @@
         <input type="text" name="case_detail" value="{{$case->case_detail}}"><br>
         <label for="doctor_id">รหัสนายแพทย์</label><br>
         @if($doctor)
-            <select name="doctor_id" single>
-            @foreach($doctor as $list)
-                <option value="{{$list->doctor_id}}">{{$list->doctor_id}}</option>
-            @endforeach
+            <select name="doctor_id" single class="doctor">
+                <option value="0" disabled='true' selected>เลือกหมอ</option>
             </select><br>
         @else
         <input type="text" name="doctor_id" value="ไม่มีข้อมูลทันตแพทย์" disabled><br>

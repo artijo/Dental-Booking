@@ -97,6 +97,7 @@ Route::middleware(['supportanddoctor'])->group(function (){
     Route::get('/admin/addpatient', [PatientController::class,'addpatient'])->name('patient.addpatient');
     Route::post('/admin/addpatient', [AdminController::class,'storepatient'])->name('admin.storepatient');
     Route::get('/admin/addcase',[PatientController::class,'addcase'])->name('patient.addcase');
+    Route::get('/admin/addcase/filter',[AdminController::class,'casefilter'])->name('addcase.filter');
     Route::post('/admin/addcase',[AdminController::class,'storecase'])->name('admin.storecase');
     Route::get('/admin/adddoctor',[DoctorController::class,'adddoctor'])->name('doctor.adddoctor');
     Route::post('/admin/adddoctor',[AdminController::class,'storedoctor'])->name('doctor.storedoctor');
@@ -120,6 +121,7 @@ Route::middleware(['adminanddoctor'])->group(function(){
     Route::get('/admin/doctor/edit/{id}',[AdminController::class,'editdoctor'])->name('admin.editdoctor');
     Route::put('/admin/doctor/update/{id}',[AdminController::class,'updatedoctor'])->name('admin.updatedoctor');
     Route::get('/admin/case/edit/{id}',[AdminController::class,'editcase'])->name('admin.editcase');
+    Route::get('/admin/editcase/filter',[AdminController::class,'casefilter'])->name('editcase.filter');
     Route::put('/admin/case/update/{id}',[AdminController::class,'updatecase'])->name('admin.updatecase');
     Route::get('/admin/booking/edit/{id}',[AdminController::class,'editbooking'])->name('admin.editbooking');
     Route::put('/admin/booking/update/{id}',[AdminController::class,'updatebooking'])->name('admin.updatebooking');
