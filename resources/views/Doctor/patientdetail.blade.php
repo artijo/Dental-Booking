@@ -30,7 +30,6 @@
     <table class="table-show">
         <tr>
             <th>รายการ</th>
-            <th>รายละเอียด</th>
             <th colspan="2">สถานะ</th>
 
         </tr>

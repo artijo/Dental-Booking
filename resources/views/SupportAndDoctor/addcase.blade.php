@@ -65,7 +65,7 @@
         ไม่มีข้อมูลเฉพาะทางในขณะนี้<br>
         @endif
         <label for='case_detail'>รายละเอียดการรักษา</label><br>
-        <input type="text" name="case_detail"><br>
+        <textarea name="case_detail" cols="50" rows="10"></textarea><br>
         <label for="doctor_id">รับผิดชอบโดยแพทย์</label><br>
         @if(!empty($doctor) && count($doctor) > 0)
         <select class="doctor" name="doctor_id">

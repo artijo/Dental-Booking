@@ -59,7 +59,6 @@
         <tr>
             <th>รหัสเคส</th>
             <th>หัวเรื่อง</th>
-            <th>รายละเอียด</th>
             <th>สถานะการนัด</th>
             <th colspan="3">รหัสทันตแพทย์</th>
         </tr>
@@ -67,7 +66,6 @@
         <tr>
             <td>{{$list->caseid}}</td>
             <td>{{$list->case_title}}</td>
-            <td>{{$list->case_detail}}</td>
             <td> @if($list->case_status === 1)รอเข้าพบ 
                 @elseif($list->case_status === 2)ไม่มาพบตามนัด 
                 @elseif($list->case_status === 3)เสร็จสิ้น
