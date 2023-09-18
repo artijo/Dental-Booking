@@ -1,40 +1,6 @@
 @extends('layouts.global')
 @section('title') แก้ไขเคสการรักษา @endsection
 @section('content')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type='text/javascript'>
-    $(document).ready(function () {
-        $(document).on('change', '.casetype',function () {
-        //    console.log('Case change');
-
-           var casetype = $(this).val();
-           var prefix = casetype.substr(0,2);
-           var div =$(this).parents();
-        //    console.log(casetype); 
-            $.ajax({
-                type:'get',
-                url:'/admin/editcase/filter',
-                data:{'id':prefix},
-                success:function(data){
-                    console.log('success');
-                    console.log(data);
-                    console.log(data.length);
-                    var doctor_option = " ";
-                    doctor_option+='<option value="0" selected disabled>เลือกหมอ</option>';
-                    for(var i = 0;i<data.length;i++){
-                    doctor_option+='<option value="'+data[i].doctor_id+'">'+data[i].name_th+' '+data[i].lastname_th+'</option>';
-                    }
-
-                    $('.doctor').html('');
-                    $('.doctor').append(doctor_option);
-                },
-                error:function(){
-
-                }
-            });
-        });
-    });
-</script>
 <div class="a-container">
     <div class="space"></div>
     <div class="head-title"><h1>แก้ไขเคสการรักษา</h1></div>
@@ -72,7 +38,9 @@
         @endif
             <select name="doctor_id" single class="doctor">
                 @if($case->doctor)
-                <option value="{{$case->doctor_id}}" disabled='true' selected>{{$case->doctor->name_th}} {{$case->doctor->lastname_th}}</option>
+                @foreach($doctor as $doctors)
+                <option value="{{$doctors->doctor_id}}" selected>{{$doctors->name_th}} {{$doctors->lastname_th}}</option>
+                @endforeach
                 @else
                 <option value="0" disabled='true' selected>เลือกหมอ</option>
                 @endif
