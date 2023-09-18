@@ -5,20 +5,15 @@
 <script type='text/javascript'>
     $(document).ready(function () {
         $(document).on('change', '.casetype',function () {
-        //    console.log('Case change');
 
            var casetype = $(this).val();
            var prefix = casetype.substr(0,2);
            var div =$(this).parents();
-        //    console.log(casetype); 
             $.ajax({
                 type:'get',
                 url:'/admin/addcase/filter',
                 data:{'id':prefix},
                 success:function(data){
-                    console.log('success');
-                    console.log(data);
-                    console.log(data.length);
                     var doctor_option = " ";
                     doctor_option+='<option value="0" selected disabled>เลือกหมอ</option>';
                     for(var i = 0;i<data.length;i++){
