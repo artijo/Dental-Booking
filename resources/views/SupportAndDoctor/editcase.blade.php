@@ -64,7 +64,7 @@
         ไม่มีข้อมูลเฉพาะทางในขณะนี้<br>
         @endif
         <label for='case_detail'>รายละเอียดการรักษา</label><br>
-        <input type="text" name="case_detail" value="{{$case->case_detail}}"><br>
+        <textarea rows="10" cols="50">{{$case->case_detail}}</textarea><br>
         <label for="doctor_id">รหัสนายแพทย์</label><br>
         @if($case)
             <select name="doctor_id" single class="doctor">
