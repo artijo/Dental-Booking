@@ -24,8 +24,8 @@
             <td>{{$list->email}}</td>
             <td>{{$list->tel}}</td>
             <td>{{date('d M Y',strtotime($list->birthday))}}</td>
-            <td><a href="{{url('/admin/restore/patient/'.$list->idcard)}}" onclick="confrimation_restore(event)">Restore</a></td>
-            <td><a href="{{url('/admin/delete/patient/'.$list->idcard)}}" onclick="confrimation_delete(event)">Delete</a></td>
+            <td><a href="{{url('/admin/restore/patient/'.$list->idcard)}}" onclick="confrimation_restore(event)">กู้ข้อมูล</a></td>
+            <td><a href="{{url('/admin/delete/patient/'.$list->idcard)}}" onclick="confrimation_delete(event)">ลบข้อมูล</a></td>
         </tr>
         @endforeach
     </table>
@@ -46,8 +46,8 @@
             <td>{{$list->name_th}} {{$list->lastname_th}}</td>
             <td>{{$list->email}}</td>
             <td>{{$list->tel}}</td>
-            <td><a href="{{url('/admin/restore/doctor/'.$list->doctor_id)}}" onclick="confrimation_restore(event)">Restore</a></td>
-            <td><a href="{{url('/admin/delete/doctor/'.$list->doctor_id)}}" onclick="confrimation_delete(event)">Delete</a></td>
+            <td><a href="{{url('/admin/restore/doctor/'.$list->doctor_id)}}" onclick="confrimation_restore(event)">กู้ข้อมูล</a></td>
+            <td><a href="{{url('/admin/delete/doctor/'.$list->doctor_id)}}" onclick="confrimation_delete(event)">ลบข้อมูล</a></td>
         </tr>
         @endforeach
     </table>
@@ -71,8 +71,8 @@
                 @elseif($list->case_status === 3)เสร็จสิ้น
                 @endif</td>
             <td>{{$list->doctor_id}}</td>
-            <td><a href="{{url('/admin/restore/case/'.$list->caseid)}}" onclick="confrimation_restore(event)">Restore</a></td>
-            <td><a href="{{url('/admin/delete/case/'.$list->caseid)}}" onclick="confrimation_delete(event)">Delete</a></td>
+            <td><a href="{{url('/admin/restore/case/'.$list->caseid)}}" onclick="confrimation_restore(event)">กู้ข้อมูล</a></td>
+            <td><a href="{{url('/admin/delete/case/'.$list->caseid)}}" onclick="confrimation_delete(event)">ลบข้อมูล</a></td>
         </tr>
         @endforeach
     </table>
@@ -93,8 +93,8 @@
             <td>{{$list->caseid}}</td>
             <td>{{$list->booking_title}}</td>
             <td>{{date('d M Y H:m:s',strtotime($list->booking_date))}}</td>
-            <td><a href="{{url('/admin/restore/booking/'.$list->booking_id.'/'.$list->caseid)}}" onclick="confrimation_restore(event)">Restore</a></td>
-            <td><a href="{{url('/admin/delete/booking/'.$list->booking_id)}}" onclick="confrimation_delete(event)">Delete</a></td>
+            <td><a href="{{url('/admin/restore/booking/'.$list->booking_id.'/'.$list->caseid)}}" onclick="confrimation_restore(event)">กู้ข้อมูล</a></td>
+            <td><a href="{{url('/admin/delete/booking/'.$list->booking_id)}}" onclick="confrimation_delete(event)">ลบข้อมูล</a></td>
         </tr>
         @endforeach
     </table>
@@ -112,9 +112,9 @@
         <tr>
             <td>{{$list->support_id}}</td>
             <td>{{$list->name}}</td>
-            <td>{{$list->level}}</td>
-            <td><a href="{{url('/admin/restore/support/'.$list->support_id)}}" onclick="confrimation_restore(event)">Restore</a></td>
-            <td><a href="{{url('/admin/delete/support/'.$list->support_id)}}" onclick="confrimation_delete(event)">Delete</a></td>
+            <td>@if($list->level == 0)ผู้ดูแลระบบ@else เจ้าหน้าที่ @endif</td>
+            <td><a href="{{url('/admin/restore/support/'.$list->support_id)}}" onclick="confrimation_restore(event)">กู้ข้อมูล</a></td>
+            <td><a href="{{url('/admin/delete/support/'.$list->support_id)}}" onclick="confrimation_delete(event)">ลบข้อมูล</a></td>
         </tr>
         @endforeach
     </table>

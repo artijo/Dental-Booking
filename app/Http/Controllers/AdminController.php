@@ -430,9 +430,17 @@ class AdminController extends Controller
         ]
         );
         $supportdata = Support::select('support_id')->orderBy('support_id','desc')->withTrashed()->first();
+        $exist = Support::withTrashed()->orderBy('support_id','desc')->first();
         if ($supportdata == null) {
             $support_id = 'sp0001';
-        }else{
+        }elseif($exist){
+            $support_id = $exist->support_id;
+            $prefix = 'sp';
+            $last= (int)substr($support_id,2);
+            $next= $last + 1;
+            $support_id = $prefix.sprintf("%04d",$next);
+        }
+        else{
         $supportid = $supportdata->support_id;
         $prefix = 'sp';
         $lastNumber = (int)substr($supportid, 2);
