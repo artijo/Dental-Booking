@@ -329,6 +329,11 @@ th {
     color: red;
     font-size: 14px;
 }
+.detail-more {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 ._desktop {
     display: none;
 }
