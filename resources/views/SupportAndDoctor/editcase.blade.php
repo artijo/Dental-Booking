@@ -67,6 +67,9 @@
         <textarea rows="10" cols="50">{{$case->case_detail}}</textarea><br>
         <label for="doctor_id">รหัสนายแพทย์</label><br>
         @if($case)
+        @if(session()->has('error'))
+            {{ session()->get('error') }}
+        @endif
             <select name="doctor_id" single class="doctor">
                 @if($case->doctor)
                 <option value="{{$case->doctor_id}}" disabled='true' selected>{{$case->doctor->name_th}} {{$case->doctor->lastname_th}}</option>
