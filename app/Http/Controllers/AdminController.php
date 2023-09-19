@@ -193,8 +193,8 @@ class AdminController extends Controller
     function casefilter(Request $request){
         $case_prefix = $request->input('id');
 
-        $data = Doctor::select('doctor_id','name_th','lastname_th')->whereHas('specialists',function($query) use ($case_prefix){
-            $query->where('doctor_specialist.specialist_id','LIKE',$case_prefix.'%');})->get();
+        $data = Doctor::select('doctor_id','name_th','lastname_th')->whereRelation('specialists','doctor_specialist.specialist_id','LIKE',$case_prefix.'%')
+        ->get();
         return response()->json($data);
     }
 

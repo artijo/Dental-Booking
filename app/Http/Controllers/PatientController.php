@@ -22,9 +22,7 @@ class PatientController extends Controller
         $user = Patient::where('idcard',$session)->first();
         $lastbooking = CaseMD::where('idcard', $session)->orderBy('caseid', 'DESC')->first();
         if ($lastbooking) {
-            $lastbooking = Booking::whereHas('case', function ($query) use ($session) {
-                $query->where('idcard', $session);
-            })
+            $lastbooking = Booking::whereRelation('case','idcard', $session)
             ->orderBy('booking_id', 'DESC')
             ->first();
         } 
