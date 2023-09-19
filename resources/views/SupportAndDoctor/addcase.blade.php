@@ -53,20 +53,99 @@
             <select name="casetype_id" id="casetype" class="casetype">
                 <option value="{{0}}" disabled selected>เลือกประเภทการรักษา</option>
                 @foreach($prefix as $item)
-                @if($item === 'OC')
-                <optgroup label="กายวิภาคศาสตร์">
-                @foreach($case_type as $list)
-                <?php
-                $sp_prefix[]= substr($list->casetype_id,0,2);
-                ?>
-                @foreach($sp_prefix as $sp)
-                @if($item == '')
-                <option value="{{ $list->casetype_id }}">{{ $list->casetype_name }}</option>
-                @endif
-                @endforeach
-                @endforeach
-                @endif
-                </optgroup>
+                @switch($item)
+                    @case('OC')
+                    <optgroup label="ทันตกรรมบดเคี้ยว">
+                        @foreach($case_type as $list)
+                            @php $sp_prefix = substr($list->casetype_id,0,2); @endphp
+                            @if($item == $sp_prefix)
+                            <option value="{{ $list->casetype_id }}">{{ $list->casetype_name }}</option>
+                            @endif
+                        @endforeach
+                    </optgroup>
+                        @break
+                    @case('OD')
+                    <optgroup label="ทันตกรรมหัตถการ ">
+                        @foreach($case_type as $list)
+                            @php $sp_prefix = substr($list->casetype_id,0,2); @endphp
+                            @if($item == $sp_prefix)
+                            <option value="{{ $list->casetype_id }}">{{ $list->casetype_name }}</option>
+                            @endif
+                        @endforeach
+                    </optgroup>
+                        @break
+                    @case('OM')
+                    <optgroup label="เวชศาสตร์ช่องปาก ">
+                        @foreach($case_type as $list)
+                            @php $sp_prefix = substr($list->casetype_id,0,2); @endphp
+                            @if($item == $sp_prefix)
+                            <option value="{{ $list->casetype_id }}">{{ $list->casetype_name }}</option>
+                            @endif
+                        @endforeach
+                    </optgroup>
+                        @break
+                    @case('OS')
+                    <optgroup label="ฝ่ายศัลยศาสตร์">
+                        @foreach($case_type as $list)
+                            @php $sp_prefix = substr($list->casetype_id,0,2); @endphp
+                            @if($item == $sp_prefix)
+                            <option value="{{ $list->casetype_id }}">{{ $list->casetype_name }}</option>
+                            @endif
+                        @endforeach
+                    </optgroup>
+                        @break
+                    @case('OT')
+                    <optgroup label="ทันตกรรมจัดฟัน">
+                        @foreach($case_type as $list)
+                            @php $sp_prefix = substr($list->casetype_id,0,2); @endphp
+                            @if($item == $sp_prefix)
+                            <option value="{{ $list->casetype_id }}">{{ $list->casetype_name }}</option>
+                            @endif
+                        @endforeach
+                    </optgroup>
+                        @break
+                    @case('PD')
+                    <optgroup label="ทันตกรรมประดิษฐ์">
+                        @foreach($case_type as $list)
+                            @php $sp_prefix = substr($list->casetype_id,0,2); @endphp
+                            @if($item == $sp_prefix)
+                            <option value="{{ $list->casetype_id }}">{{ $list->casetype_name }}</option>
+                            @endif
+                        @endforeach
+                    </optgroup>
+                        @break
+                    @case('PK')
+                    <optgroup label="ทันตกรรมสำหรับเด็ก">
+                        @foreach($case_type as $list)
+                            @php $sp_prefix = substr($list->casetype_id,0,2); @endphp
+                            @if($item == $sp_prefix)
+                            <option value="{{ $list->casetype_id }}">{{ $list->casetype_name }}</option>
+                            @endif
+                        @endforeach
+                    </optgroup>
+                        @break
+                    @case('PT')
+                    <optgroup label="ปริทันตวิทยา">
+                        @foreach($case_type as $list)
+                            @php $sp_prefix = substr($list->casetype_id,0,2); @endphp
+                            @if($item == $sp_prefix)
+                            <option value="{{ $list->casetype_id }}">{{ $list->casetype_name }}</option>
+                            @endif
+                        @endforeach
+                    </optgroup>
+                        @break
+                    @case('RD')
+                    <optgroup label="รังสีวิทยา">
+                        @foreach($case_type as $list)
+                            @php $sp_prefix = substr($list->casetype_id,0,2); @endphp
+                            @if($item == $sp_prefix)
+                            <option value="{{ $list->casetype_id }}">{{ $list->casetype_name }}</option>
+                            @endif
+                        @endforeach
+                    </optgroup>
+                    @break
+                    @default
+                @endswitch
                 @endforeach
             </select> <br>
         @else
