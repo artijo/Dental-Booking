@@ -199,8 +199,13 @@ class AdminController extends Controller
     function editcase($id){
         $case = CaseMD::where('caseid',$id)->first();
         $case_type = Casetype::all();
+        $specialist = Specialist::all();
+        $prefix = [];
+        foreach($specialist as $sub){
+        array_push($prefix,substr($sub->specialist_id,0,2));
+        }
         $doctor = Doctor::all();
-        return view('SupportAndDoctor.editcase')->with('case',$case)->with('case_type',$case_type)->with('doctor',$doctor);
+        return view('SupportAndDoctor.editcase')->with('case',$case)->with('case_type',$case_type)->with('doctor',$doctor)->with('prefix',$prefix);
     }
     function updatecase(Request $request, $id){
         if($request->doctor_id == null){

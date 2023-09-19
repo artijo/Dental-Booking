@@ -24,7 +24,7 @@
         <input type="text" name="booking_title" max="255" required><br>
 
         <label for="booking_detail">รายละเอียดการนัด</label><br>
-        <input type="text" name="booking_detail"><br>
+        <textarea name="booking_detail" cols="50" rows="10"></textarea><br>
 
         <label for="booking_date">วันและเวลาที่นัด</label><br>
         <input type="datetime-local" name="booking_date" required><br>
