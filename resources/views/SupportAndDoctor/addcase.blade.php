@@ -15,7 +15,7 @@
                 data:{'id':prefix},
                 success:function(data){
                     var doctor_option = " ";
-                    doctor_option+='<option value="0" selected disabled>เลือกหมอ</option>';
+                    doctor_option+='<option value="0" selected disabled>ถ้าไม่มีหมอจะเลือกหมอให้อัตโนมัติ</option>';
                     for(var i = 0;i<data.length;i++){
                     doctor_option+='<option value="'+data[i].doctor_id+'">'+data[i].name_th+' '+data[i].lastname_th+'</option>';
                     }
@@ -153,10 +153,10 @@
         @endif
         <label for='case_detail'>รายละเอียดการรักษา</label><br>
         <textarea name="case_detail" cols="50" rows="10"></textarea><br>
-        <label for="doctor_id">รับผิดชอบโดยแพทย์</label><br>
+        <label for="doctor_id">รับผิดชอบโดยแพทย์ </label><br>
         @if(!empty($doctor) && count($doctor) > 0)
         <select class="doctor" name="doctor_id">
-            <option value="0" disabled='true' selected>เลือกหมอ</option>
+            <option value="0" disabled='true' selected>ถ้าไม่มีหมอจะเลือกหมอให้อัตโนมัติ</option>
           </select>
           <br>
          @else
