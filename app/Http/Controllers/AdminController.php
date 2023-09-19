@@ -160,6 +160,11 @@ class AdminController extends Controller
         }
 
         // $caseid = $request->caseid;
+        if($request->doctor_id === null){
+            $random = Doctor::inRandomOrder()->first();
+
+            $request->merge(['doctor_id' => $random->doctor_id]);
+        }
         $doctor_id = $request->doctor_id;
         $idcard = $request->idcard;
         $case_title = $request->case_title;
