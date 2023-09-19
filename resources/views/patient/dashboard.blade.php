@@ -14,13 +14,14 @@
             <tr>
                 <th>รายการ</th>
                 <th>รายละเอียด</th>
-                <th>วันที่นัด</th>
+                <th colspan="2">วันที่นัด</th>
             </tr>
             @if(!empty($lastbooking))
             <tr>
                 <td>{{$lastbooking->booking_title}}</td>
                 <td>{{$lastbooking->booking_detail}}</td>
                 <td>{{date('d M Y',strtotime($lastbooking->booking_date))}}</td>
+                <td><a href="{{url('/user/case/'.$lastbooking->caseid)}}">รายละเอียดการนัด</a></td>
             </tr>
             @else
             <tr>
