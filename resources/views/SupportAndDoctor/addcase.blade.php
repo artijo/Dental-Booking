@@ -52,8 +52,21 @@
         @if(!empty($case_type) && count($case_type) > 0)
             <select name="casetype_id" id="casetype" class="casetype">
                 <option value="{{0}}" disabled selected>เลือกประเภทการรักษา</option>
+                @foreach($prefix as $item)
+                @if($item === 'OC')
+                <optgroup label="กายวิภาคศาสตร์">
                 @foreach($case_type as $list)
+                <?php
+                $sp_prefix[]= substr($list->casetype_id,0,2);
+                ?>
+                @foreach($sp_prefix as $sp)
+                @if($item == '')
                 <option value="{{ $list->casetype_id }}">{{ $list->casetype_name }}</option>
+                @endif
+                @endforeach
+                @endforeach
+                @endif
+                </optgroup>
                 @endforeach
             </select> <br>
         @else
