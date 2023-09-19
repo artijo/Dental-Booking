@@ -164,6 +164,8 @@ class AdminController extends Controller
             $random = Doctor::inRandomOrder()->first();
 
             $request->merge(['doctor_id' => $random->doctor_id]);
+        }if($request->casetype_id == null){
+            return back()->with('case_error','โปรดเลือกประเภทการรักษา');
         }
         $doctor_id = $request->doctor_id;
         $idcard = $request->idcard;
@@ -210,6 +212,8 @@ class AdminController extends Controller
     function updatecase(Request $request, $id){
         if($request->doctor_id == null){
             return back()->with('error','โปรดเลือกหมดที่รับผิดชอบ');
+        }elseif($request->casetype_id == null){
+            return back()->with('case_error','โปรดเลือกประเภทการรักษา');
         }else{
             CaseMD::Where('caseid',$id)
             ->update([

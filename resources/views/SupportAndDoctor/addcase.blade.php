@@ -24,7 +24,7 @@
                     $('.doctor').append(doctor_option);
                 },
                 error:function(){
-
+                    alert('เกิดปัญหาขึ้นในขณะที่ดึงข้อมูล');
                 }
             });
         });
@@ -49,6 +49,9 @@
         <label for="case_title">หัวเรื่องการรักษา</label><br>
         <input type="text" name="case_title" max="255" required><br>
         <label for="casetype_id">รูปแบบการรักษา</label><br>
+        @if(session()->has('case_error'))
+        {{session('case_error')}}
+        @endif
         @if(!empty($case_type) && count($case_type) > 0)
             <select name="casetype_id" id="casetype" class="casetype">
                 <option value="{{0}}" disabled selected>เลือกประเภทการรักษา</option>
