@@ -31,7 +31,7 @@
             <td>{{$book->booking_title}}</td>
             <td>{{date('d-m-Y H:m',strtotime($book->booking_date))}}
             </td>
-            <td>{{$book->booking_detail}}</td>
+            <td class="detail">{{$book->booking_detail}}</td>
             {{-- <td> @if($book->case->case_status === 1)รอเข้าพบ 
                 @elseif($book->case->case_status === 2)ไม่มาพบตามนัด 
                 @elseif($book->case->case_status === 3)เสร็จสิ้น

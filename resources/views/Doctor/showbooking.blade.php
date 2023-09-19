@@ -25,7 +25,7 @@
             @foreach($bk->bookings as $item)
             <tr>
                 <td>{{$item->booking_title}}</td>
-                <td>{{$item->booking_detail}}</td>
+                <td class="detail">{{$item->booking_detail}}</td>
                 <td>{{$item->booking_date}}</td>
                 <td><a href="{{url('/admin/booking/edit/'.$item->booking_id)}}">แก้ไข</a></td>
             </tr>

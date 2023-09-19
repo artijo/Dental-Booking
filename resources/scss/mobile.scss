@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 main {
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 .btn {
     background-color: $btn-color;
@@ -229,7 +229,13 @@ th {
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     white-space: nowrap;
-    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+     .detail{
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
 }
 .table-show tr:nth-child(even) {
