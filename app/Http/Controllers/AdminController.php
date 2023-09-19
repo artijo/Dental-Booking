@@ -192,7 +192,7 @@ class AdminController extends Controller
     }
 
     function editcase($id){
-        $case = CaseMD::select('doctor_id','idcard')->where('caseid',$id)->first();
+        $case = CaseMD::where('caseid',$id)->first();
         $case_type = Casetype::all();
         $doctor = Doctor::all();
         return view('SupportAndDoctor.editcase')->with('case',$case)->with('case_type',$case_type)->with('doctor',$doctor);
