@@ -45,13 +45,13 @@ class SupportController extends Controller
         }else{
         $cases = CaseMD::orderBy('caseid','DESC')->paginate(10);
         }
-        return view('Supports.showcase')->with('cases',$cases)->with('s',$s);
+        return view('supports.showcase')->with('cases',$cases)->with('s',$s);
     }
 
     function showcasedetail($caseid){
         $case = CaseMD::where('caseid', $caseid)->first();
         $support = Support::where('support_id',session()->get('supportid'))->first();
-        return view("Supports.casedetail",compact('case','support'));
+        return view("supports.casedetail",compact('case','support'));
     }
 
     function showdoctor(Request $request){
@@ -75,6 +75,6 @@ class SupportController extends Controller
     function patientdetail($idcard){
         $patient = Patient::where('idcard',$idcard)->first();
         $support = Support::where('support_id',session()->get('supportid'))->first();
-        return view('Supports.patientdetail',compact('patient','support'));
+        return view('supports.patientdetail',compact('patient','support'));
     }
 }

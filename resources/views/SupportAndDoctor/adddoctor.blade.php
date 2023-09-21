@@ -15,9 +15,9 @@
         <label for="lastname_th">นามสกุล(ภาษาไทย)</label>
         <input type="text" name="lastname_th" max="255" pattern="[\u0E00-\u0E7F]+" required> <br>
         <label for="name_en">ขื่อ(ภาษาอังกฤษ)</label><br>
-        <input type="text" name="name_en" max="255" pattern="[a-zA-Z]+"> <br>
+        <input type="text" name="name_en" max="255" pattern="[a-zA-Z]+" required> <br>
         <label for="lastname_en">นามสกุล(ภาษาอังกฤษ)</label>
-        <input type="text" name="lastname_en" max="255" pattern="[a-zA-Z]+"> <br>
+        <input type="text" name="lastname_en" max="255" pattern="[a-zA-Z]+" required> <br>
         <div class="error-form">
             @error('email')
                 {{ $message }}
