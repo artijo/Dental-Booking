@@ -8,7 +8,7 @@
     @include('components.adminanddoctornav')
 <div class="content-dashboard">
     <div class="sayhello">
-        <h3>ยินดีต้อนรับสู่ระบบจัดการโรงพยาบาลอาร์ตติโจ</h3>
+        <h3>ยินดีต้อนรับสู่ระบบจัดการโรงพยาบาล</h3>
     </div>
     <div class="profile">
         <div class="name">
