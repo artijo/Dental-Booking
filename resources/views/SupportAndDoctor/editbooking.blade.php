@@ -12,7 +12,7 @@
         @method('PUT')
         <div class="add-data-item">
         <label for="caseid">รหัสเคส</label><br>
-        <input type="text" name="caseid" value="{{$booking->caseid}}" disabled><br>
+        <input type="text" name="caseid" value="{{$booking->case->patient->name_th}} {{$booking->case->patient->lastname_th}} ({{$booking->case->case_title}}:{{$booking->caseid}})" disabled><br>
 
         <label for="booking_title">หัวข้อการนัด</label><br>
         <input type="text" name="booking_title" value="{{$booking->booking_title}}" max="255" required><br>

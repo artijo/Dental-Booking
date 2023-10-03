@@ -130,7 +130,7 @@
         <label for="doctor_id">รหัสนายแพทย์</label><br>
         @if($case)
         @if(session()->has('error'))
-            {{ session()->get('error') }}
+            <p style="white-space: nowrap;">{{ session()->get('error') }}</p>
         @endif
             <select name="doctor_id" single class="doctor">
                 @if($case->doctor)

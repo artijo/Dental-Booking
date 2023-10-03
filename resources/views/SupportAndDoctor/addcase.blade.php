@@ -157,6 +157,9 @@
         <label for='case_detail'>รายละเอียดการรักษา</label><br>
         <textarea name="case_detail" cols="50" rows="10"></textarea><br>
         <label for="doctor_id">รับผิดชอบโดยแพทย์ </label><br>
+        @if(session()->has('not_found'))
+            <p style="color:red;white-space:nowrap;">{{session()->get('not_found')}}</p>
+        @endif
         @if(!empty($doctor) && count($doctor) > 0)
         <select class="doctor" name="doctor_id">
             <option value="0" disabled='true' selected>ถ้าไม่มีหมอจะเลือกหมอให้อัตโนมัติ</option>

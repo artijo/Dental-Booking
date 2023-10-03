@@ -162,9 +162,12 @@ class AdminController extends Controller
         // $caseid = $request->caseid;
         if($request->doctor_id === null){
             $random = Doctor::inRandomOrder()->first();
-
+            if(empty($random)){
+                return back()->with('not_found','(เราไม่มีข้อมูลหมอในขณะนี้กรุณาเพิ่มหมอก่อน)');
+            }
             $request->merge(['doctor_id' => $random->doctor_id]);
-        }if($request->casetype_id == null){
+        }
+        if($request->casetype_id == null){
             return back()->with('case_error','โปรดเลือกประเภทการรักษา');
         }
         $doctor_id = $request->doctor_id;
@@ -211,7 +214,7 @@ class AdminController extends Controller
     }
     function updatecase(Request $request, $id){
         if($request->doctor_id == null){
-            return back()->with('error','โปรดเลือกหมดที่รับผิดชอบ');
+            return back()->with('error','โปรดเลือกหมดที่รับผิดชอบ(หากไม่มีโปรดเพิ่มหมอ)');
         }elseif($request->casetype_id == null){
             return back()->with('case_error','โปรดเลือกประเภทการรักษา');
         }else{
@@ -371,6 +374,9 @@ class AdminController extends Controller
     }
     function storebooking(Request $request){
         $bookingdata = Booking::select('booking_id')->orderBy('booking_id','desc')->withTrashed()->first();
+        if($request->caseid == null){
+            return back()->with('error','โปรดเลือกเคสการรักษา(หากไม่มีโปรดเพิ่มเคสการรักษา)');
+        }
         if ($bookingdata == null) {
             $booking_id = 'bk000001';
         }else{
@@ -406,6 +412,9 @@ class AdminController extends Controller
         return view('SupportAndDoctor.editbooking')->with('booking',$booking);
     }
     function updatebooking(Request $request, $id){
+        if($request->caseid == null){
+            return back()->with('error','โปรดเลือกเคสการรักษา(หากไม่มีโปรดเพิ่มเคสการรักษา)');
+        }  
         Booking::Where('booking_id',$id)
         ->update([
         'booking_title' => $request->booking_title,

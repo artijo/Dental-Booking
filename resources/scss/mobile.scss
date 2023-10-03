@@ -280,6 +280,7 @@ th {
     }
     input[type="text"], input[type="number"], input[type="email"], input[type="tel"], input[type="date"],input[type="password"], select, textarea {
         border: 1px solid lightgrey;
+        width: 400px;
         height: 35px;
         overflow: hidden;
         -moz-appearance: textfield;

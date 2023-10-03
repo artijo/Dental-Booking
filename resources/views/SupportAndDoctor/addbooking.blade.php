@@ -11,10 +11,14 @@
         @csrf
         <div class="add-data-item">
         <label for="caseid">รหัสเคส</label><br>
+        @if(session()->has('error'))
+        <div class="alert alert-danger">
+            <p style="color:red;">{{ session()->get('error') }}</p>
+        @endif
         @if(!empty($cases) && count($cases) > 0)
         <select class="selectcase" name="caseid">
             @foreach($cases as $list)
-            <option value="{{$list->caseid}}">{{ $list->caseid }}</option>
+            <option value="{{$list->caseid}}">{{ $list->patient->name_th }} {{$list->patient->lastname_th}} ({{$list->case_title}}:{{$list->caseid}})</option>
             @endforeach
           </select><br>
         @else
