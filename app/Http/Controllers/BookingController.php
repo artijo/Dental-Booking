@@ -11,7 +11,12 @@ class BookingController extends Controller
 {
     //
     function addbooking(){
+        $session = session('doctor_id');
+        if($session){
+            $cases = CaseMD::where('case_status',1)->where('doctor_id',$session)->get();
+        }else{
         $cases = CaseMD::where('case_status',1)->get();
+        }
         return view('SupportAndDoctor.addbooking')->with('cases',$cases);
     }
      

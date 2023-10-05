@@ -423,7 +423,7 @@ class AdminController extends Controller
         ->update([
         'booking_title' => $request->booking_title,
         'booking_detail' => $request->booking_detail,
-        'booking_date' => $request->booking_date
+        'booking_date' => $request->booking_date,
         ]);
         if(session()->has('doctor_id')){
             return redirect('/admin/doctor/booking/')->with('success','แก้ไขข้อมูลการนัดหมายสำเร็จ');
