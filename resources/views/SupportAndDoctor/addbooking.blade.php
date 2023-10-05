@@ -31,7 +31,7 @@
         <textarea name="booking_detail" cols="50" rows="10"></textarea><br>
 
         <label for="booking_date">วันและเวลาที่นัด</label><br>
-        <input type="datetime-local" name="booking_date" required><br>
+        <input type="datetime-local" name="booking_date" min="<?php echo date('Y-m-d H:i');?>" required><br>
 
         <input type="submit" name="booking_submit" value="บันทึก" class="btn btn-plus mt-5">
     </div>

@@ -21,7 +21,7 @@
         <input type="text" name="booking_detail" value="{{$booking->booking_detail}}"><br>
 
         <label for="booking_date">วันและเวลาที่นัด</label><br>
-        <input type="datetime-local" name="booking_date" value="{{$booking->booking_date}}" required><br>
+        <input type="datetime-local" name="booking_date" value="{{$booking->booking_date}}" min="<?php echo date('Y-m-d H:i');?>" required><br>
 
         <input type="submit" name="booking_submit" value="บันทึก" class="btn btn-plus">
     </div>
