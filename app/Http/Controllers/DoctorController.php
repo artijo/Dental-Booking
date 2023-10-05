@@ -86,7 +86,8 @@ class DoctorController extends Controller
         return view("Doctor.doctorcasedetail",compact('case'));
     }
     function showbooking(){
-        $booking = CaseMD::where('doctor_id', session(('doctor_id')))->orderBy('caseid','DESC')->paginate(10);
+        $case = CaseMD::where('doctor_id',session('doctor_id'))->get();
+        $booking = Booking::whereRelation('case','doctor_id',session('doctor_id'))->orderBy('booking_id','DESC')->paginate(10);
         return view('Doctor.showbooking',compact('booking'));
     }
 }

@@ -21,15 +21,13 @@
                 <td colspan="5" class="text-center">ไม่มีข้อมูลการนัด</td>
             </tr>
         @else
-        @foreach($booking as $bk)
-            @foreach($bk->bookings as $item)
+        @foreach($booking as $item)
             <tr>
                 <td>{{$item->booking_title}}</td>
                 <td class="detail">{{$item->booking_detail}}</td>
                 <td>{{$item->booking_date}}</td>
                 <td><a href="{{url('/admin/booking/edit/'.$item->booking_id)}}">แก้ไข</a></td>
             </tr>
-            @endforeach
         @endforeach
         {{$booking}}
         @endif

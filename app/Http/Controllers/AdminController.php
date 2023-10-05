@@ -419,9 +419,6 @@ class AdminController extends Controller
         return view('SupportAndDoctor.editbooking')->with('booking',$booking);
     }
     function updatebooking(Request $request, $id){
-        if($request->caseid == null){
-            return back()->with('error','โปรดเลือกเคสการรักษา(หากไม่มีโปรดเพิ่มเคสการรักษา)');
-        }  
         Booking::Where('booking_id',$id)
         ->update([
         'booking_title' => $request->booking_title,
