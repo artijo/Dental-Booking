@@ -3,7 +3,7 @@
 @section('content')
 <div class="a-container">
     <div class="space"></div>
-    <div class="head-title"><h1>รายชื่อผู้รักษา</h1></div>
+    <div class="head-title"><h1>ข้อมูลผู้ดูแลระบบ</h1></div>
     <div class="space"></div>
 @include('components.adminanddoctornav')
 <div class="content-dashboard">
@@ -35,7 +35,11 @@
                 <td>{{$pt->email}}</td>
                 <td>@if($pt->level == 0)ผู้ดูแลระบบ@else เจ้าหน้าที่ @endif</td>
                 <td><a href="{{url('/admin/support/edit/'.$pt->support_id)}}">แก้ไข</a></td>
+                @if($pt->support_id != session('supportid'))
                 <td><a href="{{url('/admin/support/delete/'.$pt->support_id)}}" onclick="confrimation(event)">ลบ</a></td>
+                @else
+                <td></td>
+                @endif
                 </tr>
         @endforeach
     </table>

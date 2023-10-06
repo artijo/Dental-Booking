@@ -14,20 +14,14 @@
                     <span class="title-pt">รหัสการรักษา:{{$case->caseid}} <span class="title-pt">รหัสผู้ป่วย:{{$case->patient->idcard}}</span></span> 
                  </div>
                 <div class="box-casedetail">
-                <h3>หัวข้อการรักษา</h3>
-                    <span class="text-dt">{{$case->case_title}}</span>
-                <h3>รายละเอียด</h3>
-                      <span class="text-dt">{{$case->case_detail}}</span> 
-                <h3>แพทย์ที่รักษา</h3>
-                        <span class="text-dt">{{$case->doctor->name_th}} {{$case->doctor->lastname_th}}</span>
-                 <h3>สถานะการนัด</h3>
-                 <span class="text-dt"> @if($case->case_status === 1)รอเข้าพบ 
+                <p><span class="font-bold">หัวข้อการรักษา:</span> {{$case->case_title}}</p>
+                <p><span class="font-bold">รายละเอียด: </span>{{$case->case_detail}}</p>
+                <p><span class="font-bold">แพทย์ที่รักษา: </span>{{$case->doctor->name_th}} {{$case->doctor->lastname_th}}</p>
+                 <p><span class="font-bold">สถานะการนัด: </span>@if($case->case_status === 1)รอเข้าพบ 
                      @elseif($case->case_status === 2)ไม่มาพบตามนัด 
                       @elseif($case->case_status === 3)เสร็จสิ้น
-                     @endif
-                    </span>
-                    <h3>วันที่เริ่มรักษา</h3>
-                    <span class="text-dt">{{date('d M Y',strtotime($case->created_at))}}</span>
+                     @endif</p>
+                    <p><span class="font-bold">วันที่เริ่มรักษา: </span>{{date('d M Y',strtotime($case->created_at))}}</p>
                     <div class="space"></div>
                     <hr>
                 <h2 class="mt-3 text-xl">วันที่นัดหมาย</h2>
