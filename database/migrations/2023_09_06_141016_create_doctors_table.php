@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('email',255)->unique();
             $table->string('password',255);
             $table->string('tel',10)->unique();
-            $table->char('specialist_id',6);
             $table->timestamps();
             $table->softDeletes();
         });

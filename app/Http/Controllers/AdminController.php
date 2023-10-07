@@ -310,9 +310,6 @@ class AdminController extends Controller
         $adddoctor->email = $email;
         $adddoctor->password = $password;
         $adddoctor->tel = $tel;
-        foreach($spacialist_id as $addspecial){
-        $adddoctor->specialist_id = $addspecial;
-        }
 
         $adddoctor->save();
         $doctor = Doctor::where('doctor_id',$doctor_id)->first();
@@ -361,7 +358,7 @@ class AdminController extends Controller
         'email' => $request->email,
         'password' => $request->password,
         'tel' => $request->tel,
-        'specialist_id' => $more
+
         ]);
     }
         $data->specialists()->syncWithoutDetaching($addmoresp);

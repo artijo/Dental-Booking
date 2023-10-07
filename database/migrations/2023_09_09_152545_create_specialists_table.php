@@ -19,9 +19,6 @@ return new class extends Migration
             $table->softDeletes();
         });
         
-        Schema::table('doctors', function (Blueprint $table) {
-            $table->foreign('specialist_id')->references('specialist_id')->on('specialists');
-        });
         Schema::table('case_m_d_s', function (Blueprint $table) {
             $table->foreign('doctor_id')->references('doctor_id')->on('doctors');
             $table->foreign('casetype_id')->references('casetype_id')->on('casetypes');
