@@ -361,7 +361,7 @@ class AdminController extends Controller
 
         ]);
     }
-        $data->specialists()->syncWithoutDetaching($addmoresp);
+        $data->specialists()->sync($addmoresp);
 
         return redirect('/admin/showdoctor/'.$id)->with('success','แก้ไขข้อมูลแพทย์สำเร็จ');
     }

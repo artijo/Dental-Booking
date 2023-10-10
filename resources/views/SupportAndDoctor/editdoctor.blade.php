@@ -49,11 +49,16 @@
         <input type="text" name="tel" value="{{$doctor->tel}}" pattern="[0-9]{10}" required> <br>
         <label for="specialist_id">เพิ่มความเชี่ยวชาญ</label>
         @if(!empty($spacialist) && count($spacialist) > 0)
-            <select name="specialist_id[]" id="specialist" multiple class="specailist">
-                @foreach($spacialist as $list)
-                <option value="{{ $list->specialist_id }}">{{ $list->name_th }}</option>
-                @endforeach
-            </select> <br>
+        <select name="specialist_id[]" id="specialist" multiple class="specailist">
+            @foreach($spacialist as $list)
+                @php
+                $isSelected = in_array($list->specialist_id, $doctor->specialists->pluck('specialist_id')->toArray());
+                @endphp
+                <option value="{{ $list->specialist_id }}" {{ $isSelected ? 'selected' : '' }}>
+                    {{ $list->name_th }}
+                </option>
+            @endforeach
+        </select>  <br>
         @else
         ไม่มีข้อมูลเฉพาะทางในขณะนี้<br>
         @endif
