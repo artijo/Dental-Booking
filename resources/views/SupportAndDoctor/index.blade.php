@@ -18,7 +18,7 @@
     </div>
     <div class="result-data flex flex-wrap gap-5 justify-center mt-5">
         <div class="result-item">
-                <div class="result-item-title">จำนวนผู้รักษาทั้งหมด (คน)</div>
+                <div class="result-item-title">จำนวนผู้เข้ารับการรักษาทั้งหมด (คน)</div>
                 <div class="result-item-data text-center"><span class="text-bold">{{$patientcount}}</span></div> 
         </div>
         <div class="result-item">
