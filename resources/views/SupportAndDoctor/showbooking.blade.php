@@ -16,9 +16,10 @@
     </div>
     <table class="table-show">
         <tr>
-        <th>รายการ</th>
-        <th>วันที่นัดหมาย</th>
-        <th colspan="4">รายละเอียด</th>
+        <th>ลำดับที่</th>
+        <th>ชื่อ - สกุลผู้ป่วย</th>
+        <th>วัน - เวลาที่นัดหมาย</th>
+        <th colspan="4">รายการ</th>
         {{-- <th @if(session('level')==0) colspan="4" @else colspan="2" @endif>สถานะการนัด</th> --}}
         </tr>
         @if(count($booking) <= 0)
@@ -28,16 +29,15 @@
         @else
         @foreach($booking as $book) 
         <tr>
-            <td>{{$book->booking_title}}</td>
-            <td>{{date('d-m-Y H:m',strtotime($book->booking_date))}}
-            </td>
-            <td class="detail">{{$book->booking_detail}}</td>
+            <td>{{$booking->firstItem()+$loop->index}}</td>
+            <td>{{$book->case->patient->name_th}} {{$book->case->patient->lastname_th}}</td>
+            <td>{{date('d-m-Y H:m',strtotime($book->booking_date))}}</td>
+            <td><a href='{{url('/admin/case/'.$book->case->caseid)}}'>{{$book->booking_title}}</a></td>
             {{-- <td> @if($book->case->case_status === 1)รอเข้าพบ 
                 @elseif($book->case->case_status === 2)ไม่มาพบตามนัด 
                 @elseif($book->case->case_status === 3)เสร็จสิ้น
                 @endif
                 </td> --}}
-            <td><a href='{{url('/admin/case/'.$book->case->caseid)}}'>รายละเอียดเคส</a></td>
             @if(session('level') == 0)
             <td><a href="{{url('/admin/booking/edit/'.$book->booking_id)}}">แก้ไข</a></td>
             <td><a href="{{url('/admin/booking/delete/'.$book->booking_id)}}" onclick="confrimation(event)">ลบ</a></td>

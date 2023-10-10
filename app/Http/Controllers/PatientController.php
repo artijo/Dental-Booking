@@ -21,11 +21,11 @@ class PatientController extends Controller
         $cases = CaseMD::where('idcard',$session)->orderBy('caseid','DESC')->paginate(10); //ยังไม่มีการลงบันทึกในตารางจึงต้องดึงมาจาก case ตรงๆก่อน
         $user = Patient::where('idcard',$session)->first();
         $lastbooking = CaseMD::where('idcard', $session)->orderBy('caseid', 'DESC')->first();
-        if ($lastbooking) {
-            $lastbooking = Booking::whereRelation('case','idcard', $session)
-            ->orderBy('booking_id', 'DESC')
-            ->first();
-        } 
+            if ($lastbooking) {
+                $lastbooking = Booking::whereRelation('case','idcard', $session)
+                ->orderBy('booking_id', 'DESC')
+                ->first();
+            } 
         return view('patient.dashboard')->with('cases',$cases)->with('user',$user)->with('lastbooking',$lastbooking);
     }
 

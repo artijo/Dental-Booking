@@ -133,7 +133,7 @@
             <p style="white-space: nowrap;">{{ session()->get('error') }}</p>
         @endif
             <select name="doctor_id" single class="doctor">
-                @if($case->doctor)
+                @if(session()->has('doctor_id'))
                 @foreach($doctor as $doctors)
                 <option value="{{$doctors->doctor_id}}" selected>{{$doctors->name_th}} {{$doctors->lastname_th}}</option>
                 @endforeach

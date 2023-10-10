@@ -30,14 +30,13 @@
     @foreach ($cases as $item)
         <tr>
             <td>{{$cases->firstItem()+$loop->index}}</td>
-            <td>{{$item->case_title}}</td>
+            <td><a href="{{url('/admin/case/'.$item->caseid)}}">{{$item->case_title}}</a></td>
             <td>{{$item->patient->name_th}} {{$item->patient->lastname_th}}</td>
             <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
             <td>@if($item->case_status === 1)รอเข้าพบ 
                 @elseif($item->case_status === 2)ไม่มาพบตามนัด 
                 @elseif($item->case_status === 3)เสร็จสิ้น
                 @endif</td>
-            <td><a href="{{url('/admin/case/'.$item->caseid)}}">รายละเอียดเพิ่มเติม</a></td>
         </tr>
         
     @endforeach

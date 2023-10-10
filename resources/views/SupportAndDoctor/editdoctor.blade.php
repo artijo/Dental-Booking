@@ -14,7 +14,7 @@
         <label for="name_en">ขื่อ(ภาษาอังกฤษ)</label>
         <input type="text" name="name_en" value="{{$doctor->name_en}}" max="255" pattern="[a-zA-Z]+"> <br>
         <label for="lastname_en">นามสกุล(ภาษาอังกฤษ)</label>
-        <input type="text" name="lastname_en" value="{{$doctor->name_en}}" max="255" pattern="[a-zA-Z]+"> <br>
+        <input type="text" name="lastname_en" value="{{$doctor->lastname_en}}" max="255" pattern="[a-zA-Z]+"> <br>
         <label for="name_th">ชื่อ(ภาษาไทย ไม่ต้องมีคำนำหน้าชื่อ)</label>
         <input type="text" name="name_th" value="{{$doctor->name_th}}" max="255" pattern="[\u0E00-\u0E7F]+" required> <br>
         <label for="lastname_th">นามสกุล(ภาษาไทย)</label>

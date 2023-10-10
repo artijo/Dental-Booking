@@ -34,7 +34,7 @@
         <td>{{$item->booking_title}}</td>
         <td class="detail">{{$item->booking_detail}}</td>
         <td>{{$item->booking_date}}</td>
-        <td><a href="{{url('/admin/case/edit/'.$case->caseid)}}"><button>แก้ไข</button></a></td>
+        <td><a href="{{url('/admin/booking/edit/'.$item->booking_id)}}"><button>แก้ไข</button></a></td>
     </tr>
 
     @endforeach
