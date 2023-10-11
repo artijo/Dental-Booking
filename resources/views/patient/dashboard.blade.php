@@ -19,7 +19,11 @@
             @if(!empty($lastbooking) && $lastbooking->case->case_status!=3)
             <tr>
                 <td>{{$lastbooking->booking_title}}</td>
+                @if($lastbooking->booking_detail === NULL)
+                <td>-</td>
+                @else
                 <td>{{$lastbooking->booking_detail}}</td>
+                @endif
                 <td>{{date('d M Y',strtotime($lastbooking->booking_date))}}</td>
                 <td><a href="{{url('/user/case/'.$lastbooking->caseid)}}">รายละเอียดการนัด</a></td>
             </tr>
@@ -36,13 +40,17 @@
                         <th>วันที่</th>
                         <th>รายละเอียด</th>
                         <th colspan="2">สถานะการนัด</th>
-                        @if(!empty($cases) && count($cases) > 0 && $lastbooking->case->case_status==3)
+                        @if(!empty($cases) && count($cases))
                                 @foreach($cases as $case)
                                     <tr>
                                         <td>{{$cases->firstItem()+$loop->index}}</td>
                                         <td><a href="{{url('/user/case/'.$case->caseid)}}">{{$case->case_title}}</td>
                                         <td>{{date('d M Y',strtotime($case->created_at))}}</td>
+                                        @if($case->case_detail===NULL)
+                                        <td>-</td>
+                                        @else
                                         <td>{{$case->case_detail}}</td>
+                                        @endif
                                         <td class="flex gap-2">@if($case->case_status == 1) <img src="{{asset('img/icon/clock.svg')}}" alt="wait"> <span>กำลังรักษา</span> @elseif($case->case_status==2) <img src="{{asset('img/icon/floppy.svg')}}" alt="cancel"><span>การรักษาไม่เสร็จสมบูรณ์</span>@elseif($case->case_status==3) <img src="{{asset('img/icon/check-circle.svg')}}" alt="finish"><span>เสร็จสิ้น</span> @endif</td>
                                     </tr>
                                 @endforeach
