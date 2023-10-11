@@ -134,11 +134,12 @@
         @endif
             <select name="doctor_id" single class="doctor">
                 @if(session()->has('doctor_id'))
+                <option value="{{$case->doctor->doctor_id}}" selected>{{$case->doctor->name_th}} {{$case->doctor->lastname_th}}</option>
+                @else
+                <option value="0" disabled='true' selected>ถ้าไม่มีหมอจะเลือกหมอให้อัตโนมัติ</option>
                 @foreach($doctor as $doctors)
                 <option value="{{$doctors->doctor_id}}" selected>{{$doctors->name_th}} {{$doctors->lastname_th}}</option>
                 @endforeach
-                @else
-                <option value="0" disabled='true' selected>ถ้าไม่มีหมอจะเลือกหมอให้อัตโนมัติ</option>
                 @endif
             </select><br>
         @else

@@ -24,7 +24,7 @@
         </tr>
     @if(count($cases) <= 0)
         <tr>
-            <td colspan="4" class="text-center">ไม่มีข้อมูลเคสการรักษา</td>
+            <td colspan="5" class="text-center">ไม่มีข้อมูลเคสการรักษา</td>
         </tr>
     @else
     @foreach ($cases as $item)

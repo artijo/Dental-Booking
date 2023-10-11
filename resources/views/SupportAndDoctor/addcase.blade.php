@@ -4,30 +4,38 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type='text/javascript'>
     $(document).ready(function () {
-        $(document).on('change', '.casetype',function () {
+            $(document).on('change', '.casetype',function () {
 
-           var casetype = $(this).val();
-           var prefix = casetype.substr(0,2);
-           var div =$(this).parents();
-            $.ajax({
-                type:'get',
-                url:'/admin/addcase/filter',
-                data:{'id':prefix},
-                success:function(data){
-                    var doctor_option = " ";
-                    doctor_option+='<option value="0" selected disabled>ถ้าไม่มีหมอจะเลือกหมอให้อัตโนมัติ</option>';
-                    for(var i = 0;i<data.length;i++){
-                    doctor_option+='<option value="'+data[i].doctor_id+'">'+data[i].name_th+' '+data[i].lastname_th+'</option>';
-                    }
-
-                    $('.doctor').html('');
-                    $('.doctor').append(doctor_option);
-                },
-                error:function(){
-                    alert('เกิดปัญหาขึ้นในขณะที่ดึงข้อมูล');
+            var casetype = $(this).val();
+            var prefix = casetype.substr(0,2);
+            var div =$(this).parents();
+            var session = "{{Session::get('doctor_id');}}";
+            if(!session){
+                    $.ajax({
+                        type:'get',
+                        url:'/admin/addcase/filter',
+                        data:{'id':prefix},
+                        success:function(data){
+                            var doctor_option = " ";
+                            console.log(data);
+                            if(data == 0){
+                                doctor_option+='<option value="0" selected disabled>ถ้าไม่มีหมอจะเลือกหมอให้อัตโนมัติ</option>';
+                        }   
+                            else{
+                            doctor_option+='<option value="0" selected disabled>ถ้าไม่มีหมอจะเลือกหมอให้อัตโนมัติ</option>';
+                            for(var i = 0;i<data.length;i++){
+                                doctor_option+='<option value="'+data[i].doctor_id+'">'+data[i].name_th+' '+data[i].lastname_th+'</option>';
+                            }
+                        }
+                            $('.doctor').html('');
+                            $('.doctor').append(doctor_option);
+                        },
+                        error:function(){
+                            alert('เกิดปัญหาขึ้นในขณะที่ดึงข้อมูล');
+                        }
+                    });
                 }
             });
-        });
     });
 </script>
 
@@ -160,7 +168,14 @@
         @if(session()->has('not_found'))
             <p style="color:red;white-space:nowrap;">{{session()->get('not_found')}}</p>
         @endif
-        @if(!empty($doctor) && count($doctor) > 0)
+        @if(session()->has('doctor_id'))
+            <select class="doctor" name="doctor_id">
+            @foreach($doctor as $doctors)
+            <option value="{{$doctors->doctor_id}}" disabled='true' selected>{{$doctors->name_th}} {{$doctors->lastname_th}}</option>
+            @endforeach
+          </select>
+          <br>
+        @elseif(!empty($doctor) && count($doctor) > 0)
         <select class="doctor" name="doctor_id">
             <option value="0" disabled='true' selected>ถ้าไม่มีหมอจะเลือกหมอให้อัตโนมัติ</option>
           </select>
