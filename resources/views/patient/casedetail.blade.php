@@ -28,6 +28,7 @@
                 <table class="table-show">
                     <tr>
                         <th>เรื่องการนัด</th>
+                        <th>รายละเอียดการนัด</th>
                         <th>วันที่นัดหมาย</th>
                     </tr>
                     @php
@@ -36,6 +37,7 @@
                     @foreach($bookings as $booking)
                     <tr>
                         <td>{{$booking->booking_title}}</td>
+                        <td>{{$booking->booking_detail}}</td>
                         <td>{{date('d M Y',strtotime($booking->booking_date))}}</td>
                     </tr>
                 @endforeach

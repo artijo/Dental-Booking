@@ -19,16 +19,15 @@
                 <th>ลำดับ</th>
                 <th>ชื่อ</th>
                 <th>หมายเลขโทรศัพท์</th>
-                <th colspan="2">จำนวนการรักษา(ครั้ง)</th>
+                <th>จำนวนการรักษา(ครั้ง)</th>
             </tr>
             @if(!empty($cases) && COUNT($cases) > 0)
             @foreach($cases as $item)
             <tr>
                 <td>{{$cases->firstItem()+$loop->index}}</td>
-                <td>{{$item->fullname}}</td>
+                <td><a href="{{url('/admin/doctor/patient/'.$item->idcard)}}">{{$item->fullname}}</a></td>
                 <td>{{$item->tel}}</td>
                 <td>{{$item->casetotal}}</td>
-                <td><a href="{{url('/admin/doctor/patient/'.$item->idcard)}}">รายละเอียดเพิ่มเติม</a></td>
             </tr>
             @endforeach
             @else

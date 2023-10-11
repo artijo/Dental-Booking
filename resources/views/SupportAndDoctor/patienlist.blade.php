@@ -18,9 +18,9 @@
     <table class="table-show">
     <tr>
         <th>ลำดับ</th>
-        <th>ชื่อ</th>
-        <th>นามสกุล</th>
-        <th colspan="2">เบอร์โทรศัพท์</th>
+        <th>ชื่อ นามสกุล</th>
+        <th>เบอร์โทรศัพท์</th>
+        <th>จำนวนการรักษา</th>
     </tr>
     @if(count($page) <= 0)
         <tr>
@@ -30,10 +30,9 @@
           @foreach ( $page as $pt) 
                 <tr>
                 <td>{{$page->firstItem()+$loop->index}}</td>
-                <td>{{$pt->name_th}}</td>
-                <td>{{$pt->lastname_th}}</td>
+                <td><a href="{{url('/admin/patient/'.$pt->idcard)}}">{{$pt->name_th}} {{$pt->lastname_th}}</a></td>
                 <td>{{$pt->tel}}</td>
-                <td><a href="{{url('/admin/patient/'.$pt->idcard)}}">รายละเอียดเพิ่มเติม</a></td>
+                <td>{{count($pt->cases)}}</td>
                 </tr>
         @endforeach
     </table>

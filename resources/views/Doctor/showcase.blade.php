@@ -17,8 +17,8 @@
     <table class="table-show">
         <tr>
             <th>ลำดับ</th>
-            <th>ชื่อ - สกุลผู้รักษา</th>
             <th>รายการ</th>
+            <th>ชื่อ - สกุลผู้รักษา</th>
             <th colspan="2">สถานะ</th>
         </tr>
     @if(count($cases) <= 0)
@@ -30,8 +30,8 @@
     @foreach($cases as $item)
             <tr>
                 <td>{{$cases->firstItem()+$loop->index}}</td>
-                <td>{{$item->patient->name_th}} {{$item->patient->lastname_th}}</td>
                 <td><a href="{{url('/admin/doctor/case/'.$item->caseid)}}">{{$item->case_title}}</a></td>
+                <td><a href="{{url('admin/doctor/patient/'.$item->idcard)}}">{{$item->patient->name_th}} {{$item->patient->lastname_th}}</a></td>
                 <td>@if($item->case_status === 1)รอเข้าพบ @elseif($item->case_status === 2)ไม่มาพบตามนัด @elseif($item->case_status === 3)เสร็จสิ้น@endif</td>
             </tr>
     @endforeach

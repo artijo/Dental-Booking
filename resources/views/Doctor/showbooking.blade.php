@@ -13,9 +13,10 @@
     <table class="table-show">
         <tr>
             <th>ลำดับที่</th>
+            <th>รายการนัด</th>
+            <th>เคส</th>
             <th>ชื่อ - สกุลผู้รักษา</th>
             <th>วัน - เวลาที่นัด</th>
-            <th>รายการนัด</th>
             <th colspan="2"></th>
         </tr>
         @if(count($booking) <= 0)
@@ -26,9 +27,10 @@
         @foreach($booking as $item)
             <tr>
                 <td>{{$booking->firstItem()+$loop->index}}</td>
-                <td>{{$item->case->patient->name_th}} {{$item->case->patient->lastname_th}}</td>
-                <td>{{$item->booking_date}}</td>
                 <td>{{$item->booking_title}}</td> 
+                <td><a href="{{url('/admin/doctor/case/'.$item->caseid)}}">{{$item->case->case_title}}</a></td>
+                <td><a href="{{url('admin/doctor/patient/'.$item->case->idcard)}}">{{$item->case->patient->name_th}} {{$item->case->patient->lastname_th}}</a></td>
+                <td>{{date("d-M-Y H:m",strtotime($item->booking_date))}} น.</td>
                 <td><a href="{{url('/admin/booking/edit/'.$item->booking_id)}}">แก้ไข</a></td>
             </tr>
         @endforeach

@@ -171,7 +171,7 @@
         @if(session()->has('doctor_id'))
             <select class="doctor" name="doctor_id">
             @foreach($doctor as $doctors)
-            <option value="{{$doctors->doctor_id}}" disabled='true' selected>{{$doctors->name_th}} {{$doctors->lastname_th}}</option>
+            <option value="{{$doctors->doctor_id}}" readonly selected>{{$doctors->name_th}} {{$doctors->lastname_th}}</option>
             @endforeach
           </select>
           <br>

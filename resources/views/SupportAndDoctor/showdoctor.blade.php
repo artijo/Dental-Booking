@@ -20,7 +20,6 @@
             <th>ชื่อ</th>
             <th>เบอร์โทรศัพท์</th>
             <th>จำนวนการรักษา(ครั้ง)</th>
-            <th>รายละเอียดเพิ่มเติม</th>
         </tr>
         @if(count($count) <= 0)
         <tr>
@@ -30,10 +29,9 @@
         @foreach($count as $case)
         <tr>
             <td>{{$count->firstItem()+$loop->index}}</td>
-            <td>{{$case->name_th}} {{$case->lastname_th}}</td>
+            <td><a href="{{url('/admin/showdoctor/'.$case->doctor_id)}}">{{$case->name_th}} {{$case->lastname_th}}</a></td>
             <td>{{$case->tel}}</td>
             <td>{{count($case->cases)}}</td>
-            <td><a href="{{url('/admin/showdoctor/'.$case->doctor_id)}}">รายละเอียดเพิ่มเติม</a></td>
         </tr>
         @endforeach
         @endif

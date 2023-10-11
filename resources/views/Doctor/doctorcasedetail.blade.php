@@ -32,7 +32,7 @@
     @foreach ($case->bookings as $item)
     <tr>
         <td>{{$item->booking_title}}</td>
-        <td class="detail">{{$item->booking_detail}}</td>
+        <td class="detail">@if($item->booking_detail == NULL) - @else {{$item->booking_detail}} @endif</td>
         <td>{{$item->booking_date}}</td>
         <td><a href="{{url('/admin/booking/edit/'.$item->booking_id)}}"><button>แก้ไข</button></a></td>
     </tr>
