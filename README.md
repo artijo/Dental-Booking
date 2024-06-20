@@ -5,7 +5,7 @@ Web application and Database Design Project by Laravel
 
 ## Authors
 
-- [Apichai Tinjong]()
+- [ARTIJO]()
 - [Tharit Suttitham]()
 - [Piyanat Roopsoong]()
 - [Pheeraphon Jarijanukulwong]()
